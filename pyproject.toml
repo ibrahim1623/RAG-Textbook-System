@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "rag-textbook"
+version = "0.1.0"
+description = "rag for textbooks"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+textract = "^1.6.5"
+langchain-community = "^0.3.1"
+pypdf = "^5.0.1"
+argcomplete = "~=1.10.0"
+beautifulsoup4 = "~=4.8.0"
+chardet = ">=3,<4"
+docx2txt = "~=0.8"
+extract-msg = "<=0.29.*"  # Last version with Python 2 support
+python-pptx = "~=0.6.18"
+six = "~=1.12.0"
+SpeechRecognition = "~=3.8.1"
+xlrd = "~=1.2.0"
+pdfminer-six = "20191110"
+setuptools = "^75.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
