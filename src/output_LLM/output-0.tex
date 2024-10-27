@@ -1,0 +1,86 @@
+Here is the provided text converted into LaTeX code:
+
+```latex
+\documentclass{book}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Statistical Inference: A Primer on Likelihood and Bayesian Methods}
+\author{William J. Welch}
+\date{Version: August 14, 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Course Notes Prepared by}
+\textbf{William J. Welch}\\
+Department of Statistics\\
+University of British Columbia\\
+3182 Earth Sciences Building\\
+2207 Main Mall\\
+Vancouver BC, Canada V6T 1Z4
+
+\vspace{1em}
+
+© Copyright William J. Welch 2009--2019\\
+All rights reserved.
+
+\tableofcontents
+
+\chapter{Introduction to Statistical Inference}
+
+\section{Probability Tools}
+
+\subsection{Discrete and Continuous Random Variables}
+Statistical methods are strongly dependent on probability tools. Indeed, a statistical method typically starts and ends with probability models. The first step is to specify a probability model for the way the data were generated, and the last step often involves a calculation such as looking up a probability to compute a confidence interval or a Bayesian credible interval. In between, much of statistical inference is concerned with the unknown parameters of the probability model, which has possibly been refined along the way. Thus, statistics and probability are intertwined, and this chapter reviews the probability tools we will need for statistical inference. It starts with one random variable and general properties like expectation and variance. The specific properties of some common probability models—those we will use frequently in later chapters—are collected together as a resource. Most statistical work involves samples of more than one observation, and hence we also need to review results for several random variables, including their joint distribution and properties of their sum or arithmetic mean. Finally, the chapter outlines the use of moment generating functions as a relatively simple tool for obtaining properties, particularly those of sums and linear functions of random variables, as needed for statistical work involving sample totals or sample means.
+
+\subsection{Probability Mass Function and Probability Density Function}
+The distribution of \(Y\) over its possible values is denoted by \(f_Y(y)\). For a discrete random variable, \(f_Y(y)\) can be interpreted as \(\Pr(Y = y)\), the probability that \(Y\) takes the value \(y\), and \(f_Y(y)\) is called a probability mass function (PMF). The mass function is positive and sums to 1 over the possible \(y\) values.
+
+\textbf{Example 1.1 (Poisson PMF)}: If \(Y\) has a Poisson distribution, it has possible values \(y = 0, 1, \ldots, \infty\) and PMF
+
+\[
+f_Y(y) = \frac{e^{-\mu} \mu^y}{y!}.
+\]
+
+The Poisson distribution is actually a family of distributions depending on the value of the parameter \(\mu > 0\), and we will use the notation \(\text{Pois}(\mu)\) to denote the family. (The properties of the Poisson and other commonly used distributions will be summarized in Sections 1.4 and 1.5.) In practice, the value of \(\mu\) is usually unknown for a specific application, and much of our statistical work will be about how to estimate the values of parameters like \(\mu\) from a sample of data. The Poisson PMF sums to 1, as required:
+
+\[
+\sum_{y=0}^{\infty} f_Y(y) = \sum_{y=0}^{\infty} \frac{e^{-\mu} \mu^y}{y!} = e^{-\mu} \sum_{y=0}^{\infty} \frac{\mu^y}{y!} = e^{-\mu} e^{\mu} = 1,
+\]
+
+because of the series representation \(1 + \mu + \frac{\mu^2}{2!} + \cdots\) for \(e^{\mu}\). 
+
+\textbf{(The end of an example is marked by a \(\blacksquare\) symbol.)}
+
+For a continuous random variable, \(f_Y(y)\) is called a probability density function (PDF), and \(f_Y(y)\) cannot be interpreted as a probability. It is, however, proportional to the probability that \(Y\) falls in a small interval around \(y\) (Exercise 1.1). The density function is positive and integrates to 1 over the range of possible \(y\) values.
+
+\textbf{Example 1.2 (Exponential distribution: PDF)}: If \(Y\) has an exponential distribution, it has possible values \(0 < y < \infty\) and PDF
+
+\[
+f_Y(y) = \lambda e^{-\lambda y} \quad (0 < y < \infty; \lambda > 0).
+\]
+
+The distribution, denoted \(\text{Expon}(\lambda)\), depends on the parameter \(\lambda > 0\). The exponential PDF integrates to 1, as required:
+
+\[
+\int_0^{\infty} f_Y(y) \, dy = \int_0^{\infty} \lambda e^{-\lambda y} \, dy = -e^{-\lambda y} \bigg|_0^{\infty} = 0 - (-1) = 1.
+\]
+
+\textbf{(The end of an example is marked by a \(\blacksquare\) symbol.)}
+
+A distribution is symmetric if there exists \(\mu\) such that its PMF or PDF can be written
+
+\[
+f_Y(\mu - x) = f_Y(\mu + x,
+\]
+
+for values \(x\) that generate all possible values \(y\).
+
+\end{document}
+```
+
+This LaTeX document preserves the structure and content of the provided text, formatted appropriately for a mathematics textbook.

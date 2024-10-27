@@ -1,0 +1,318 @@
+Here's the provided text converted into LaTeX code:
+
+```latex
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+\section{DISCRETE AND CONTINUOUS RANDOM VARIABLES}
+
+\subsection{Example 1.3 (Normal distribution: symmetry)}
+A random variable with a normal distribution has PDF
+\[
+f_Y(y) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(y-\mu)^2}{2\sigma^2}}, \quad -\infty < y < \infty,
+\]
+for given constants $\mu$ and $\sigma^2 > 0$. The PDF satisfies
+\[
+f_Y(\mu - x) = f_Y(\mu + x) \quad (0 \leq x < \infty)
+\]
+and hence is symmetric around $\mu$ for any value of $\sigma^2$.
+
+\subsection{Cumulative distribution function}
+For either a continuous or a discrete random variable $Y$, the cumulative distribution function (CDF) is defined as
+\[
+F_Y(y) = \Pr(Y \leq y.
+\]
+For a particular value $y$, the probability will be evaluated by summation (discrete $Y$) or integration (continuous $Y$) over values up to $y$. For a continuous random variable, it does not matter whether the CDF is defined as $\Pr(Y \leq y)$ or $\Pr(Y < y)$. For a discrete random variable, there is usually little choice but to sum the PDF explicitly to compute the CDF. For instance, the Poisson CDF evaluated at, say, 
+$y=3$ is
+\[
+F_Y(3) = \Pr(Y \leq 3) = \sum_{y=0}^{3} \frac{e^{-\mu} \mu^y}{y!}.
+\]
+and not much simplification is possible. For some commonly met continuous distributions, however, simple expressions for the CDF are available by integrating the PDF. Conversely, the PDF is obtained by differentiating the CDF.
+
+\subsection{Example 1.4 (Exponential distribution: CDF)}
+Let $Y$ have an Expon($\lambda$) distribution. From the definition of the CDF,
+\[
+\begin{align*}
+F_Y(y) &= \int_0^y f_Y(t) dt \\
+&= -e^{-\lambda t} \bigg|_0^y \\
+&= -e^{-\lambda y} - (-1) \\
+&= 1 - e^{-\lambda y}.
+\end{align*}
+\]
+Here, $t$ is a dummy variable as we want to integrate over all values $t$ of $Y$ up to $y.$ Similarly, we can go from the CDF to the PDF:
+\[
+\frac{dF_Y(y)}{dy} = \lambda e^{-\lambda y} = f_Y(y).
+\]
+
+Statisticians sometimes find it convenient to work in terms of the survival function or survivor function,
+\[
+S_Y(y) = \Pr(Y > y) = 1 - F_Y(y).
+\]
+
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+\section{CHAPTER 1. PROBABILITY TOOLS}
+
+\subsection*{Table 1.1: Probability mass function for the final-exam grade of a randomly chosen student in a given section of a statistics course}
+\begin{tabular}{|c|c|}
+\hline
+Grade on final $(y)$ & $f_Y(y)$ \\
+\hline
+60 & 0.2 \\
+90 & 0.8 \\
+\hline
+\end{tabular}
+
+\subsection{Mean, Median, and Mode}
+Much statistical analysis is concerned with estimating an average or typical value to represent a distribution of possible values. There are several definitions of ``average''.
+
+\subsection{Mean or expectation}
+The mean or expected value of a random variable $Y$ is just a weighted average over the possible values, $y$, with the weights given by $f_Y(y)$.
+\begin{definition}
+\textbf{Expectation (mean):} The expected value or mean of a random variable $Y$ is given by the sum
+\[
+E(Y) = \sum_y y f_Y(y) \quad \text{(if $Y$ takes discrete values)}
+\]
+or by the integral
+\[
+E(Y) = \int_y y f_Y(y) dy \quad \text{(if $Y$ takes continuous values)}.
+\]
+\end{definition}
+The integral or sum is over all possible values $y$. 
+
+\subsection{Example 1.5 (Final-exam grade: expectation)}
+As a simple illustration of expectation of a discrete random variable, let $Y$ represent the grade on the final exam of a randomly chosen student from a given section of a statistics course. For simplicity, let us say $Y$ can take only two values, 60\% and 90\%. The probability mass function, $f_Y(y)$, for $Y$ is given in Table 1.1. Definition 1.1 immediately gives
+\[
+E(Y) = 60(0.2) + 90(0.8) = 84,
+\]
+i.e., the mean grade of students is 84\%. This example shows that the so-called expected value does not have to be a possible value of the random variable.
+
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+\subsection{Example 1.6 (Uniform distribution: expectation)}
+If $Y$ has a uniform distribution, it has possible values $a < y < b$, for given constants $a$ and $b$, and PDF
+\[
+f_Y(y) = \frac{1}{b - a} \quad (a < y < b; \, a < b).
+\]
+The distribution is denoted by Unif($a, b$). From Definition 1.1, the expectation or mean of $Y$ is
+\[
+E(Y) = \int_a^b y f_Y(y) dy = \frac{a + b}{2}.
+\]
+
+♢♢♢
+
+In later probability and statistical results we will often have a condition that a property, like expectation, of a random variable has to exist. The condition is just requiring that the expectation is defined, that is, if and only if 
+\[
+\sum_y |y| f_Y(y) \quad \text{(discrete)}
+\]
+or
+\[
+\int |y| f_Y(y) dy \quad \text{(continuous)} 
+\]
+is finite. To illustrate this technicality, consider the Poisson distribution,
+\[
+f_Y(y) = \frac{e^{-\mu} \mu^y}{y!} \quad (y = 0, 1, \ldots, \infty; \, \mu > 0),
+\]
+where $\mu$ is a parameter controlling the shape of the distribution. The expectation is
+\[
+E(Y) = \sum_{y=0}^\infty y \frac{e^{-\mu} \mu^y}{y!}.
+\]
+It may look like this sum diverges, because the infinite sum averages $y$ values tending to infinity. But the growth in $y$ (and possibly $\mu^y$) is dominated by $1/y!$, which decreases much more rapidly. Thus, the sum converges to a finite quantity, and the expectation is $\mu \, (\text{Exercise 1.4})$.
+
+The notation $\mu$ is often used for the mean of a random variable in general. In contrast, take the distribution
+\[
+f_Y(y) = \frac{6}{\pi^2 y^2} 
+\]
+for $y = 1, 2, \ldots, \infty,
+\]
+where $\pi \approx 3.14159$ (not a parameter). This is a valid PMF, because its values are positive and sum to 1. If we try to calculate
+\[
+E(Y) = \sum_{y=1}^\infty y \frac{6}{\pi^2 y^2},
+\]
+however, the sum does not converge $\left( \sum_{y=1}^\infty \frac{1}{y} \text{ is divergent} \right)$. Here, the PMF does not decay fast enough to offset the growth in the value of $y$; the expectation is infinite. 
+
+This simple illustration shows that not every PMF or PDF yields an expected value. A constant $a$ has expectation $a$. This is seen by applying Definition 1.1 to the degenerate discrete random variable $A$ that takes value $a$ with probability 1.
+
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+\section{1.2. MEAN, MEDIAN, AND MODE}
+
+\subsection{1.2.1 Median}
+The median $m$ of a random variable $Y$ essentially divides its range such that the total probability of 1 is divided equally left and right of $m$. Thus, from the CDF,
+\[
+m \text{ satisfies } F_Y(m) = \Pr(Y \leq m) = \frac{1}{2} \text{ or } F_Y(m) \approx \frac{1}{2}.
+\]
+The latter approximation arises because there may be no solution $m$ exactly satisfying $F_Y(m) = \frac{1}{2}$ when $Y$ is discrete. The definition of the median has to accommodate such cases.
+
+\begin{definition}
+\textbf{Median of a distribution:} The median $m$ of a random variable $Y$ is the smallest possible value of $Y$ such that
+\[
+F_Y(m) = \Pr(Y \leq m) \geq \frac{1}{2}. 
+\]
+\end{definition}
+For a continuous random variable with continuous CDF, $m$ is the solution of $F_Y(m) = \frac{1}{2}$. The definition is thus straightforward for continuous distributions. 
+
+\subsection{Example 1.7 (Exponential distribution: median)}
+As $F_Y(y) = 1 - e^{-\lambda y}$, the median $m$ satisfies 
+\[
+1 - e^{-\lambda m} = \frac{1}{2}.
+\]
+Rearrangement gives $e^{-\lambda m} = \frac{1}{2}$, then $-\lambda m = -\ln(2)$, and finally $m = \frac{\ln(2)}{\lambda}$.
+
+♢♢♢
+For a discrete random variable, there are rules for some special cases, but $m$ is usually found by enumeration. 
+
+\subsection{Example 1.8 (Binomial distribution: median)}
+The binomial distribution with $n$ trials and probability of “success” $\pi$ has PMF
+\[
+f_Y(y) = \binom{n}{y} \pi^y (1-\pi)^{n-y} \quad (y = 0, 1, \ldots, n).
+\]
+Suppose $n = 3$ and $\pi = \frac{1}{4}$, for which the PMF and CDF are given and computed in Table 1.2. It is seen that $y = 1$ is the smallest value such that $F_Y(y) \geq \frac{1}{2}$, and the median is $m = 1$. 
+
+Also note that 
+\[
+F_Y(1) = \Pr(Y \leq 1) \geq \frac{1}{2} \quad \text{and} \quad \Pr(Y \geq 1) = 1 - 0.421875 \geq \frac{1}{2}, 
+\]
+and in this sense $m = 1$ divides the total probability of 1 into 2 halves. 
+
+♢♢♢
+
+\subsection{1.2.3 Mode}
+The mode of a distribution is a value maximizing the PMF or PDF. It may not be unique.
+
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+\section{1.3. VARIANCE}
+\subsection{1.3.1 Computation}
+The variance of $Y$ is the expected (mean) of the squared deviation of $Y$ around its mean. 
+
+\begin{definition}
+\textbf{Variance:} The variance of $Y$ is 
+\[
+\text{Var}(Y) = E (Y - E(Y))^2, 
+\]
+where the expectation on the right is with respect to the distribution of $Y$. An equivalent definition, often used, is 
+\[
+\text{Var}(Y) = E(Y^2) - (E(Y))^2. 
+\]
+\end{definition}
+The definition of variance requires computation of expectations, which are handled by referring back to Definition 1.1. 
+
+For a discrete random variable, expectation and hence variance are computed by summation over all the possible values $y$:
+\[
+\text{Var}(Y) = E (Y - E(Y))^2 = E (Y - \mu)^2 = \sum_y (y - \mu)^2 f_Y(y)
+\]
+or, equivalently,
+\[
+\text{Var}(Y) = E(Y^2) - (E(Y))^2 = \sum_y y^2 f_Y(y) - \mu^2,
+\]
+where $\mu = E(Y)$.
+
+\subsection{Example 1.10 (Final-exam grade: variance)}
+For the distribution $f_Y(y)$ of final grades in Table 1.1, we already computed $E(Y) = \mu = 84$. Hence,
+\[
+\text{Var}(Y) = E (Y - \mu)^2 = (60 - 84)^2 (0.2) + (90 - 84)^2 (0.8) = 144.
+\]
+Alternatively, using the second definition of variance,
+\[
+\text{Var}(Y) = E(Y^2) - \mu^2 = (60)^2(0.2) + (90)^2(0.8) - (84)^2 = 144.
+\]
+
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+To see the equivalence of the definition in general for discrete random variables, we just expand the square in the first definition and rearrange the sum for the expectation:
+\[
+E(Y - \mu)^2 = \sum_y (y - \mu)^2 f_Y(y) = \sum_y (y^2 - 2\mu y + \mu^2)f_Y(y)
+\]
+
+\[
+= \sum_y y^2 f_Y(y) - 2\mu \sum_y y f_Y(y) + \mu^2 = E(Y^2) - 2\mu E(Y) + \mu^2 = E(Y^2) - \mu^2.
+\]
+
+For a continuous random variable, summation is again replaced by integration, and
+\[
+\text{Var}(Y) = E(Y - \mu)^2 = \int (y - \mu)^2 f_Y(y) dy
+\]
+or, equivalently,
+\[
+\text{Var}(Y) = E(Y^2) - \mu^2 = \int y^2 f_Y(y) dy - \mu^2.
+\]
+The equivalence is shown in the same way as for a discrete random variable. 
+
+\subsection{Example 1.11 (Uniform distribution: variance)}
+Let $Y$ have a Unif($a$, $b$) distribution, i.e., it has PDF
+\[
+f_Y(y) = \frac{1}{b-a} \quad (a < y < b; \, a < b).
+\]
+From Example 1.6 we already know that $E(Y) = \frac{a + b}{2}$. To use the second expression for the variance in Definition 1.3, we also need
+\[
+E(Y^2) =
+\int_a^b y^2 f_Y(y) dy = \frac{(b^3 - a^3)}{3(b-a)}.
+\]
+Hence,
+\[
+\text{Var}(Y) = E(Y^2) - (E(Y))^2 = \frac{(b^3-a^3)}{3(b-a)} - \left(\frac{a+b}{2}\right)^2 = \frac{(b-a)^2}{12}.
+\]
+
+♢♢♢
+The variance exists only if the sum or integral converges. The expectation must exist for the variance to exist. A constant $a$ has variance 0. This is seen by applying Definition 1.3 to the degenerate discrete random variable $A$ that takes value $a$ with probability 1:
+\[
+\text{Var}(A) = E(A - E(A))^2 = (a - a)^2 \times 1 = 0.
+\]
+Often, $\sigma^2$ is used as notation for a variance.
+
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+\subsection{1.3.2 Standard deviation}
+The standard deviation, often denoted by $\sigma$, is 
+\[
+\text{sd}(Y) = \sqrt{\text{Var}(Y)}.
+\]
+As the variance and standard deviation of a random variable are trivially related, we can use either. For mathematical manipulation, it is often easier to work with variances. For example, variances, not standard deviations, add for independent random variables (Section 1.7.7). On the other hand, when reporting results the standard deviation is easier to interpret because it has the same physical units as $Y$ and not the square of the original units. For instance, the variance of the exam grade in Example 1.10 is $144\%^2$ and having units of $\%^2$ is bizarre. We could also say that the standard deviation of $Y$ is
+\[
+\text{sd}(Y) = \sqrt{\text{Var}(Y)} = 12\%,
+\]
+which is much easier to interpret. Hence, we will switch back and forth between variance and standard deviation.
+
+\subsection{1.3.3 Chebyshev’s inequality}
+Chebyshev’s inequality uses the variance to bound how far a random variable, $Y$, can deviate from its mean in the following probabilistic sense.
+
+\begin{theorem}
+\textbf{(Chebyshev’s inequality)} Let the random variable $Y$ have a distribution such that the mean and variance, $\mu$ and $\sigma^2$, exist. Then
+\[
+\Pr(|Y - \mu| > t) \leq \frac{\sigma^2}{t^2},
+\]
+for any $t > 0$. 
+\end{theorem}
+The result holds for any distribution for $Y$, and hence the probability bound on the right can be weak. Nonetheless, if $Y$ has a small enough variance then there is only a small probability that $Y$ is more than an arbitrary distance from its mean, an argument used to prove the law of large numbers in Theorem 3.1, for instance.
+
+\section{Commonly Used Discrete Distributions}
+Table 1.3 summarizes some commonly used discrete distributions, along with their expectations and variances. It also gives their moment generating functions (to be developed in Section 1.8). In the table, parameters of the distributions (e.g., the parameter $\pi$ of the Bernouilli distribution) are denoted by lower-case Greek letters if they are usually unknown in practice (and hence estimated in statistical inference) or by Roman lower-case letters if they are usually known quantities. (The Greek alphabet, with pronunciations, is given on page xxi.)
+
+The distributions in Table 1.3 are now briefly described.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Distribution} & \textbf{PMF, $f_Y(y)$} & \textbf{E(Y)} & \textbf{Var(Y)} & \textbf{MGF, $M_Y(t)$} \\
+\hline
+Bernoulli & $f_Y(0) = 1 - \pi$ & $\pi$ & $\pi(1 - \pi)$ & $1 - \pi + \pi e^t$ \\
+& $f_Y(1) = \pi$ & & & \\
+\hline
+Binomial & $\binom{n}{y} \pi^y (1 - \pi)^{n - y}$ & $n\pi$ & $n\pi(1-\pi)$ & $(1 - \pi + \pi e^t)^n$ \\
+\hline
+Geometric & $(1 - \pi)^y \pi$ & $\frac{1 - \pi}{\pi}$ & $\frac{1 - \pi}{\pi^2}$ & $\frac{\pi}{1 - (1 - \pi)e^t}$ \\
+\hline
+Negative Binomial & $\binom{y - 1}{n - 1} (1 - \pi)^{y - n} \pi^n$ & $\frac{n}{\pi}$ & $\frac{n(1 - \pi)}{\pi^2}$ & $(1 - \pi + \pi e^t)^{-n}$ \\
+\hline
+Poisson & $\frac{e^{-\mu} \mu^y}{y!}$ & $\mu$ & $\mu$ & $e^{\mu (e^t - 1)}$ \\
+\hline
+\end{tabular}
+\caption{Some commonly used discrete distributions, along with their expectations, variances, and moment generating functions (MGFs).}
+\label{tab:discrete_distributions}
+\end{table}
+
+© Copyright William J. Welch 2009--2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+```
+
+This LaTeX code corresponds to the original text while maintaining the structure, mathematical formulas, and definitions. You can integrate this code into your LaTeX document to properly format it for a math textbook. If there are specific sections you would like to further isolate or clarify, please let me know!

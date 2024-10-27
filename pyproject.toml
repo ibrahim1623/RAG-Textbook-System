@@ -4,9 +4,12 @@ version = "0.1.0"
 description = "rag for textbooks"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
+packages = [
+    { include = 'src'}
+]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.13"
 textract = "^1.6.5"
 langchain-community = "^0.3.1"
 pypdf = "^5.0.1"
@@ -21,7 +24,21 @@ SpeechRecognition = "~=3.8.1"
 xlrd = "~=1.2.0"
 pdfminer-six = "20191110"
 setuptools = "^75.1.0"
-
+asyncio = "^3.4.3"
+llamaapi = "^0.1.36"
+huggingface-hub = "^0.26.1"
+transformers = "^4.45.2"
+torch = "^2.5.0"
+cohere = "^5.11.1"
+requests = "^2.32.3"
+openai = "^1.52.2"
+spacy = "3.7.3"
+tiktoken = "^0.8.0"
+bertopic = "^0.16.4"
+langchain-experimental = "^0.3.2"
+langchain-openai = "^0.2.3"
+sentence-transformers = "^3.2.1"
+pyyaml = "^6.0.2"
 
 [build-system]
 requires = ["poetry-core"]
