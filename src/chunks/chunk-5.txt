@@ -1,0 +1,425 @@
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.8. MOMENT GENERATING FUNCTIONS
+
+1-39
+
+In other words, if we can find the MGF of a random variable, and this MGF is on a
+list of MGFs we have computed (as in Tables 1.3 and 1.4), we can use the MGF to
+tell us the random variable’s distribution. The MGF is thus a mathematical “fingerprint” for a distribution. A human fingerprint
+can identify a person on a list of suspects already fingerprinted. However, if the
+fingerprint belongs to a person not on the list of suspects, identification is not possible. It is similarly difficult to work backwards from an MGF to its distribution without a
+list of suspect distributions with MGFs like those in Tables 1.3 and 1.4. Fortunately,
+those tables suffice for most of our needs in this book. Billingsley (2012, Sections 9 and 30) gives several proofs of Theorem 1.3, for discrete
+random variables and more generally. The essence of the general argument is that,
+if the open-interval condition of the lemma is satisfied, a probability distribution is
+determined by its moments, which are in turn determined by the MGF. We use Theorem 1.3 in the following examples to find various distributions of random
+variables derived from a linear function of a random variable or a sum of independent
+random variables. Example 1.30 (Normal distribution: linear function)
+Let Y have a N (µ, σ 2 ) distribution, and let Z = a + bY . From the MGF of Y
+in (1.14), the MGF of Z is
+1
+
+2
+
+2
+
+1 2 2 2
+
+MZ (t) = eat MY (bt) = eat eµ(bt)+ 2 σ (bt) = e(a+bµ)t+ 2 b σ t . This has the form of the MGF in (1.14) for a normal random variable, except that
+the mean µ is replaced by a + bµ, and the variance σ 2 is replaced by b2 σ 2 . Thus,
+Z is identified to have a N (a + bµ, b2 σ 2 ) distribution. ♢♢♢
+Example 1.31 (Exponential distribution: sum of IID random variables)
+Let Y1 , . . . , Yν be ν IID Expon (λ) random variables. Note they have the same
+value of the parameter λ. Thus, from (1.12) each Yi has MGF λ/(λ − t). Their
+sum, Y , has MGF
+(
+)ν
+ν
+∏
+λ
+λ
+MY (t) =
+=
+. λ−t
+λ−t
+i=1
+This was shown to be the MGF of a Gamma (ν, λ) random variable in Example 1.23. Thus, the sum of independent exponential random variables with the
+same value of λ follows a gamma distribution. ♢♢♢
+Example 1.32 (Normal distribution: sum of independent random variables)
+Let Y1 and Y2 be independent normal random variables. Y1 has mean µ1 and
+variance σ12 ; similarly, Y2 has mean µ2 and variance σ22 . The MGFs of Y1 and Y2
+are available from (1.14). The sum X = Y1 + Y2 has MGF
+1
+
+2 2
+
+1
+
+2 2
+
+1
+
+2
+
+2
+
+2
+
+MX (t) = MY1 (t)MY2 (t) = eµ1 t+ 2 σ1 t eµ2 t+ 2 σ2 t = e(µ1 +µ2 )t+ 2 (σ1 +σ2 )t . This is seen to be the MGF of a normal random variable with mean µ1 + µ2 and
+variance σ12 + σ22 . Thus, we have shown that the sum of two independent normal
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-40
+
+CHAPTER 1. PROBABILITY TOOLS
+
+random variables is also normal. By repeating the argument, the obvious extension
+of the result holds for the sum of n independent normal random variables. (The result also holds more generally for n random variables following a multivariate normal distribution, a generalization of the bivariate normal in Section 1.7.9,
+even if they are not independent. Their sum or a linear combination of them
+has a normal distribution. When computing the variance of the sum or linear
+combination via (1.10), the covariance terms will have to be included.)
+♢♢♢
+Example 1.33 (Casualty insurance: sum of IID geometric random variables)
+An actuary models the distribution of the number of months to the first claim
+for drivers insured in a particular high-risk rating class. She uses a geometric
+distribution, i.e., Geom1 (π), where π is the probability of at least one claim in a
+month. A Geom1 (π) random variable, Y , has probability mass function
+fY (y) = (1 − π)y−1 π
+
+(y = 1, 2, . . . , ∞; 0 < π < 1),
+
+expectation 1/π, and variance (1 − π)/π 2 . Its MGF is
+MY (t) =
+
+et π
+1 − (1 − π)et
+
+(see Exercise 1.22 or Table 1.3). Suppose the actuary is interested in the distribution of the number of months
+to the second claim. She assumes that the distribution arises as X = Y1 + Y2 ,
+where Y1 and Y2 are independent Geom1 (π) random variables. (This ignores the
+possibility of more than one claim in a month.) What is the distribution of X? From Lemma 1.3,
+(
+MX (t) = MY1 (t)MY2 (t) =
+
+et π
+1 − (1 − π)et
+
+)2
+. This is the MGF of a negative-binomial random variable (again see Exercise 1.22
+or Table 1.3) with parameters n = 2 and π, i.e., X ∼ NegBin (2, π). Table 1.3 gives the PMF of the negative-binomial distribution in general. With
+n = 2 and, say, π = 0.1, the first few numerical values of the PMF are given in
+Table 1.8. 1.9
+
+Getting It Done in R
+
+In later chapters of this book we have to compute PDFs, PMFs, and CDFs for a
+variety of distributions, such as those in Tables 1.3 and 1.4. R can compute these
+quantities for all commonly used distributions.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.9. GETTING IT DONE IN R
+
+1-41
+
+( )
+x
+fX (x) = x−1
+(1 − π)x−2 π 2
+2−1
+2
+(2 − 1)(1 − 0.1)0 (0.1)2 = 0.01
+3
+(3 − 1)(1 − 0.1)1 (0.1)2 = 0.018
+4
+(4 − 1)(1 − 0.1)2 (0.1)2 = 0.0243
+etc. Table 1.8: Probability mass function of a negative-binomial random variable with
+n = 2 and π = 0.1
+
+R function with
+Distribution
+arguments and defaults
+Discrete distributions
+Binomial
+dbinom(x, size, prob)
+Geometric
+dgeom(x, prob)
+Negative binomial dnbinom(x, size, prob)
+Poisson
+dpois(x, lambda)
+Continuous distributions
+Beta
+dbeta(x, shape1, shape2)
+2
+χ
+dchisq(x, df)
+Exponential
+dexp(x, rate = 1)
+Fisher’s F
+df(x, df1, df2)
+Gamma
+dgamma(x, shape, rate = 1)
+Normal
+dnorm(x, mean = 1, sd = 1)
+Student’s t
+dt(x, df)
+Uniform
+dunif(x, min = 0, max = 1)
+
+Translation into
+our notation
+Bin (n = size, π = prob)
+Geom0 (π = prob)
+See text
+Pois (µ = lambda)
+Beta (a = shape1, b = shape2)
+χ2d=df
+Expon (λ = rate)
+Fd1 =df1,d2 =df2
+Gamma (ν = shape, λ = rate)
+N (µ = mean, σ 2 = sd2 )
+td=df
+Unif (a = min, b = max)
+
+Table 1.9: R functions for the PMF or PDF of some common distributions
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-42
+
+CHAPTER 1. PROBABILITY TOOLS
+
+Table 1.9 lists the R functions to compute the PMF or PDF of the distributions in
+Tables 1.3 and 1.4. In all cases, the argument x is the value of a random variable
+X. The table also translates the R arguments into our notation for a particular
+distribution and its parameter(s). In most cases, R’s syntax and our notation agree
+well, and X in Table 1.9 has the same distribution as the random variable Y in
+Table 1.3 or 1.4. There are a few exceptions, however. 1. R has no function corresponding to the Geom1 (π) distribution, the version of
+the geometric distribution with range y = 1, 2, .. . , ∞. If X is a Geom0 (π)
+random variable, then Y = X + 1 is Geom1 (π) random variable, however, and
+hence the PMF of Y is given by dgeom(x = y - 1, prob), which could be
+called for values y ≥ 1. 2. R’s negative-binomial distribution for X is defined by the PMF
+(
+)
+x+n−1
+fX (x) =
+(1 − π)x π n (x = 0, 1, . . . , ∞),
+x
+whereas Y in Table 1.3 has PMF
+(
+)
+y−1
+fY (y) =
+(1 − π)y−n π n
+n−1
+
+(y = n, n + 1, .. . , ∞). Again, there is a simple relationship, and Y and n + X have the same distribution. Thus, dnbinom(x = y - n, size, prob) for y ≥ n gives our negativebinomial PMF for Y . In addition, there is no R function for the Bernoulli distribution; it is a special case
+of the binomial with n = 1 (or size = 1). The functions in Table 1.9 are useful for sketching a PMF or PDF. For instance, the
+following R code plots fY (y) against y when Y has the t distribution with d = 10
+degrees of freedom, to produce Figure 1.4. # Values of y at which to plot the PDF , namely -5, -4.99 , ... , 5
+y <- seq(-5, 5, by = 0.01)
+# PDF for t distribution with 10 degrees of freedom
+fy <- dt(y, df = 10)
+# Plot fy against y using type = "l" to join the points with lines
+plot(y, fy , xlab = "y", ylab = expression (f[Y](y)), type = "l")
+
+The last line is perhaps more complicated than necessary, with expression and [Y]
+generating the subscript Y in the y-axis label. The simpler syntax
+plot(y, fy , xlab = "y", ylab = "f(y)", type = "l")
+
+would often suffice. (Type demo(plotmath) to demonstrate R’s capabilities to format
+mathematical expressions in text of plots.)
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-43
+
+0.2
+0.0
+
+0.1
+
+fY(y)
+
+0.3
+
+0.4
+
+1.10. LEARNING OUTCOMES
+
+−4
+
+−2
+
+0
+y
+
+2
+
+4
+
+Figure 1.4: PDF of the t distribution with 10 degrees of freedom
+The functions in Table 1.9 give a PMF or PDF, fY (y), but statistical calculations
+often require the CDF, FY (y) = Pr(Y ≤ y). For each PMF or PDF function, which
+has a name starting with d, there is a corresponding CDF function, which has a name
+starting with p. For instance, ppois(y, lambda) computes the CDF, Pr(Y ≤ y), of
+the Poisson distribution. > ppois (1, lambda = 2)
+[1] 0.4060058
+
+Here, > is the R prompt, and recall that lambda is µ in the Pois (µ) distribution of
+Table 1.3. The calculation is easily verified:
+e−µ µ0 e−µ µ1
++
+0! 1! = e−µ (1 + µ) = e−2 (1 + 2) = 0.4060058. Pr(Y ≤ 1) = Pr(Y = 0) + Pr(Y = 1) =
+
+Similarly, analogous to dnorm(x, mean, sd), there is pnorm(x, mean, sd), etc. 1.10
+
+Learning Outcomes
+
+On completion of this chapter you should be able to demonstrate the following skills. They relate to the probability mass function (PMF) or probability density function
+(PDF), fY (y), of a random variable, Y . 1. Understand the relationship between a PMF or PDF and its CDF, including
+the interpretation of a PDF fY (y) as proportional to the probability that Y is
+in a small interval around y.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-44
+
+CHAPTER 1. PROBABILITY TOOLS
+
+2. From a given PMF or PDF of the random variable Y , write down the definition of E(Y ) and Var(Y ). Simplify to a closed-form expression when readily
+available. 3. From the PMF or PDF of Y , write down the definition of the expectation of
+g(Y ). Simplify to a closed-form expression when readily available. 4. From the mean and variance of Y , apply Chebyshev’s inequality to bound how
+far Y can deviate from its mean in a probabilistic sense. 5. From the PDF of a random variable Y , find the PDF of a monotonic function
+(transformation) of Y . 6. From the PMF or PDF of a random variable Y , find the expectation of a
+function g(Y ). 7. From the joint distribution of two random variables, find their marginal and
+conditional distributions. 8. Check whether two random variables are independent or not from their joint
+distribution. 9. Find the covariance and correlation between two random variables. Interpret
+the correlation. 10. Understand the relationship between covariance and independence. 11. Find the expectation of a linear combination of several random variables from
+their individual expectations. As a special case, find the expectation of a linear
+function of a random variable from its expectation. 12. Find the variance of a linear combination of several random variables from their
+individual variances and their pair-wise covariances. As a special case, find the
+variance of a linear function of a random variable from its variance. 13. From the PMF or PDF of Y , find its moment generating function (MGF). 14. Check whether the MGF exists. 15. From the MGF of a random variable, find the mean and variance. 16. From the MGF of a random variable, Y , find the MGF of a + bY . 17. From the (common) MGF of several independent random variables, find the
+MGF of their sum. 18. Use the MGF of a random variable to identify its distribution. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.11. EXERCISES
+
+1-45
+
+19. Explain your reasoning. When using a result such as the expectation or variance
+of a linear function of a random variable or a linear combination of random
+variables as part of a longer derivation, briefly state the result you are using. If
+the result depends on an assumption such as statistical independence of random
+variables, remind the reader that you are using the assumption. Perhaps just as important in practice is a list of the tasks that would not be tested
+on the quizzes and final exam, or at least will receive less emphasis in grading. 1. There is no doubt that facility with calculus, summation, and algebra is helpful
+for the mathematical manipulations in STAT 305. Nonetheless, STAT 305 is a
+course in probability and statistical inference, not mathematical manipulation. Thus, the formulation of, say, an expectation, is at least as important as the
+subsequent calculations to implement the final answer. 2. Long proofs involving many steps will not be tested. On the other hand, simple
+derivations that can be done in a few lines may appear. Again, it is the demonstration of the use of appropriate probability and statistics tools to carry out
+the derivation that is most important. 3. You are not expected to memorize specific PMFs, PDFs, and MGFs. You may
+put them on your formula sheet. If a PMF, PDF, or MGF is required to compute
+properties stemming from it, it will be given in the question. Similarly, you will
+not be asked, e.g., “find the mean of an exponential random variable” if the
+mean is required for subsequent calculations. You will be asked “to show that
+the mean is 1/λ”. 1.11
+
+Exercises
+
+Exercise 1.1
+Let Y be a normal random variable with mean 100 and variance 52 (i.e., standard
+deviation 5). 1. Use pnorm in R to compute the following probabilities: Pr(90.0 < Y < 90.1),
+Pr(95.0 < Y < 95.1), and Pr(100.0 < Y < 100.1). 2. Use dnorm in R to compute the PDF of Y at the following values: y = 90.05,
+y = 95.05, and y = 100.05. (Note that these values are the midpoints of the
+intervals in part 1.)
+3. Multiply each of the PDF values in part 2 by the width of the intervals used in
+part 1. What do you get? Hence, draw a picture illustrating the assertion, “For
+a given value of y, the probability that Y falls in a small interval around y is
+approximately the PDF computed at y multiplied by the width of the interval.”
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-46
+
+CHAPTER 1. PROBABILITY TOOLS
+
+Exercise 1.2
+Let Y be an indicator random variable, i.e., with possible values 0 and 1. Show
+E(Y ) = Pr(Y = 1). (Interchanging expectation and probability like this is a frequently used trick for indicator variables.)
+Exercise 1.3
+In Section 1.3, two definitions were given for the variance of a random variable Y :
+Var(Y ) = E(Y − E(Y ))2
+and
+Var(Y ) = E(Y 2 ) − (E(Y ))2 . Show that these two expressions are equivalent. Exercise 1.4
+Let Y ∼ Pois (µ). 1. Show that E(Y ) = µ. Hint: You can rewrite the sum in the expectation to
+include the factor
+∞
+∑
+µy
+= eµ . y! y=0
+This factor will cancel. 2. Show that Var(Y ) = µ. Exercise 1.5
+Let Y ∼ Geom1 (π). 1. From the definition of expectation, show that E(Y ) = 1/π. 2. From the definition of variance, show that Var(Y ) = (1 − π)/π 2 . 3. Show that the CDF of Y is
+Pr(Y ≤ y) = 1 − (1 − π)y . 4. Hence, find the survival function, Pr(Y > y), i.e., the probability that Y exceeds
+or “survives” y trials. 5. Suppose it is given that Y exceeds a value y0 . Show that
+Pr(Y > y0 + y | Y > y0 ) = Pr(Y > y),
+i.e., the probability of surviving at least another y trials does not depend on
+the number of trials already survived. (Such a random variable is said to have
+a “memoryless” property.)
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.11. EXERCISES
+
+1-47
+
+Exercise 1.6
+Let Y ∼ Geom0 (π). 1. Find Pr(Y ≥ 1). 2. Suppose it is given that Y ≥ 1. Show that
+Pr(Y = y | Y ≥ 1) = (1 − π)y−1 π
+
+(y = 1, 2, ...). 3. What is the distribution of Y conditional on Y ≥ 1? Exercise 1.7
+Let Y have an Expon (λ) distribution. 1. What is E(Y )? 2. What is E(Y 2 ) and hence what is Var(Y )? Exercise 1.8
+Show the following properties of the normalizing factor (1.2) of the gamma PDF. 1. Γ(1) = 1. √
+2. Γ( 12 ) = π. (Manipulation of an integrand to make it have same form as a well-known PDF is a
+tactic much used in Section 1.8 to evaluate moment generating functions.)
+Exercise 1.9
+Let Y have a Gamma (ν, λ) distribution, i.e.,
+fY (y) =
+
+1
+λ(λy)ν−1 e−λy
+Γ(ν)
+
+(0 < y < ∞; ν > 0; λ > 0),
+
+where ν and λ are shape and rate parameters. Use the result in (1.3) to show that the PDF of Z = 1/Y is
+( )ν
+1 1 λ
+fZ (z) =
+e−λ/z (0 < z < ∞; ν > 0; λ > 0). Γ(ν) z z
+This is called an inverse-gamma distribution with shape parameter ν and scale parameter λ.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-48
+
+CHAPTER 1. PROBABILITY TOOLS
+
+Exercise 1.10
+Let Y be the lifetime of an item. It has an Expon (λ) distribution. 1. Find the survival function, SY (y) = Pr(Y > y). 2. Suppose at time y0 the item is still alive, and we want to condition on the fact
+that Y > y0 . Find Pr(Y > y0 + y | Y > y0 ), the probability of surviving an
+additional time y given survival to time y0 . 3. Hence, given that Y > y0 , what is the distribution of the additional lifetime? Exercise 1.11
+Let Y ∼ logN (µ, σ 2 ), i.e., Z = ln(Y ) has a N (µ, σ 2 ) distribution. Using properties of
+the normal distribution, show that the the median of Y is eµ . Exercise 1.12
+A mail-order company sends an offer to its population of customers. Let B1 be
+a random variable taking the values 0 (does not buy) or 1 (buys) for a randomly
+chosen customer. At a later date the company sends out another offer; let B2 be the
+analogous 0/1 random variable for the second offering. The probabilities for the joint distribution of B1 and B2 are given in the following
+table. B1
+
+0
+1
+
+B2
+0
+1
+0.3 0.0
+0.1 0.6
+
+1. Compute E(B1 ) and E(B2 ). 2. Compute Var(B1 ) and Var(B2 ). 3. Compute Cov(B1 , B2 ). 4. Let B = B1 + B2 be the total number of purchases by a randomly selected
+customer. Compute E(B) and Var(B):
+(a) by first enumerating the distribution of B (i.e., computing fB (b) for all
+values b of B); and
+(b) by using results on linear combinations of random variables.

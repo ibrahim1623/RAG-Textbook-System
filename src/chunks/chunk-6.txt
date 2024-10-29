@@ -1,0 +1,692 @@
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.11. EXERCISES
+
+1-49
+
+Exercise 1.13
+For a specific type of property insurance claim, an actuary models the customer’s loss
+by the random variable X ∼ Expon (λ). But the particular policy has a limit k on
+the amount that the insurance company has to pay. Thus, when a claim is made the
+company pays out Y = min(X, k). What is E(Y )? Exercise 1.14
+Let X and Y be continuous random variables with finite expectations, and let a, b,
+and c be finite constants. From the definition of expectation, prove the following
+results. 1. E(a + X) = a + E(X). 2. E(bX) = bE(X). 3. E(a + bX) = a + bE(X). 4. E(X + Y ) = E(X) + E(Y ). 5. E(a + bX + cY ) = a + bE(X) + cE(Y ). 6. If X and Y are discrete random variables, how are these proofs changed? Exercise 1.15
+Let X and Y be random variables with finite covariance, and let a and b be finite
+constants. From the definition of covariance, prove the result
+Cov(a + bY, c + dZ) = bdCov(Y, Z)
+in (1.11). Exercise 1.16
+Let X and Y be random variables with finite variances, and let a, b, and c be finite
+constants. Starting from the definition of variance, i.e., Var(X) = E(X 2 ) − (E(X))2 ,
+prove the following results. (Hint: The definition of variance is in terms of expectations; use the results of Exercise 1.14.)
+1. Var(a + X) = Var(X). 2. Var(bX) = b2 Var(X). 3. Var(a + bX) = b2 Var(X). 4. Var(X + Y ) = Var(X) + Var(Y ) + 2Cov(X, Y ). 5. Var(a + bX + cY ) = b2 Var(X) + c2 Var(Y ) + 2bcCov(X, Y ).(This is special case
+of the more general result in Section 1.7.7.)
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-50
+
+CHAPTER 1. PROBABILITY TOOLS
+
+Exercise 1.17
+Let Y1 , . . . , Yn be independent random variables, each taking the values 0 or 1 with
+probabilities 1 − π and π, respectively. Here π, the probability that Y = 1, is an
+unknown parameter to be estimated. 1. Show that E(Yi ) = π and Var(Yi ) = π(1 − π). ∑
+2. Consider the estimator π̃ = n1 ni=1 Yi of π. (This is simply the proportion of
+1’s amongst Y1 , .. . , Yn . It is a random variable because the Yi are random.)
+(a) Show that E(π̃) = π, i.e., π̃ is an unbiased estimator of π. (b) Show that Var(π̃) = π(1 − π)/n. Exercise 1.18
+[Quiz #1, 2009-10, Term 1] Let B be a Bernoulli random variable taking values
+b = 0, 1. Its PMF is given by fB (0) = Pr(B = 0) = 1−π and fB (1) = Pr(B = 1) = π. Thus, B ∼ Bern (π). Show each of the following results. For full marks you need to be explicit about the
+mathematical definition of the quantity involved (E(), Var() or MGF) and how the
+definition is used for this specific problem. 1. Show E(B) = π. 2. Find E(10B ). 3. Show Var(B) = π(1 − π). 4. Show that the moment generating function (MGF) of B is MB (t) = 1 − π + πet . 5. Check that the MGF exists for t in an open neighbourhood of zero. 6. Use the MGF to find E(B). Exercise 1.19
+[Quiz #1, 2009-10, Term 1] Let Y = B1 + · · · + Bn , where the random variables
+B1 , . . . , Bn are independent and each has a Bern (π) distribution. You may use the
+results in Exercise 1.18 that Bi has mean π, variance π(1 − π), and MGF 1 − π + πet . Also n is some fixed number. 1. Find E(Y ). 2. Find Var(Y ). 3. Find the moment generating function of Y . 4. Hence, what is the distribution of Y ? © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.11. EXERCISES
+
+1-51
+
+Exercise 1.20
+Let Y ∼ Pois (µ). Thus, the PMF of Y is
+fY (y) =
+
+e−µ µy
+y!(y = 0, 1, .. . , ∞; µ > 0). 1. Show that Y has the MGF
+MY (t) = eµ(e −1) .t
+
+2. Let Y1 , . . . , Yn be independent Poisson random variables, where Yi has mean µi ,
+i.e., Yi ∼ Pois (µi ). Thus, the random variables may have different
+∑nmeans and
+are not necessarily identically distributed. What is the MGF of i=1 Yi ? ∑
+3. Hence, what is the distribution of ni=1 Yi ? Exercise 1.21
+Let Y ∼ Unif (a, b). Use the expansion of its MGF in Example 1.29 to show the
+following properties:
+1. E(Y ) = (a + b)/2; and
+2. Var(Y ) = (b − a)2 /12. Exercise 1.22
+Let Y ∼ Geom1 (π). Thus, the PMF of Y is
+fY (y) = (1 − π)y−1 π
+
+(y = 1, 2, . . . , ∞; 0 < π < 1). 1. Show that Y has the MGF
+MY (t) =
+
+et π
+. 1 − (1 − π)et
+
+2. From the MGF show that
+E(Y ) =
+
+1
+π
+
+and Var(Y ) =
+
+1−π
+. π2
+
+3. ∑
+Let Y1 , . . . , Yn be IID Geom1 (π) random variables. n
+i=1 Yi ? ∑
+4. Hence, what is the distribution of ni=1 Yi ? What is the MGF of
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-52
+
+CHAPTER 1. PROBABILITY TOOLS
+
+Exercise 1.23
+Let Y ∼ N (µ, σ 2 ), i.e., the normal distribution with mean µ and variance σ 2 . This
+exercise shows in two ways that the MGF of Y is
+1
+
+2 2
+
+MY (t) = eµt+ 2 σ t . 1. Apply the definition of the MGF in Definition 1.7 directly to the N (µ, σ 2 ) PDF
+to find the MGF of Y . 2. Let Z have a standard normal distribution, i.e., N (0, 1). Its MGF is
+1 2
+
+MZ (t) = e 2 t
+(see Example 1.24). Now let Y = µ + σZ. (a) Verify that E(Y ) = µ and Var(Y ) = σ 2 as required. (b) Find the MGF of Y from the MGF of Z. Exercise 1.24
+Let Y ∼ N (µ, σ 2 ). Starting from the MGF of Y , i.e.,
+1
+
+2 2
+
+MY (t) = eµt+ 2 σ t ,
+this exercise verifies the first two moments. 1. Use the MGF to show that E(Y ) = µ. 2. Use the MGF to show that E(Y 2 ) = µ2 + σ 2 , and hence that Var(Y ) = σ 2 . Exercise 1.25
+Let Y ∼ Expon (λ). Consider multiplying Y by a constant to give a new random
+variable, Z = bY , where b > 0. 1. Table 1.4 says the MGF of Y is λ/(λ − t). What is the MGF of Z? 2. What is the distribution of Z? 3. Apply the same argument to the gamma distribution to show that if Y ∼
+Gamma (ν, λ), then Z = bY ∼ Gamma (ν, λ/b). Exercise 1.26
+A random variable, Y , taking positive values is said to have a log-normal distribution
+if Z = ln(Y ) has a N (µ, σ 2 ) distribution. This exercise finds the expectation of Y
+from the MGF of Z. 1. The definition of the MGF of Z is E(etZ ). What expression do we get if we put
+t = 1 in this definition? 2. Look up the MGF of Z (see Table 1.4 or Exercise 1.23), and put t = 1 in it. Hence, what is E(Y )?© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-1
+
+Chapter 2
+The Normal Distribution in
+Statistics
+2.1
+
+Introduction
+
+The normal distribution, sometimes called the Gaussian distribution after Gauss, is
+ubiquitous in statistical analysis. It will arise in this book in several ways, including
+the following. • Based on a random sample from a N (µ, σ 2 ) distribution, the sample mean is
+often used to estimate µ. Exact properties of the normal distribution lead
+to a confidence interval for µ that accounts for the uncertainty in estimation,
+even if σ 2 is unknown. This analysis based on the t distribution is common in
+applications, as typified by Example 2.1. • If a random sample is taken from a distribution with mean µ and variance σ 2 ,
+but the distribution is only approximately normal, use of the t distribution to
+provide a confidence interval for µ is often still approximately valid. • For a large sample size, the normal distribution serves as an approximation to
+other distributions. For instance, the binomial distribution is a commonly used
+model for applications where estimating a population proportion is the focus. The error in using the sample proportion as an estimate is again quantified in a
+confidence interval, this time based on a normal approximation to the binomial
+distribution. More generally, under certain conditions, sample means, proportions, and totals have approximate normal distributions for a large enough
+sample size via the central limit theorem (Section 2.5.3). • The method of maximum likelihood in Chapter 4 is a powerful generic method
+to estimate parameters for a wide range of probability models. An approximate
+confidence interval for the parameter is often available from an approximate
+normal distribution.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-2
+
+2.2
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+Some Properties of the Normal Distribution
+
+Let Y be a normal random variable with mean µ and variance σ 2 . We write Y ∼
+N (µ, σ 2 ). The following properties were established using MGFs in Section 1.8 or in
+related exercises. • The expected value (mean) of Y is E(Y ) = µ, and the variance is Var(Y ) = σ 2
+(Exercise 1.24). • A linear function of Y is also normal: a+bY ∼ N (a + bµ, b2 σ 2 ) (Example 1.30). In particular,
+Y −µ
+µ 1
+Z=
+= − + Y ∼ N (0, 1)
+σ
+σ σ
+has the standard normal distribution N (0, 1), i.e., with mean 0 and variance 1
+(Exercise 2.1). Also, for n normally distributed random variables, we have the following properties. • If the n random variables are independent (but not necessarily identically distributed), Example 1.32 showed that a linear combination of them also has a
+normal distribution. • If the n random variables are correlated but follow a multivariate normal distribution, a linear combination of them still has a normal distribution. The
+covariances between the n variables affect only the variance of the linear combination, via (1.10). • If the n random variables follow a multivariate normal distribution and all the
+pairwise covariances between them are zero, then they are mutually independent. This result is a generalization of Lemma 1.1, which said that if Y and Z
+are bivariate normal with Cov(Y, Z) = 0, then Y and Z are independent. 2.3
+
+Distributions Derived From the Normal
+
+The normal distribution is important in itself and because other important distributions arise from it. The relationships among these distributions are summarized in
+Figure 2.1. We next give some details about these distributions. 2.3.1
+
+The χ2 distribution
+
+A χ2 (“chi-squared”) random variable is generated by the sum of squares of independent standard normal random variables.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.3. DISTRIBUTIONS DERIVED FROM THE NORMAL
+
+2-3
+
+Standard normal distribution
+Z ∼ N (0, 1)
+Z1 , . . . , Zd ∼ independent N (0, 1)
+
+SSS
+SSS
+SSS
+SSS
+SS)
+
+t distribution
+If Z and Xd are independent
+√ Z ∼ td
+
+
+
+5
+lll
+lll
+l
+l
+lll
+lll
+
+Xd /d
+
+χ2 (Chi-squared) distribution
+Z 2 ∼ χ21
+2
+Xd = Z1 + · · · + Zd2 ∼ χ2d
+
+
+F distribution
+Xd1 ∼ χ2d1
+Xd2 ∼ χ2d2
+If Xd1 and Xd2 are independent
+Xd1 /d1
+∼ Fd1 ,d2
+Xd2 /d2
+
+Figure 2.1: Relationships between distributions derived from the normal
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+1.2
+
+2-4
+
+0.0
+
+0.2
+
+0.4
+
+f(y)
+0.6
+
+0.8
+
+1.0
+
+1 df
+3 df
+5 df
+10 df
+
+0
+
+5
+
+10
+y
+
+15
+
+20
+
+Figure 2.2: PDF of the χ2 distribution with 1, 3, 5, and 10 degrees of freedom
+Lemma 2.1 (χ2 distribution)
+If Z1 , . . . , Zd are independent N (0, 1) random variables, then their sum of
+squares,
+Xd = Z12 + · · · + Zd2 ∼ χ2d ,
+has a χ2 distribution with d degrees of freedom, which we write as χ2d . A proof is developed in Exercise 2.6. Figure 2.2 plots the PDF of the χ2d distribution for d = 1, 3, 5, and 10. With d = 1
+or d = 2 degrees of freedom, the PDF is monotonic decreasing. For d ≥ 3, the PDF
+increases then decreases. For large d the shape of the distribution is approximately
+normal; this is starting to be evident for d = 10 in Figure 2.2. The limiting normality
+stems from the central limit theorem (Theorem 2.2), because of the sum in Lemma 2.1. The χ2 distribution is related to the gamma distribution. Let G be a
+Gamma (ν = d/2, λ = 1) random variable (see Table 1.4), where d > 0 is an integer. Then X = 2G is a χ2d random variable. The χ2 distribution arises in inference about the variance of a normal distribution in
+Section 2.4.2. It is also heavily used for hypothesis testing in Chapters 7–9. 2.3.2
+
+The t distribution
+
+The following lemma is due to W.S. Gosset, who wrote under the pseudonym “Student”. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-5
+
+0.4
+
+2.3. DISTRIBUTIONS DERIVED FROM THE NORMAL
+
+0.0
+
+0.1
+
+f(y)
+0.2
+
+0.3
+
+1 df
+3 df
+10 df
+Normal
+
+−6
+
+−4
+
+−2
+
+0
+y
+
+2
+
+4
+
+6
+
+Figure 2.3: PDF of the t distribution with 1, 3, 10, and ∞ degrees of freedom; ∞
+degrees of freedom gives the standard normal
+Lemma 2.2 (t distribution (Student, 1908))
+If Z ∼ N (0, 1), Xd ∼ χ2d , and Z and Xd are independent, then
+Z
+√
+∼ td ,
+Xd /d
+where td is Student’s t distribution with d degrees of freedom. Gosset’s motivation for the lemma was the distribution of the sample mean of n IID
+N (µ, σ 2 ) standardized using the sample variance as an estimator of σ 2 , leading to
+confidence intervals and hypothesis tests for µ based upon the t distribution (Section 2.4.3). Contrary to Gosset’s modest dismissal of his contribution in comments
+made to R.A. Fisher, the result is one of the most commonly applied in all of the
+statistical sciences. Figure 2.3 plots the td PDF for d = 1, 3, and 10. The PDF has a bell shape similar to
+the normal, but has wider tails than the normal. As d → ∞, the td PDF approaches
+the standard normal PDF. With 1 degree of freedom, the distribution is known as
+the Cauchy distribution. √
+An insightful way to prove Lemma 2.2 is to first write Z/ Xd /d in the lemma as a
+mixture of normal random variables. Define
+Z
+Xd
+Z
+=√ ,
+W =
+and T = √
+d
+W
+Xd /d
+where T is the variable of interest and W appears in its denominator. (We write T
+following our convention of using upper case letters for random variables, whereas
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-6
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+many textbooks use t for the random variable and T for Hotelling’s T 2 statistic.)
+Their joint distribution can be written in terms of the conditional distribution of T
+given W :
+fT,W (t, w) = fT |W (t | w)fW (w)
+(see Section 1.7.2). The key simplification here is that conditional on W taking the
+value w, the variable T of interest becomes
+(
+)
+Z
+1
+√ ∼ N 0,
+,
+w
+w
+i.e., fT |W (t | w) is simply the normal PDF with variance 1/w or √
+standard deviation
+√
+1/ w. Here we are using the assumed independence of Z and W in the lemma,
+so that Z still has a normal distribution conditional on W√. Once we condition on
+W = w, there is a constant, not random, divisor in Z/ w, i.e., a simple linear
+transformation of a normal random variable, which is also normal. Similarly, W is a
+trivial rescaling of a χ2d random variable, and fW (w) is easily derived. The marginal
+distribution of T then follows by integrating out W from the joint distribution (see
+Section 1.7.1):
+∫ ∞
+∫ ∞
+fT (t) =
+fT,W (t, w) dw =
+fT |W (t | w)fW (w) dw. 0
+
+0
+
+Written this way, the td PDF is an average or mixture of normal PDFs, averaged with
+respect to the distribution of W . The second step is to carry out the integration. Readers interested in the formal details can find them in the Appendix of Section 2.9, but it is perhaps more instructive
+to demonstrate the averaging of normal random variables graphically. For definiteness, take d = 3 degrees of freedom. Furthermore, we will approximate the continuous
+values of Xd=3 and hence W by just five representative values. Figure 2.4(a) shows
+the χ23 PDF of X3 . The distribution is divided into five equal probabilities by the
+dotted lines. These sub-intervals in the figure are represented by the numbers 0.6,
+1.4, etc. For instance, the value 0.6 cuts off a probability of 0.1 to the left, and in this
+sense it is in the centre of the first interval of probability 0.2. The five representative
+values are obtained in R using the function qchisq. > # Quantiles of X_3 cutting off probs 0.1 , 0.3 , etc. to the left
+> x3 <- qchisq (c(0.1 , 0.3 , 0.5 , 0.7 , 0.9) , df = 3)
+> x3
+[1] 0.5843744 1.4236522 2.3659739 3.6648708 6.2513886
+
+As W = X3 /3 is a monotonic increasing function of X3 , we have 0.1 = Pr(X3 <
+0.5843744) = Pr(X3 /3 < 0.5843744/3), etc., and the five representative values of W
+are found by simple arithmetic. > # Quantiles of W cutting off probs 0.1 , 0.3 , etc. to the left
+> w <- x3 / 3
+> w
+[1] 0.1947915 0.4745507 0.7886580 1.2216236 2.0837962
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.3. DISTRIBUTIONS DERIVED FROM THE NORMAL
+
+(b) t distribution with 3 df as mixture of normals
+
+f(y)
+0.3
+0.6
+
+0
+
+1.4
+
+2.4
+
+2
+
+3.7
+
+0.0
+
+0.00
+
+0.1
+
+0.05
+
+0.2
+
+0.10
+
+f(y)
+
+0.15
+
+0.4
+
+0.5
+
+0.20
+
+0.6
+
+0.25
+
+(a) Chi squared distribution with 3 df
+
+2-7
+
+6.3
+
+4
+
+6
+
+8
+
+−4
+
+−2
+
+y
+
+0
+y
+
+2
+
+4
+
+Figure 2.4: (a) χ23 PDF, with the distribution divided into five subintervals of probability 0.2 each by the dashed lines. Each subinterval is represented by a single value. (b) The t3 PDF shown as a solid line is to a good approximation given by the average
+of the five normal PDFs shown as dashed lines. √
+Finally, each representative value, w, leads to a standard deviation of 1/ w in the
+normal distribution. > # Standard deviation of conditional normal
+> sd.norm <- 1/ sqrt(w)
+> sd.norm
+[1] 2.2657659 1.4516391 1.1260448 0.9047556 0.6927434
+
+Figure 2.4(b) shows five normal PDFs as dashed lines with these five standard deviations. Note that the conditional normal distributions have considerable variation in
+their standard deviations. Visually averaging these five PDFs gives a curve that is
+hard to distinguish from the t3 PDF shown by a solid line in the figure. The t distribution will arise when we make inference about the mean, µ, of a normal
+distribution and the variance, σ 2 , also has to be estimated. 2.3.3
+
+The F distribution
+
+The F distribution arises from the ratio of two independent χ2 distributions.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+0.8
+
+1.0
+
+2-8
+
+0.0
+
+0.2
+
+0.4
+
+f(y)
+
+0.6
+
+(2, 2) df
+(2, 10) df
+(3, 2) df
+(3, 10) df
+
+0
+
+1
+
+2
+
+3
+y
+
+4
+
+5
+
+6
+
+Figure 2.5: PDF of the F distribution with (2, 2) (2, 10), (3, 2), and (3, 10) degrees
+of freedom
+Lemma 2.3 (F distribution)
+If Xd1 ∼ χ2d1 , Xd2 ∼ χ2d2 , and Xd1 and Xd2 are independent, then
+Xd1 /d1
+∼ Fd1 ,d2 ,
+Xd2 /d2
+where Fd1 ,d2 is an F distribution with d1 and d2 degrees of freedom. Figure 2.5 plots the PDF of Fd1 ,d2 for various values of d1 and d2 . With d1 = 1
+or 2, the PDF is monotonic decreasing. For d1 > 2 the distribution increases then
+decreases. The F distribution is used to make inference when comparing two variances. It is
+also very important in inference about the parameters of linear regression models
+(STAT 306). 2.4
+
+Estimating the Parameters of the Normal Distribution
+
+Let Y1 , . . . , Yn be independent N (µ, σ 2 ) random variables. Such variables would arise
+if each is an independent draw from the same normal distribution. Equivalent to this
+probability model, a statistician might say Y1 , . . . , Yn are assumed to be a random
+sample of size n from an N (µ, σ 2 ) distribution. Here, the statistician has in mind an
+infinite—in practice, large—population of values taken to be normal.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.4. ESTIMATING THE PARAMETERS OF THE NORMAL
+
+2-9
+
+Typically, both µ and σ 2 are unknown, and these quantities are estimated by the
+sample mean and sample variance, respectively. 2.4.1
+
+Distribution of the sample mean (known variance)
+
+Suppose we use the sample mean to estimate µ. What are its statistical properties? The sample mean is
+
+1∑
+Ȳ =
+Yi . n i=1
+n
+
+Clearly, Ȳ is a linear combination of random variables. Hence,
+n
+n
+1∑
+1∑
+E(Ȳ ) =
+E(Yi ) =
+µ=µ
+n i=1
+n i=1
+
+and
+
+1 ∑
+1 ∑ 2 σ2
+Var(Yi ) = 2
+σ = . Var(Ȳ ) = 2
+n i=1
+n i=1
+n
+n
+
+n
+
+The distribution of Ȳ will be exactly normal under the assumptions we are making
+or often approximately normal:
+• The assumptions at the beginning of Section 2.4 included normality of Y1 , .. . ,
+Yn . As a linear combination of normal random variables is normal (Example 1.32), Ȳ is also normal. We can summarize by saying
+(
+)
+Ȳ ∼ N µ, σ 2 /n ,
+or equivalently if we standardize Ȳ for its mean and variance,
+Ȳ − µ
+√
+∼ N (0, 1). σ 2 /n
+
+(2.1)
+
+• Even if Y1 , . . . , Yn are not normal, the CLT will often apply. The left-hand side
+of (2.1) is the same as the sample-mean version of the CLT in (2.10). Thus,
+if the conditions of the CLT hold, the left-hand side of (2.1) will converge in
+distribution to N (0, 1) as n → ∞ even if the Yi are not normal. If we know σ 2 we are ready for statistical inference (confidence intervals, hypothesis
+tests) for µ based on the normal distribution. Unfortunately, in practice, σ 2 is also
+usually unknown and we need to estimate it by the sample variance. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-10
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+2.4.2
+
+Distribution of the sample variance
+
+The sample variance is
+n
+1 ∑
+1
+2
+(Yi − Ȳ )2 =
+S =
+n − 1 i=1
+n−1
+
+( n
+∑
+
+)
+Yi2 − nȲ 2
+
+. (2.2)
+
+i=1
+
+The equivalence of the two formulas for computing S 2 is seen by multiplying out the
+square in the first formula and collecting terms. It is fairly straightforward to show that dividing by n − 1 (and not n) makes S 2 an
+unbiased estimator of σ 2 , i.e.,
+E(S 2 ) = σ 2 .This is proved as Exercise 2.9. The proof only requires that Y1 , . . . , Yn are independent
+with mean µ and variance σ 2 , i.e., it does not depend on having a normal distribution. Finding the distribution of S 2 is more challenging in general but approachable when
+the Yi are IID normal. In the first definition of S 2 in (2.2), write
+(
+)
+Yi − µ Ȳ − µ
+Yi − Ȳ = σ
+−
+= σ(Zi − Z̄),
+σ
+σ
+i.e., standardize Yi to Zi with a standard normal distribution. Then
+S2 =
+
+n
+n
+1 ∑
+1 ∑
+(Yi − Ȳ )2 = σ 2
+(Zi − Z̄)2 ,
+n − 1 i=1
+n − 1 i=1
+
+or
+
+n
+1 ∑
+S2
+=
+(Zi − Z̄)2 . σ2
+n − 1 i=1
+∑
+Thus, the distribution of S 2 is that of ni=1 (Zi − Z̄)2 up to constants. ∑
+The following theorem shows that the distribution of ni=1 (Zi − Z̄)2 is χ2n−1 , i.e., the
+degrees of freedom are n−1 and not n. Each observation is “corrected” for the sample
+mean, i.e., Yi − Ȳ or Zi − Z̄. This is because the mean, µ, of the normal distribution
+is unknown and has to be estimated; the estimation of this one parameter leads to a
+correction of the degrees of freedom by 1. Theorem 2.1 (χ2 corrected degrees of freedom)
+Let Z1 , . . . , Zn be independent N (0, 1) random variables. Then
+n
+∑
+
+(Zi − Z̄)2 ∼ χ2n−1 ,
+
+i=1
+
+i.e., χ2 with n − 1 degrees of freedom.

@@ -1,0 +1,466 @@
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-5
+Solution 1.12
+1. 0.7 and 0.6, respectively
+2. 0.21 and 0.24, respectively
+3. 0.18
+4. E(B) = 1.3 and Var(B) = 0.81
+Solution 1.13
+As Y = min(X, k) is a function of the random variable X, compute the expectation
+of a function of a random variable:
+∫ ∞
+E(Y ) =
+min(x, k)λe−λx dx. 0
+
+Then break the integral into two parts:
+∫ k
+∫ ∞
+∫ k
+∫ ∞
+−λx
+−λx
+−λx
+E(Y ) =
+xλe
+dx +
+kλe
+dx = λ
+xe
+dx + k
+λe−λx dx. (10.1)
+0
+
+Using the result
+
+k
+
+0
+
+(
+
+∫
+ax
+
+ax
+
+xe dx = e
+
+1
+x
+− 2
+a a
+
+k
+
+)
+,
+
+with a = −λ, the first integral in (10.1) is
+)k
+)
+(
+(
+∫ k
+1
+1
+1
+x
+k
+−λx
+−λx
+−λk
+xλe
+dx = e
+− 2
+=e
+− 2 + 2. −λ λ
+−λ λ
+λ
+0
+0
+The second integral in (10.1) is immediate from the exponential distribution’s survival
+function:
+∫ ∞
+λe−λx = Pr(X > k) = e−λk . k
+
+Putting these results together,
+(
+(
+)
+)
+k
+1
+1
+1 − e−λk
+1
+e−λk
+−λk
+E(Y ) = λ e
+− 2 + 2 + ke−λk = −
++ =
+. −λ λ
+λ
+λ
+λ
+λ
+Solution 1.14
+3. Use the two previous results rather than the definition of expectation. 4. The proof should use fX,Y (x, y), the joint PDF of X and Y , without making
+any assumptions about the joint distribution such as independence. 5. Use the previous results rather than the definition of expectation. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-6
+
+CHAPTER 10. SOLUTIONS
+
+Solution 1.15
+There is no need to manipulate integrals or sums. Instead work with expectations
+and use the results of Exercise 1.14. Solution 1.16
+3. Use the two previous results rather than the definition of variance. 5. Use the previous results and the result of Exercise 1.15 rather than the definition
+of variance. Solution 1.19
+1. Using the result for the expectation of a linear combination of random variables,
+E(Y ) = E(B1 + · · · + Bn ) = E(B1 ) + · · · + E(Bn ) = nπ. 2. Using the result for the variance of a linear combination of random variables,
+Var(Y ) = Var(B1 + · · · + Bn ) = Var(B1 ) + · · · + Var(Bn ) = nπ(1 − π),
+because the Bi are independent and hence all covariance terms are zero. 3. Using the result for the MGF of a sum of independent random variables,
+MY (t) =
+
+n
+∏
+
+MBi (t) = (1 − π + πet )n . i=1
+
+4. Bin (n, π), because the MGF identifies the distribution. Solution 1.20
+∑
+2. exp ( ni=1 µi (et − 1))
+3. Poisson. Be sure to give the value of the Poisson parameter. Solution 1.22
+4. NegBin (n, π)
+Solution 1.23
+1. Follow the steps of Example 1.24. 2. Note that Y is a linear function of Z. (a) Use the results on expectation and variance of a linear function of a random
+variable. (b) Apply Lemma 1.2.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-7
+Solution 1.25
+1. λ/(λ − bt)
+2. Expon (λ/b)
+Solution 1.26
+1. E(Y )
+2
+
+2. E(Y ) = eµ+σ /2 ; note that eµ is the median of Y (Exercise 1.11). Solution 2.1
+Write Z as a linear function of Y , i.e., Z = a + bY , then apply the method of
+Example 1.30 to establish the distribution of Z. Solution 2.2
+1. The MGF of Yi is exp (µt + 12 σ 2 t2 ) (−∞ < t < +∞). 2. Since we have a sum of independent random variables Yi here, we can use the
+result on the MGF of a sum of independent random variables:
+MX (t) =
+
+n
+∏
+
+MYi (t). i=1
+
+Then, substituting the MGF from part 1:
+(
+)
+(
+)
+n
+n
+∏
+∏
+1 22
+1 22
+MX (t) =
+MYi (t) =
+exp µt + σ t = exp nµt + nσ t
+2
+2
+i=1
+i=1
+(−∞ < t < +∞). 3. In general, if the MGF of Y is MY (t), then Z = a + bY has MGF MZ (t) =
+exp (at)MY (bt). As Ȳ = X/n, and we already have MX (t) from part 1, we have
+(
+)
+1 σ2 2
+MȲ (t) = MX (t/n) = exp µt +
+t
+(−∞ < t < +∞). 2 n
+4. Apply the general result in part 3 again, this time to the linear function
+√
+√
+Ȳ − µ
+n
+−µ n
+√ =
++
+Z=
+Ȳ . σ
+σ
+σ/ n
+From MȲ (t) in part 3, we have
+( √ )
+(√ )
+−µ n
+n
+MZ (t) = exp
+t MȲ
+t
+σ
+σ
+( √
+)
+( √ )
+µ n
+1 σ 2 nt2
+−µ n
+t exp
+t+
+= exp(t2 /2)
+= exp
+2
+σ
+σ
+2 n σ
+(−∞ < t < +∞).© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-8
+
+CHAPTER 10. SOLUTIONS
+This is the MGF of a normal distribution (see part 1) with µ = 0 and σ 2 = 1,
+and the MGF uniquely identifies a distribution. Thus, Z has a standard normal
+distribution. Solution 2.3
+The χ21 PDF is obtained by putting d = 1 in the χ2d PDF given in Table 1.4. Rearrange
+the integral in the definition of the MGF so that it includes the integral of a gamma
+PDF. Solution 2.5
+The χ2d PDF is given in Table 1.4. Rearrange the integral so that it includes the
+integral of a gamma PDF. Solution 2.6
+2. Do not start with an assumed PDF for Y , or you will have a circular argument
+in part 3. No integration is required. 3. Find this MGF in Table 1.4 or use the result of Exercise 2.5. 4. d
+5. 2d
+Solution 2.7
+Use the result of Exercise 2.6.Solution 2.8
+2. Yes
+Solution 2.10
+1. The widths are 8.53 percentage points for 90% confidence and 13.78 percentage
+points for 99% confidence. 3. The widths are 8.29 percentage points for 90% confidence and 12.99 percentage
+points for 99% confidence. 4. About 2.9% wider for 90% confidence and about 6.1% wider for 99% confidence.Solution 2.11
+2. (c) [92.0, 100.2]
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-9
+Solution 2.12
+4. 1 and 2, respectively
+5. σ 2
+6. 2σ 4
+7. l = 0.000982 and u = 5.02
+Solution 2.13
+1.1
+2. 2/(n − 1)
+3. (a) 1
+(b) Find a relevant theorem or lemma and describe briefly how it applies to
+the random variable S 2 /σ 2 . 4. Consider the properties of S 2 /σ 2 as n → ∞. 7. Don’t forget that parts 1 and 2 relate to the distribution of S 2 divided by σ 2 . Solution 2.14
+Use the fact that a random variable with a χ2d distribution arises as the sum of squares
+of d independent standard normal random variables, and apply the CLT. Solution 2.16
+1. (a) 0
+(b) 1/3
+(c) (et − e−t )/(2t)
+(d) 0 and 1/3
+2. (a) 0
+(b) n/3
+( t −t )n
+(c) e −e
+2t
+√
+
+3. (a) Z = n3 Y
+( √
+) )n
+( (√ )
+exp t 3/n −exp −t 3/n
+√
+(b)
+2t
+
+3/n
+
+t2 /2
+
+(c) e
+
+(d) Standard normal
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-10
+
+CHAPTER 10. SOLUTIONS
+
+Solution 2.17
+Find an example where the normal approximation to the binomial is used. Argue
+that the use is compatible with Definition 2.1 on convergence in distribution. In
+particular, does Definition 2.1 mention a PMF or a PDF? Solution 2.18
+3. Less than or equal to 0.26
+5. 0.05
+6. (a) N (µ, σ 2 /n)
+(b) 0.05
+(c) No, it is an exact property of the normal distribution. Solution 3.2
+1. Applying the result for the expectation of a linear combination of random variables to Ȳ gives E(µ̃) = µ. 2. Applying the result for the variance of a linear combination of independent
+random variables to Ȳ gives Var(µ̃) = µ/n. 3. Yes, it is unbiased, and its variance goes to zero as n → ∞. 4. (a) Using the result for the expectation of a linear function of a random variable,
+g
+E(Var(µ̃))
+= E(µ̃/n) = E(µ̃)/n = µ/n = Var(µ̃). (b) Using the result for the variance of a linear function of a random variable,
+g
+Var(Var(µ̃))
+= Var(µ̃/n) = Var(µ̃)/n2 = µ/n/n2 = µ/n3 . (c) Yes, it is unbiased, and its variance goes to zero as n → ∞.Solution 3.3
+Yes. Use the results of Exercise 2.13. Solution 3.4
+3. The bias is −σ 2 /n. Hence,
+( )
+( )
+( ) ( σ 2 )2 2(n − 1)σ 4
+(2n − 1)σ 4
+2
+2
+2
+e
+e
++
+MSE σ = Bias σ + Var σe2 = −
+=
+. n
+n2
+n2
+4. Yes. The MSE goes to zero as n → ∞.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-11
+5. S 2 is an unbiased estimator of σ 2 , because E(S 2 ) = σ 2 , whereas σe2 is biased. On the other hand, Var(S 2 ) = 2σ 4 /(n − 1) is greater than
+(
+)
+( ) 2(n − 1)σ 4
+1
+1
+4
+2
+e
+Var σ =
+= 2σ
+−
+n2
+n n2
+for all n ≥ 2. 6. Compare the two MSEs:
+MSE(S 2 ) = Var(S 2 ) =
+and
+
+2
+σ4
+n−1
+
+( ) 2n − 1
+σ 4 (from part 3)
+MSE σe2 =
+2
+)
+(n
+2
+1
+σ4. =
+−
+n n2
+
+( )
+Clearly, MSE σe2 < MSE(S 2 ) for all n ≥ 2, and σe2 is more accurate in the
+sense of MSE. Solution 3.5
+1. (a) Using the result on the expectation of a linear combination of random
+variables,
+(
+)
+Y1 + Y2 + · · · + Yn
+1
+E(µ̃) = E
+= (E(Y1 ) + E(Y2 ) + · · · + E(Yn ))
+n
+n
+1
+= (nµ) = µ. n
+Hence, µ̃ = Ȳ is an unbiased estimator of µ. (b) Using the result on the variance of a linear combination of random variables
+and noting that all Cov(Yi , Yj ) terms are zero because the Yi are assumed
+independent,
+)
+(
+Y1 + Y2 + · · · + Yn
+Var(µ̃) = Var
+n
+1
+= 2 (Var(Y1 ) + Var(Y2 ) + · · · + Var(Yn ))
+n
+) 2ϕ2
+1 (
+. = 2 2nϕ2 =
+n
+n
+Therefore,
+√
+2ϕ2
+sd(µ̃) =
+. n
+For the given numbers,
+√
+√
+2ϕ2
+200
+sd(µ̃) =
+=
+= 2.828. n
+25
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-12
+
+CHAPTER 10. SOLUTIONS
+
+2. (b) One execution of the code produces 1.012 for the sample mean of the
+10 000 sample medians. You will obtain a slightly different value from
+your (different) random samples. An unbiased estimator has an expected
+value of 1. Based on the simulation of the sampling distribution, the
+estimate of the expected value, 1.012, is close to 1. Hence, it appears that
+the bias is very small and could be zero. (c) An estimate of the true standard deviation of the sample median is 2.31. Again your estimate will be slightly different. 3. The estimate of the true standard deviation of the sample mean is 2.82, which
+agrees well with the theoretical calculation. 4. The sample mean is unbiased and the sample median appears to be unbiased or
+have negligible bias. However, the sample median has a much smaller standard
+deviation in the simulation. Hence, the sample median appears to be more
+accurate. Solution 4.1
+1. −40µ + 10 ln(µ)
+4. 0.25
+5. 0.0791
+6. 0.25 ± 0.155
+7. 0.38. Adapt the argument in Section 4.6. In particular, the tail probability
+α = 0.05 will be entirely in one tail, instead of divided as it was in Figure 4.9.8. 0.68
+9. 0 faults has an expected frequency of 31.2, etc; yes
+Solution 4.2
+1. The likelihood function is
+fY1 ,...,Y298 (y1 , . . . , y298 | µ) =
+
+298
+∏
+i=1
+
+fYi (yi | µ) =
+
+298 −µ yi
+∏
+e µ
+
+yi ! i=1
+
+∑298
+
+e−298µ µ i=1 yi
+=
+,
+∏298
+i=1 yi !since Y1 , . . . , Y298 are independent random variables. 2. The likelihood function is viewed as a function of µ. 3. The log likelihood is
+( 298 )
+∑
+ln fY1 ,...,Y298 (y1 , . . . , y298 | µ) = −298µ +
+yi ln(µ) + c,
+i=1
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+

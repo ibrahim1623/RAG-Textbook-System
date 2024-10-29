@@ -5,7 +5,7 @@ from langchain_openai.embeddings import OpenAIEmbeddings
 from sentence_transformers import SentenceTransformer
 from embedding import SentenceTransformerEmbeddings
 
-max_token_limit = 16000
+max_token_limit = 8000
 
 tokenizer = tiktoken.encoding_for_model("gpt-4o")
 
@@ -35,8 +35,19 @@ def chunker(text):
         if token_count < max_token_limit:
             current_chunk += chunk
         else:
-            chunks.append(current_chunk)
+            if current_chunk:
+                if count_tokens(current_chunk) >= max_token_limit:
+                    chunks.extend(chunker(current_chunk)) 
+                else:
+                    chunks.append(current_chunk)
             current_chunk = chunk
+
+
+    if current_chunk:
+        if count_tokens(current_chunk) >= max_token_limit:
+            chunks.extend(chunker(current_chunk))  
+        else:
+            chunks.append(current_chunk)
 
     return chunks
 

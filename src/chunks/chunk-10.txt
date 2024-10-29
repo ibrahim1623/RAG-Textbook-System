@@ -1,0 +1,757 @@
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-10
+
+CHAPTER 3. STATISTICAL ESTIMATION
+
+A standard answer is that σe2 is biased, whereas S 2 is not (Exercise 2.9). The bias
+turns out to be small relative to sd(σe2 ), however, in the important special case that
+the Yi are also normally distributed. Then, via the arguments of Section 2.4.2,
+E(X) = (n − 1)σ 2
+
+and
+
+Var(X) = 2(n − 1)σ 4 ,
+
+whereupon
+1
+1
+Bias(σe2 ) = E(σe2 ) − σ 2 = (n − 1)σ 2 − σ 2 = − σ 2
+n
+n
+and
+
+1
+2(n − 1) 4
+Var(X)
+=
+σ . n2
+n2
+We see that for any n ≥ 2, the bias of σe2 is smaller in magnitude than its standard
+deviation:
+Bias(σe2 )
+−σ 2 /n
+1
+=√
+= −√
+. 2(n − 1)σ 2 /n
+2(n − 1)
+sd(σe2 )
+Var(σe2 ) =
+
+Of course, no bias is better than a “small” bias, but Exercise 3.4 shows that σe2
+has a smaller standard deviation and smaller MSE than S 2 and is more accurate
+overall. The most compelling case for the use of S 2 with divisor n − 1 is that,
+for IID normal random variables, X has a χ2n−1 distribution with n − 1 degrees
+of freedom, and hence S 2 fits the mathematical requirements of the t distribution
+(Section 2.4.3). ♢♢♢
+Usually, the MSE of an estimator either equals its variance (unbiased estimation) or
+is not much larger than the variance (small squared bias). Hence, we will see that
+when a confidence interval is calculated to quantify error it is nearly always based on
+the estimator’s standard deviation only. Estimation bias may be ignorable, but there are many other possible source of bias in
+an empirical study. They include sampling from a population other than the target
+one or bias in the measurement system producing data. Moreover, other sources are
+difficult to study in a quantitative way by analysis of the data (and hence will not be
+pursued much in this text). Best practice is to mitigate sources of bias proactively
+by careful study design and objective measurement. 3.3.5
+
+Consistency
+
+Definition 3.3 (Consistency)
+The estimator θ̃n of a parameter θ based on a sample of size n is consistent
+for estimating θ if
+Pr(|θ̃n − θ| < ϵ) → 1 as n → ∞
+for any fixed error, ϵ > 0.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.3. PROPERTIES OF AN ESTIMATOR
+
+3-11
+
+Consistency of θ̃n is a special case of convergence in probability of a random variable
+(θ̃n here) to a constant (θ). Consistency requires that both the bias and variance of θ̃ go to zero as n → ∞. Hence, a necessary and sufficient condition is that the mean squared error goes to
+zero. Many estimators are of the form of a sample mean, which includes the sample proportion, or a simple function of the sample mean. If the objective is to estimate the mean
+of the underlying distribution, and the sample consists of independent observations,
+then consistency of such estimators is easily established as a special case of the Weak
+Law of Large Numbers (WLLN). Theorem 3.1 (Weak law of large numbers (WLLN))
+Let
+n
+1∑
+Ȳn =
+Yi ,
+n i=1
+where Y1 , . . . , Yn are n independent random variables, each with mean µ and
+variance σ 2 (both of which must exist). Then, for any ϵ > 0,
+Pr(|Ȳn − µ| < ϵ) → 1 as n → ∞. The law of large numbers is not about large observations! It is concerned with a large
+sample size, n. Also, the random variables are not the individual elements of the
+sample. Rather, as the sample size, n, increases, there is a sequence of sample means,
+Ȳn , computed from more and more elements. In the WLLN, ϵ can be made arbitrarily small as long as it is positive. Thus, the
+theorem says that the distribution of Ȳn is more and more concentrated around an
+arbitrarily small neighbourhood of µ as the sample size grows. Thus, Ȳn is a consistent
+estimator of µ. The proof of the WLLN is straightforward. From (1.9) we have
+)
+( n
+n
+n
+∑
+∑
+1
+1
+1∑
+Yi =
+E(Yi ) =
+µ = µ. E(Ȳn ) = E
+n i=1
+n
+n
+i=1
+i=1
+Similarly, we use (1.10) to get Var(Ȳn ). Because we are assuming the Yi are independent, all the covariance terms, Cov(Yi , Yj ) for i ̸= j, in (1.10) are zero. Thus,
+)
+( n
+n
+n
+∑
+∑
+1
+1 2 σ2
+1∑
+Yi =
+Var(Ȳn ) = Var
+Var(Y
+)
+=
+σ = . i
+2
+2
+n i=1
+n
+n
+n
+i=1
+i=1
+Clearly, Var(Ȳn ) → 0 as n → ∞, and the result follows by putting t = ϵ in Chebyshev’s
+inequality (Theorem 1.1). Example 3.4 (Opinion polls: weak law of large numbers)
+Each voter in the population of eligible voters intends to vote for the Statistics
+for Everybody Party (y = 1) or will not (y = 0) in the next federal election.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-12
+
+CHAPTER 3. STATISTICAL ESTIMATION
+
+To estimate the population proportion, π, intending to vote for Statistics for
+Everybody, a random sample of n eligible voters is taken. Let Yi be the voting intention for person i in the sample; it is a Bernoulli random
+variable with Pr(Yi = 1) = π, i.e., Bern (π). Note that E(Yi ) = π and Var(Yi ) =
+π(1 − π). We further assume that Y1 , . . . , Yn are independent random variables
+(which would be approximately true if the population size is large relative to the
+sample size, which it usually is). Consider estimating π using the sample mean,
+1∑
+Yi ,
+n i=1
+n
+
+Ȳn =
+
+where the subscript n on Ȳn emphasizes that we are investigating the impact of
+increasing the sample size. (The sample mean is also a sample proportion here:
+As Yi take values 0 and 1 only, Ȳ is the proportion of 1’s in the sample.) Then,
+from Exercise 1.17,
+E(Ȳn ) = π,
+and
+
+π(1 − π)
+. n
+The variance clearly tends to zero as n increases. Thus, by Chebyshev’s inequality
+(Theorem 1.1) the estimator Ȳ is in an arbitrarily small neighbourhood of the true
+value π with probability approaching 1 as the sample size n grows, and Ȳn is a
+consistent estimator of π. Var(Ȳn ) =
+
+We could argue the same result directly from the WLLN. The conditions of the
+WLLN are easily verified: Y1 , . . . , Yn are independent and the mean and variance
+of Yi both exist. Hence, via the WLLN, the sample mean of Y1 , . . . , Yn is a
+consistent estimator of E(Yi ) = π. ♢♢♢
+Consistency of θ̃ is a natural requirement: an estimator that does not converge to θ
+for an infinite sample size should be questioned. 3.3.6
+
+Relative Error
+
+Implicitly, the measures of error used so far have related to absolute error. For example,
+((
+)2 )
+Var(θ̃) = E
+θ̃ − θ
+,
+where positive and negative errors θ̃ − θ are treated the same due to squaring. Similarly, in MSE and its squared bias component, the sign of the bias is immaterial. For some applications, relative error,
+θ̃
+θ̃ − θ
+= − 1,
+θ
+θ
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.3. PROPERTIES OF AN ESTIMATOR
+π
+nabs
+nrel
+
+0.01
+0.02
+44
+88
+110 000 54 445
+
+0.05
+0.10
+212
+400
+21 112 10 000
+
+3-13
+0.20
+712
+4445
+
+0.30 0.40 0.50
+934 1067 1112
+2593 1667 1112
+
+Table 3.2: Sample size to estimate the binomial parameter π: nabs achieves sd(π̃) ≤
+0.015 and nrel achieves sd(π̃)/π ≤ 0.03
+and summary measures based on it are more compelling, however. The following
+sample-size calculation illustrates that the different definitions of error can have important consequences. Example 3.5 (Binomial distribution: sample size determination)
+A common question is, “What should the sample size be?” For instance, the
+opinion poll of Example 2.3 had n = 1000. Why are the sample sizes of opinion
+polls typically of order one thousand? Example 2.3 boils down to estimation of π in a Bin (n, π) probability model. Suppose the requirement is to determine n such that sd(π̃) ≤ 0.015. That requirement
+is often stated as 1.5 percentage points, to emphasize that it is an absolute number
+of “points” on the percentage scale. Rearrangement of
+√
+π(1 − π)
+0.015 = sd(π̃) =
+n
+yields
+n=
+
+π(1 − π)
+,
+(0.015)2
+
+as shown in the nabs row of Table 3.2. The required sample size depends on
+the true value π. It is maximized when π = 0.5 and decreases as π decreases. Similarly nabs decreases as π increases above 0.5 (not shown) in a symmetric way. Thus, a sample size nabs = 1112 will give sd(π̃) ≤ 0.015 for any π, and a 95%
+confidence interval using the standard error and a normal approximation will be
+no wider that ±z0.0975 se(π̃) = ±1.96 × 0.015 = ±0.0294, or about plus or minus 3
+percentage points. As nabs does not change much for, say, 0.2 < π < 0.8, a sample
+size based on the worst case, π = 0.5, is often employed when π is anticipated in
+such a range. The previous arguement becomes less relevant when π is small, however. Table 3.2
+gives nabs = 44 for π = 0.01, for instance, but the requirement sd(π̃) ≤ 0.015 probably needs tightening: the standard deviation is larger than the true value. More
+natural is to control the standard deviation to be small relative to the true value,
+e.g., sd(π̃) ≤ 0.03π. Applying the rule for the variance (hence standard deviation)
+of a linear function of a random variable, the new requirement is equivalent to
+( )
+(
+)
+(
+)
+π̃
+π̃
+π̃ − π
+sd(π̃)
+= sd
+= sd
+− 1 = sd
+,
+0.03 =
+π
+π
+π
+π
+i.e., the standard deviation of the relative error.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-14
+
+CHAPTER 3. STATISTICAL ESTIMATION
+
+Solving
+
+√
+0.03π = sd(π̃) =
+
+for n yields
+n=
+
+π(1 − π)
+,
+n
+
+(1 − π)
+,
+(0.03)2 π
+
+as shown in the nrel row of Table 3.2. For π = 0.5, there is no impact on sample size
+as the absolute and relative requirements are chosen to be equivalent at π = 0.5. But nrel increases rapidly as π approaches zero: even for a moderately small
+π = 0.05 we need a sample size of nrel = 21 112, increasing to 110 000 at π = 0.01. Relaxing the requirement so that sd(π̃) ≤ 0.1π when π = 0.01 still needs nrel =
+9900. Estimating a small probability with good relative accuracy requires a huge
+sample size. ♢♢♢
+
+3.4
+
+Comparing Estimators
+
+Bias and variance properties allow comparison of candidate estimators when the
+choice of estimator is not obvious. An interesting case is the Laplace (double-exponential) distribution. As noted in
+Section 1.5.4, the distribution is symmetric around the location parameter µ, which
+is therefore both the mean and median. Should the sample mean or the sample
+median from a random sample be used as its estimator? (The sample median is the
+“middle” value in the data.) It turns out that both estimators are unbiased, but
+the sample median has the smaller variance for n ≥ 3 (Sarhan, 1954). These results
+are demonstrated numerically in Exercise 3.5. The sample median is naturally more
+robust to unusual outlying observations that can arise due to the Laplace PDF’s fat
+tails, and this intuition is borne out by the theoretical properties. 3.5
+
+Getting It Done in R
+
+In Example 3.1 random samples were drawn from the Poisson distributions. R has
+functions to generate random numbers for all the distributions listed in Table 1.9. They have names starting with r. Thus, R has functions with names starting with d for the PDF or PMF, p for the CDF,
+q for a quantile, and r for generating random numbers. Table 3.3 lists these functions
+for the normal distribution, for instance. The function rnorm has an argument n for
+the sample size. Hence, rnorm(n = 10) would generate a sample of size n = 10 from
+the standard normal.© Copyright William J. Welch 2009–2019. All rights reserved.Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.6. LEARNING OUTCOMES
+Purpose
+PDF
+CDF
+Quantile
+Random number
+
+3-15
+R function
+dnorm(y, mean = 0, sd = 1)
+pnorm(y, mean = 0, sd = 1)
+qnorm(p, mean = 0, sd = 1)
+rnorm(n, mean = 0, sd = 1)
+
+Table 3.3: R functions to return the PDF, CDF, quantile, or random numbers for the
+normal distribution
+
+3.6
+
+Learning Outcomes
+
+On completion of this chapter you should be able to carry out the following tasks. 1. Explain the difference between an estimate and an estimator of a parameter
+and why the distinction is important to define statistical properties. 2. Derive the following properties for a specific estimator: its bias (which might be
+zero); its variance; its mean squared error; and whether or not it is consistent. 3. Use the WLLN (Theorem 3.1 in Section 3.3.5), and check the conditions, to
+show the sample mean is a consistent estimator of the mean of the underlying
+distribution. 4. Explain your reasoning. When using a result such as the expectation or variance
+of a linear combination of random variables to derive a property of an estimator,
+briefly state the result you are using. If the result depends on an assumption
+such as statistical independence of random variables, remind the reader that
+you are using the assumption. 3.7
+
+Exercises
+
+Exercise 3.1
+Frequentist inference considers variation across hypothetical repeated random samples. In some cases the design of a study involves a step with a probabilistic mechanism to select a sample of data. Briefly describe the probabilistic mechanism and the
+set of possible random samples for the following studies:
+1. The opinion poll in Example 2.3; and
+2. The clinical trial in Example 1.15. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-16
+
+CHAPTER 3. STATISTICAL ESTIMATION
+
+Exercise 3.2
+Suppose we obtain n independent observations, Y1 , . . . , Yn , from a Poisson probability
+model to estimate the Poisson parameter µ. Consider the estimator µ̃ = Ȳ . 1. Show µ̃ is unbiased. 2. Find Var(µ̃) (an exact formula for the variance). 3. Is µ̃ a consistent estimator of µ? g
+4. Consider Var(µ̃)
+= µ̃/n as an estimator of Var(µ̃). g
+(a) Show that Var(µ̃)
+is an unbiased estimator of Var(µ̃). g
+(b) What is the variance of Var(µ̃)? g
+(c) Is Var(µ̃)
+a consistent estimator of Var(µ̃)? Exercise 3.3
+Let Y1 , .. . , Yn be independent N (µ, σ 2 ) random variables. Their sample variance is
+n
+1 ∑
+S =
+(Yi − Ȳ )2 . n − 1 i=1
+2
+
+Treat S 2 as an estimator, i.e., a random variable. Is it a consistent estimator of σ 2 ? Exercise 3.4
+[Final exam, 2011-12, Term 1] Let Y1 , . . . , Yn be independent normal random variables,
+each with mean µ and variance σ 2 . We want to estimate σ 2 from such a sample of
+size n ≥ 2 when µ is also unknown. ∑
+This question investigates the exact properties of σe2 = X/n, where X = ni=1 (Yi −
+Ȳ )2 . You may use without proof: (1) the result that X/σ 2 has a χ2n−1 distribution;
+and (2) statistical properties of the χ2 distribution. 1. Show that the expectation of σe2 is σ 2 (n − 1)/n. 2. Show that the variance of σe2 is 2(n − 1)σ 4 /n2 . 3. Hence, give and simplify an expression that summarizes the accuracy of σe2 as
+an estimator of σ 2 . 4. Is σe2 a consistent estimator of σ 2 ? Explain briefly. 5. The sample variance with divisor n−1, namely S 2 = X/(n−1), has E(S 2 ) = σ 2
+and Var(S 2 ) = 2σ 4 /(n − 1). Give one advantage and one disadvantage of S 2
+relative to σe2 as an estimator of σ 2 . 6. Explain which estimator of σ 2 is the more accurate, S 2 or σe2 .© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.7. EXERCISES
+
+3-17
+
+# Number of repeat samples
+n.reps <- 10000
+# Vectors to store the sample means and medians
+sample .mean
+<- rep (0, times = n.reps)
+sample . median <- rep (0, times = n.reps)
+# Generate repeat samples
+library ( rmutil )
+for (k in 1:n.reps) {
+# Random sample k
+a. sample <- rlaplace (...)
+# Save mean and median
+sample .mean[k]
+<- mean(a. sample )
+sample . median [k] <- median (a. sample )
+}
+
+Figure 3.3: R code for Exercise 3.5
+Exercise 3.5
+A random variable Y with a Laplace (double-exponential) distribution has PDF
+f (y | µ, ϕ) =
+
+1 − |y−µ|
+e ϕ
+2ϕ
+
+(−∞ < y < ∞; −∞ < µ < ∞; ϕ > 0)
+
+(see Table 1.4). As the Laplace distribution is symmetric, µ is the expected value
+(mean) and median. Hence, in this exercise we compare as estimators of µ the sample
+mean and the sample median from a random sample, Y1 , .. . , Yn . We will also need the fact that 2ϕ2 is the variance of the Laplace distribution. 1. Consider first the sample mean as an estimator, i.e., µ̃ = Ȳ . Its properties can
+be found theoretically. (a) What is the expected value of µ̃? Is it unbiased as an estimator of µ? (b) Give a formula for sd(µ̃). What is the numerical value of sd(µ̃) if n = 25
+and ϕ = 10, say? 2. Now consider the sample median as an estimator, i.e., µ̃ = median(Y1 , .. . , Yn ). Note that µ̃ is now a different estimator. It would be a little more difficult to
+establish its theoretical properties, and we resort to numerical simulation. Simulation has a learning bonus, however. We will be generating repeat samples,
+the principle underlying the frequentist philosophy of statistical inference. (a) Use rlaplace in library(rmutil) to generate a random sample of size
+n = 25 from the Laplace distribution with µ = 1 and ϕ = 10. Repeat
+for 10 000 samples as in the R code of Figure 3.3. You need to give values
+to the parameters passed to rlaplace. The code also stores the sample
+means to check a theoretical property of Ȳ here.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-18
+
+CHAPTER 3. STATISTICAL ESTIMATION
+After running your code, you have an empirical distribution of the sample
+median (and mean) from many repeat samples. Because the number of
+repeat samples is fairly large, the empirical distribution is a good approximation to the true distribution of the sample median. We will estimate
+the properties of the sample median from this empirical distribution. (b) Apply mean to the 10 000 values of the sample median from the random
+samples to find the (approximate) expected value of the sample median. Does it appear that µ̃ = median(Y1 , . . . , Yn ) is an unbiased estimator? (c) Apply sd to the 10 000 values of the sample median to find the (approximate) standard deviation of the sample median. 3. Check the theoretical property in part 1b by applying sd to the 10 000 values
+of the sample mean. 4. Which estimator appears to be a more accurate estimator of the parameter µ
+of the Laplace distribution, the sample mean or the sample median?© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-1
+
+Chapter 10
+Solutions
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-2
+
+CHAPTER 10. SOLUTIONS
+
+Solution 1.1
+1. 0.001102, 0.004888, and 0.007978, respectively
+2. 0.01102, 0.04888, and 0.07978, respectively
+3. For the picture, think of the midpoint rule (also known as the rectangle method)
+for approximating a definite integral. Solution 1.4
+1. The Poisson distribution has PMF
+fY (y) =
+
+e−µ µy
+y! (y = 0, 1, .. . , ∞; µ > 0). Therefore, from Definition 1.1, the expectation is
+∞
+∑
+e−µ µy
+E(Y ) =
+y
+. y! y=0
+
+The sum can be computed by noting there is no contribution from y = 0,
+cancelling y in the numerator and denominator of the summand, and then
+going back to a sum starting at y = 0:
+E(Y ) =
+
+∞
+∞
+∞
+∑
+∑
+e−µ µy ∑ e−µ µy
+µy−1
+y
+y
+=
+= e−µ µ
+y! y! (y − 1)! y=1
+y=1
+y=0
+
+= e−µ µ
+
+∞
+∑
+µy
+y=0
+
+y! = e−µ µeµ = µ. 2. The simplest version of Definition 1.3 to use here is Var(Y ) = E(Y 2 ) − (E(Y ))2 . It requires computation of E(Y 2 ), which proceeds in a similar way to E(Y ):
+2
+
+E(Y ) =
+
+∞
+∑
+
+y
+
+−µ y
+µ
+2e
+
+y=0
+
+=µ
+
+(∞
+∑
+y=0
+
+y! =
+
+∞
+∑
+
+y
+
+2e
+
+y=1
+
+yfY (y) +
+
+∞
+∑
+
+∞
+∞
+∑
+∑
+µ
+e−µ µy−1
+e−µ µy
+=µ
+y
+=µ
+(y + 1)
+y! (y − 1)! y! y=1
+y=0
+)
+
+−µ y
+
+fY (y)
+
+= µ(E(Y ) + 1) = µ(µ + 1),
+
+y=0
+
+using E(Y ) from part 1 and noting that the PMF sums to 1. Hence,
+Var(Y ) = E(Y 2 ) − (E(Y ))2 = µ(µ + 1) − µ2 = µ.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-3
+Solution 1.5
+4. (1 − π)y
+Solution 1.6
+1. 1 − π
+3. Geom1 (π)
+Solution 1.7
+1. The exponential distribution has PDF
+fY (y) = λe−λy
+Therefore, from Definition 1.1,
+
+(0 < y < ∞; λ > 0). ∫ ∞
+
+E(Y ) =
+
+yλe−λy dy. 0
+
+We can carry out the integration in several ways. Integration by parts gives
+∫ ∞
+∫ ∞
+∫ ∞
+de−λy
+−λy ∞
+−λy
+dy = −ye
+E(Y ) =
+yλe
+dy =
+(−y)
+−
+(−1)e−λy dy
+0
+dy
+0
+0
+(
+) 0
+∫ ∞
+∞
+1
+1
+1
+= (0 − 0) +
+e−λy dy = − e−λy = 0 − −
+= . λ
+λ
+λ
+0
+0
+Alternatively,
+∫ ∞
+∫ ∞ −λy
+∫ ∞
+d
+de
+−λy
+E(Y ) =
+yλe
+dy = −λ
+dy = −λ
+e−λy dy
+dλ
+dλ 0
+0
+0
+)
+(
+(
+(
+)
+∞)
+d
+d 1
+1
+1 −λy
+d
+1
+= −λ
+= −λ − 2
+− e
+= −λ
+− (0 − 1) = −λ
+dλ
+λ
+dλ
+λ
+dλ λ
+λ
+0
+1
+= . λ
+2. Again using integration by parts,
+∫ ∞
+∫ ∞
+de−λy
+2
+2
+−λy
+dy
+E(Y ) =
+y λe
+dy =
+(−y 2 )
+dy
+0
+0
+∫ ∞
+∫ ∞
+2 −λy ∞
+−λy
+= −y e
+−
+(−2y)e
+dy = (0 − 0) + 2
+ye−λy dy
+0
+0
+0
+∫
+2 ∞
+2
+2
+1
+2
+=
+yλe−λy dy = E(Y ) =
+= 2,
+λ 0
+λ
+λλ
+λ
+with E(Y ) taken from part 1. Hence,
+2
+Var(Y ) = E(Y ) − (E(Y )) = 2 −
+λ
+2
+
+2
+
+( )2
+1
+1
+= 2. λ
+λ
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+10-4
+
+CHAPTER 10. SOLUTIONS
+
+Solution 1.8
+1. Think of the integrand in Γ(1) as the PDF of one of the continuous distributions
+in Table 1.4, which must integrate to 1. 2. Substitute x2 = 2y in the integrand and introduce further constants to make
+the integrand one of the continuous distributions in Table 1.4. Solution 1.9
+The transformation here is Z = g(Y ) = 1/Y . Hence Y = g −1 (Z) = 1/Z, and
+dg −1 (z)
+1
+= − 2. dz
+z
+We also know that Y has PDF
+fY (y) =
+
+1
+λ(λy)ν−1 e−λy
+Γ(ν)
+
+(0 < y < ∞; ν > 0; λ > 0). Applying the result in (1.3),
+( )ν−1
+1
+1 1
+λ
+dg −1 (z)
+−1
+fY (g (z)) = 2 fY (1/z) = 2
+fZ (z) =
+λ
+e−λ/z
+dz
+z
+z Γ(ν)
+z
+( )ν
+1 1 λ
+=
+e−λ/z (0 < y < ∞; ν > 0; λ > 0). Γ(ν) z z
+Solution 1.10
+1. e−λy from the CDF in Example 1.4
+2. e−λy for y > 0
+3. Expon (λ)
+Solution 1.11
+Because of the symmetry of the normal PDF around µ,
+Pr(Z < µ) = 0.5. As exp(·) is a monotonically increasing transformation,
+Pr(eZ < eµ ) = 0.5,
+and hence from the definition of the median, Y = eZ has median eµ .

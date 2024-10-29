@@ -1,0 +1,627 @@
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.4. ESTIMATING THE PARAMETERS OF THE NORMAL
+Proof. Write
+
+n
+∑
+i=1
+
+Zi2 =
+
+n
+∑
+
+(Zi − Z̄)2 + nZ̄ 2 . 2-11
+
+(2.3)
+
+i=1
+
+(This is just a restatement of the equivalent formulas in (2.2) with Z instead of Y .)
+Then use an argument based on MGFs. ∑
+1. On the right of (2.3), denote by M (t) the MGF of ni=1 (Zi − Z̄)2 . This sum
+is the random variable of interest in Theorem 2.1. By finding its MGF, we will
+identify its distribution. √
+2. In the second term on the right of (2.3), Z̄ ∼ N (0, 1/n), so that nZ̄ ∼ N (0, 1). Hence, nZ̄ 2 ∼ χ21 with MGF (1 − 2t)−1/2 (see Exercise 2.3). 3. We also note that Zi − Z̄ and Z̄ are independent (use the result of Exercise 2.8
+in the special case of Z with µ = 0 and σ 2 = 1 instead of Y ). Thus, the two
+terms on the right of (2.3) are independent and by Lemma 1.3 their sum has
+MGF M (t) × (1 − 2t)−1/2 . ∑
+4. On the left of (2.3), Lemma 2.1 says that ni=1 Zi2 has a χ2n distribution with
+MGF (1 − 2t)−n/2 . 5. Hence, equating the MGFs of the left and right of (2.3),
+(1 − 2t)−n/2 = M (t) × (1 − 2t)−1/2 ,
+and M (t) = (1 − 2t)−(n−1)/2 , which is the MGF of a χ2n−1 random variable. The consequence of Theorem 2.1 is that S 2 /σ 2 has the same distribution as that of a
+χ2n−1 random variable divided by n − 1. 2.4.3
+
+Distribution of the standardized sample mean (unknown variance)
+
+At the end of Section 2.4.1 we looked ahead to making statistical inference about the
+mean µ based on the sample mean, Ȳ . We noted that in practice σ 2 will have to be
+estimated in the standardized sample mean,
+Ȳ − µ
+√
+,
+σ 2 /n
+in (2.1). The obvious strategy is to use the sample variance, S 2 , as it is an unbiased
+estimator of σ 2 . The standardized mean becomes
+Ȳ − µ
+√
+.S 2 /n
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-12
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+Replacing σ 2 by S 2 will change the standard normal distribution on the right of (2.1). It becomes a tn−1 distribution. To see this, we write
+√
+(Ȳ − µ)/ σ 2 /n
+Ȳ − µ
+√
+√
+=
+. (2.4)
+S 2 /n
+S 2 /σ 2
+We then argue as follows about the numerator and denominator of this expression. √
+• The numerator, (Ȳ − µ)/ σ 2 /n is back to the random variable in (2.1) and
+therefore has the same distribution as Z ∼ N (0, 1). √
+• The denominator is S 2 /σ 2 . At the end of Section 2.4.2, we concluded that
+S 2 /σ 2 has the same distribution as that of a χ2n−1 random variable
+divided by
+√
+n − 1. Thus, the denominator has the same distribution as Xn−1 /(n − 1),
+where Xn−1 ∼ χ2n−1 . • The random variables in the numerator and denominator are Ȳ and S 2 , respectively. Now, S 2 is a function of Yi − Ȳ (i = 1, . . . , n), and Exercise 2.8 shows
+that Ȳ and Yi − Ȳ are independent. Therefore, Ȳ and S 2 are independent, and
+the numerator and denominator of (2.4) are independent. These properties of the numerator and denominator of 2.4 are those leading to the t
+distribution in Lemma 2.2. Thus,
+Ȳ − µ
+√
+∼ tn−1 . S 2 /n
+
+(2.5)
+
+In Lemma 2.2, the degrees of freedom are given by d = n − 1, because we related
+S 2 /σ 2 to χ2n−1 . Thus, we will use the tn−1 distribution for inference about the mean
+of a normal distribution when the variance is unknown. This is the result derived
+by Student (1908), which was motivated by his analysis of experimental results at
+Guinness Breweries in Dublin. Example 2.1 (Lung function: confidence interval for the normal mean)
+Schlaich et al. (1998) conducted a study on reduced pulmonary (i.e., lung) function
+in patients with spinal osteoporosis (“manifest osteoporosis”). Their objective was
+to compare pulmonary function between patients with this manifest osteoporosis
+and patients without the condition. For now we will consider only the manifest
+osteoporosis data here. The measure of lung function was forced expiratory volume in 1 second (FEV1). The raw measure is adjusted for sex, age, and body height, leading to a percentage
+(FEV1%) relative to a standard, called y below. (The calculations in this example
+are based on data adjusted for current body height.) Data for n = 34 patients with
+manifest osteoporosis were collected, which we will treat as a random sample from
+a larger population of interest. The authors checked that the data are consistent
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.4. ESTIMATING THE PARAMETERS OF THE NORMAL
+
+2-13
+
+with arising from a normal distribution. They were interested in estimating the
+mean, µ, of the normal distribution when σ 2 is unknown. The data summaries for the sample of size 34 are:
+ȳ = 94.3
+
+and s = 14.7,
+
+where s is the sample standard deviation. The estimate of µ is ȳ = 94.3 here. How much error could there be in this estimate
+just by chance due to random sampling? The analysis Schlaich et al. conducted
+was based on the exact t distribution in (2.5), i.e.,
+Ȳ − µ
+√ ∼ tn−1 . S/ n
+Given 0 < α < 1, by definition the quantiles tn−1,α/2 and tn−1,1−α/2 cut off a
+probability of α/2 in each tail of the tn−1 distribution, and
+)
+(
+Ȳ − µ
+√ < tn−1,1−α/2 = 1 − α. Pr tn−1,α/2 <
+S/ n
+Rearrangement gives
+(
+)
+S
+S
+Pr Ȳ + tn−1,α/2 √ < µ < Ȳ + tn−1,1−α/2 √
+= 1 − α,
+n
+n
+which is a probabilistic bound on µ. Figure 2.6 illustrates. Note that the random variables here are the estimators µ̃ = Ȳ and σ̃ = S. When
+we replace them by the numerical estimates ȳ and s from the data, we have a
+100(1 − α)% confidence interval for µ:
+s
+s
+ȳ + tn−1,α/2 √ < µ < ȳ + tn−1,1−α/2 √ . n
+n
+(Chapter 3 develops the distinction between estimators and estimates.) Because
+the t distribution is symmetric, tn−1,α/2 = −tn−1,1−α/2 . With n = 34 as in the Schlaich et al. study, and α = 0.05 for 95% confidence,
+qt(0.975, df = 33) in R gives tn−1,1−α/2 = t33,0.975 = 2.035. A 95% confidence
+interval for µ is therefore
+s
+14.7
+ȳ ± tn−1,0.975 √ = 94.3 ± 2.035 √ = 94.3 ± 5.1 = [89.2, 99.4]%. n
+34
+(The units of the interval, percentage points, are the same as for the FEV1%
+measurements.)
+♢♢♢
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+0.1
+
+f(t)
+0.2
+
+0.3
+
+0.4
+
+2-14
+
+1−α
+
+0.0
+
+α 2
+−4
+
+−3
+
+−1
+tn−1,α 2
+
+0
+t
+
+α 2
+1
+
+3
+
+4
+
+tn−1,1−α 2
+
+Figure 2.6: Quantiles of the t distribution with n−1 degrees of freedom. The quantiles
+tn−1,α/2 = −tn−1,1−α/2 and tn−1,1−α/2 cut off the probability α/2 in each tail. The
+PDF shown has n − 1 = 33 degrees of freedom as in the Schlaich et al. study, and the
+quantiles shown are for α = 0.05, leading to a 2-sided 95% confidence interval. 2.5
+
+Limiting Normal Distributions
+
+2.5.1
+
+Convergence in distribution
+
+Definition 2.1 (Convergence in distribution)
+Let X1 , X2 , . . . be a sequence of random variables with CDFs FX1 (x),
+FX2 (x), . . ., respectively. Suppose there exists a CDF FX (x) such that
+lim Pr(Xn ≤ x) = FX (x),
+
+n→∞
+
+for all x where FX (x) is continuous. Then we say that the sequence of random
+variables Xn converges in distribution to FX (x). The random variables X1 , X2 , .. . here are not the individual elements of a sample. Rather, Xn will be based on a summary like the sample mean of the entire sample. In the next example, we work with a standardized version of the sample total. The
+example also demonstrates that the limiting distribution may be found from the
+limiting MGF. Example 2.2 (Binomial distribution: normal approximation)
+Let Xn ∼ Bin (n, π) with PMF
+( )
+n x
+fXn (x) =
+π (1 − π)n−x (x = 0, 1, .. . , n). x
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.5. LIMITING NORMAL DISTRIBUTIONS
+
+2-15
+
+We will show that a standardized version of Xn has a distribution that converges
+to the standard normal distribution as n → ∞. We want the limiting distribution of Xn as n → ∞. But the limit cannot possibly
+be a fixed distribution. We know that E(Xn ) = nπ and Var(Xn ) = nπ(1 − π);
+both are changing (increasing) with n. But
+Xn − E(Xn )
+Xn − nπ
+Zn = √
+=√
+Var(Xn )
+nπ(1 − π)
+
+(2.6)
+
+has mean 0 and variance 1. It is the distribution of this standardized quantity
+that converges to a fixed distribution, namely the standard normal. The key steps are: (1) to find the MGF of Zn in (2.6); and (2) to show that the
+MGF tends to that of the standard normal as n → ∞. Derivation of the MGF of Zn is based on Lemma 1.2 for the MGF of a linear
+function of a random variable. Write Zn in (2.6) as Zn = an + bn Xn , where
+√
+π n
+1
+an = −
+and bn = √ ,
+c
+c n
+√
+and c = π(1 − π) to simplify notation. From Table 1.3 the MGF of the binomial
+random variable Xn is
+MXn (t) = (1 − π + πet )n . Applying Lemma 1.2 gives
+√
+
+an t
+
+MZn (t) = e
+
+−πcnt
+
+MXn (bn t) = e
+
+(
+
+1 − π + πe
+
+c
+
+1
+√
+t
+n
+
+)n
+,
+
+which can be rearranged as
+))n (
+)n
+( π (
+(1−π)
+1
+π
+√
+√ t
+t
+t
+− √ t
+− √
+. = (1 − π)e c n + πe c n
+e c n 1 − π + πe c n
+This completes the first step. To find the limiting MGF of Zn as n → ∞, first make Taylor series expansions of
+the exponential functions in MZn (t):
+(
+(
+(
+))
+π2 2
+π
+1
+MZn (t) =
+(1 − π) 1 − √ t + 2 t − O
+2c n
+n3/2
+c n
+(
+)))n
+(
+(1 − π)2 2
+1
+1−π
+t +O
++ π 1+ √ t+
+. 2c2 n
+n3/2
+c n
+The MGF here is a function of t and n, but for any fixed value of t, we are interested
+in the behaviour as n → ∞. The notation O(1/n3/2 ) represents further terms that
+are decreasing at rate 1/n3/2 or faster. Technically, if m(t, n) is the sum of all
+terms after the t2 term, then m(t, n) is O(1/n3/2 ) says that |m(t, n)| < a(t)/n3/2
+for some positive constant a(t) and sufficiently large n. Thus, m(t, n) gives a
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-16
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+√
+negligible contribution for large n, providing the leading terms in 1/ n and 1/n
+do not both cancel. Collecting terms of order t0 , t1 , and t2 gives
+(
+(
+))n
+(1 − π)π 2 + π(1 − π)2 2
+1
+MZn (t) = 1 +
+t +O
+,
+2c2 n
+n3/2
+which further simplifies to
+(
+(
+))n
+1 t2
+1
+MZn (t) = 1 +
++O
+,
+n2
+n3/2
+√
+recalling that c = π(1 − π). As n → ∞, the O(1/n3/2 ) term can be ignored,
+2
+and (1 + (t2 /2)/n)n → et /2 (recall that (1 + x/n)n → ex as n → ∞). Thus,
+2
+
+MZn (t) → et /2
+
+as n → ∞,
+
+i.e., the limiting MGF is that of the standard normal (see Table 1.4). Theorem 1.3
+says that the MGF uniquely identifies a distribution, and hence the distribution
+of Zn converges to the standard normal distribution as n → ∞. ♢♢♢
+
+2.5.2
+
+Limiting distributions and large-sample approximations in statistics
+
+Results on limiting distributions like the result in Example 2.2 show convergence
+in distribution for a standardized version of a random variable. The sample size,
+n, becomes infinitely large. In statistical practice, however, sample sizes are finite. Furthermore, to a statistician the statistic of interest is often an unstandardized
+random variable. Limiting distributions of standardized random variables justify the
+use of approximate distributions for finite samples and unstandardized quantities. For instance, let Xn be a sample from a Bin (n, π) distribution. The sample proportion, Xn /n, is often be used to estimate π. This is not the standardized random
+variable Zn in Example 2.2. We can write Xn /n in terms of Zn , however, by rearranging (2.6):
+√
+Xn = nπ + nπ(1 − π)Zn ,
+and hence
+
+√
+π(1 − π)
+Xn
+=π+
+Zn . n
+n
+For a finite sample, Zn has an approximately standard normal distribution, and the
+theory says that the approximation will become better as the sample size increases. Furthermore, Xn /n is a linear function of Zn , and using the result that a linear
+function of a normal random variable also has a normal distribution (Example 1.30),
+Xn /n has the following approximate distribution:
+(
+)
+π(1 − π)
+Xn
+∼ N π,
+.(2.7)
+n
+n
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.5. LIMITING NORMAL DISTRIBUTIONS
+
+2-17
+
+This is the argument for quantifying how accurate Xn /n is as an estimator of π in a
+statistical sense. Example 2.3 (Opinion polls: margin of error (confidence interval))
+Opinion polls are typically conducted with sample sizes like n = 1000 or n =
+3000 from a large population such as all adult Canadians. Often, the results will
+be qualified with a statement like, “These results have a margin of error of 3
+percentage points 19 times out of 20.” Let’s see how such a statement can be
+justified. For definiteness, take the Nanus poll taken in September 2016 commissioned by
+Clean Energy Canada (available at
+http://cleanenergycanada.org/wp-content/uploads/2016/09/
+Clean-Energy-Canada-Nanos-Climate-Policy-Polling-Report-Oct-2016. pdf). It asked 1000 randomly selected Canadian adults a number of questions
+about climate change. The findings included:
+• 48% agreed with the statement, “A changing climate presents a significant
+threat to our economic future” (and a further 23% somewhat agreed). • 33% supported, “Having a price on carbon to reduce the use of fossil fuels
+such as coal, oil or natural gas” (and a further 26% somewhat supported
+the statement). In the methodology section of the report, we find, “The margin of error is ±3.1
+percentage points 19 times out of 20.” The margin of error is a measure of sampling
+variability. Thus, to check the calculation, we treat the sample as a random sample
+from a large population. Then, the number of people agreeing with a particular
+statement (e.g., the question about significant threat to our economic future) is a
+binomial random variable with n = 1000 (the sample size here) and probability π. The parameter π represents the unknown proportion of people in the population
+who agree with this particular statement. The Nanos poll was stratified by age,
+gender, and region and not a simple random sample, which implies our binomial
+model probability is oversimplified. Nonetheless, the impact on the margin of
+error calculation is usually small. The approximate distribution of Xn /n in (2.7) implies that approximately
+(
+)
+π(1 − π)
+Xn
+− π ∼ N 0,
+. n
+n
+On the left is the error in estimating π by Xn /n. The normal distribution has
+the property that 95% of the probability (“19 times out of 20”) lies within ±1.96
+standard deviations of the mean. Thus, the error is within
+√
+π(1 − π)
+(2.8)
+±1.96
+n
+approximately 19 times out of 20. There are two further practical difficulties in completing the computation. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-18
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+• What value should be used for π in the error calculation? Recall that the
+purpose of the poll is to estimate π, which is unknown. • Most polls, like the Nanos poll, ask several questions. Each question could
+have a different true value of π. It would be overly complicated to give a
+different error calculation for every question. To overcome both of these difficulties, pollsters will often report (2.8) for π = 0.5. This is the value of π that maximizes the variance in the approximate normal
+distribution of the error and hence gives the widest, worst-case bounds on the
+margin of error. Returning to the Nanos poll, with n = 1000 the worst-case margin of error
+from (2.8) is
+√
+0.5(1 − 0.5)
+±1.96
+= ±1.96(0.0158) = ±0.031,
+1000
+i.e., 3.1%, which is the margin of error reported. ♢♢♢
+
+Error bounds like those in Example 2.3 are also called confidence intervals and are
+tackled more generally in Section 4.6. 2.5.3
+
+Central limit theorem
+
+The normal approximation to the binomial distribution is just a special case of the
+central limit theorem (CLT). Theorem 2.2 (Central limit theorem (CLT))
+Let Y1 , Y2 , . . . be a sequence of IID random variables with mean µ, variance
+σ 2 , and MGF defined in a neighbourhood of zero. Define the sum
+Xn =
+
+n
+∑
+
+Yi . i=1
+
+The standardized sum,
+Zn =
+
+Xn − nµ
+√
+,
+σ n
+
+(2.9)
+
+converges in distribution to N (0, 1). Referring back to Definition 2.1 for convergence in distribution, the CLT says that
+the CDF of Zn approaches that of the standard normal as n → ∞, i.e., Pr(Zn <
+z) → Pr(Z < z), where Z ∼ N (0, 1). This is sufficient for statistical purposes: in
+Example 2.3, for instance, the limits for the 95% confidence interval use z0.975 = 1.96,
+a quantile of the standard normal defined by the CDF. Note, however, that the speed
+of convergence will be slower in the extreme tails of the Zn distribution.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.6. GETTING IT DONE IN R
+
+2-19
+
+We can also express the CLT in terms of the arithmetic mean, Ȳn = Xn /n. Dividing
+the top and bottom of (2.9) by n, we have
+Zn =
+
+Ȳn − µ
+√
+σ/ n
+
+(2.10)
+
+converges in distribution to N (0, 1). We can use either form depending on whether
+its easier to work with a sum or mean of random variables. The proof of the CLT, given in Section 2.10, is based on a generalization of the
+strategy in Example 2.2 for the binomial distribution. Example 2.4 (Binomial distribution: normal approximation via CLT)
+In Example 2.2 the normal approximation to the binomial distribution was developed by working directly with the binomial MGF. The CLT, a more general
+result, gives the same limiting normal approximation almost immediately.Let B1 , .. . , Bn be n independent Bern (π) random variables. Then
+Xn =
+
+n
+∑
+
+Bi
+
+i=1
+
+has the distribution Xn ∼ Bin (n, π) (Exercise 1.19). We have expressed the
+binomial random variable as a sum, so the sum version of the CLT in (2.9) is
+more convenient. As E(Bi ) = π and Var(Bi ) = π(1 − π), the CLT says that
+X − nπ
+√ n
+nπ(1 − π)
+converges in distribution to the standard normal. This is the result obtained in
+Example 2.2. ♢♢♢
+
+2.6
+
+Getting It Done in R
+
+2.6.1
+
+Sample mean, standard deviation, and variance
+
+The functions mean, sd, and var are useful for obtaining the sample mean, standard
+deviation, and variance, respectively. 2.6.2
+
+Quantiles of the t distribution
+
+R has functions to compute quantiles for commonly used distributions. Corresponding
+to the functions in Table 1.9 with names starting with d for PMFs and PDFs, names
+starting with q compute quantiles. For instance, to compute a confidence interval in the lung-function study of Example 2.1, quantiles of the t distribution are computed by qt.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-20
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+> qt(p = 0.025 , df = 33)
+[1] -2.034515
+> qt(p = 0.975 , df = 33)
+[1] 2.034515
+
+Here, p is the probability to the left of the quantile, and there are 33 degrees of
+freedom because n = 34 in the particular study. Whereas pt(y, ...) returns a CDF probability for a given value or quantile of a
+random variable with a t distribution, the function qt(p, ...) returns a quantile for
+a given probability. Thus, the quantile function is the inverse cumulative distribution
+function. In general, for given probability p, the quantile function returns y such
+that Pr(Y ≤ y) = FY (y) = p, or equivalently y = F −1 (p), where F −1 is the inverse
+function of the CDF. 2.6.3
+
+Limiting normal distributions
+
+Similarly, in Example 2.3 we needed quantiles of the standard normal distribution,
+which are available from qnorm. > qnorm (p = 0.025)
+[1] -1.959964
+> qnorm (p = 0.975)
+[1] 1.959964
+
+Quantiles of the normal distribution with non-standard mean and variance are obtained via the arguments mean and sd of qnorm. 2.7
+
+Learning Outcomes
+
+On completion of this chapter you should be able to demonstrate the following skills. 1. Normal distribution
+(a) Use the MGF to derive the mean, variance, and distribution of a linear
+function of a normal random variable. (You can interpret “derive” here as
+justify via an appropriate result.)
+(b) Derive the mean, variance, and distribution of a linear combination of
+normal random variable. (c) Standardize a normal random variable to have a standard normal distribution. 2. χ2 distribution
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.7. LEARNING OUTCOMES
+
+2-21
+
+(a) Derive the MGF of the χ21 distribution. (b) Show via the MGF that the square of a standard normal random variable
+has a χ21 distribution. (c) Find the MGF of the χ2d distribution. (d) Show that the sum of squares of d independent standard normal random
+variables has a χ2d distribution. 3. Random sample from a normal distribution
+Let Y1 , . . . , Yn be a random sample of independent N (µ, σ 2 ) random variables. (a) Derive the mean and variance of the sample mean, Ȳ . (b) Write down unstandardized and standardized distributions of Ȳ when σ 2
+is known. (c) Write down the distribution of the sample variance, S 2 . (d) Show that the sample mean and sample variance are statistically independent. (e) Write down a standardized version of Ȳ when σ 2 is unknown. Argue
+that the standardized random variable has the properties leading to a t
+distribution with specified degrees of freedom. (f) Use the t distribution to compute a confidence interval for µ when σ 2 is
+unknown for given data. 4. Central Limit Theorem
+(a) Apply the CLT to establish convergence in distribution to the standard
+normal for a random variable with a specified distribution (e.g., binomial). Included here is the formulation of the random variable as a sample mean
+or sample sum, standardizing it, and checking the conditions of the CLT. A detailed proof of the theorem is not expected. (b) Under a binomial probability model, convert the standard normal distribution of a standardized version of the sample proportion as n → ∞ to an
+approximate normal distribution of the unstandardized sample proportion
+and a finite sample size. (c) Compute the “margin of error” in estimating the parameter π in the binomial distribution for given data.5. Explanation
+Explain your reasoning by describing the results you are using, along with any
+assumptions that are necessary. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-22
+
+2.8
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+Exercises
+
+Exercise 2.1
+Let Y ∼ N (µ, σ 2 ). Show that the standardized random variable Z = (Y − µ)/σ has
+a N (0, 1) distribution.Exercise 2.2
+Let Y1 , .. . , Yn be independent N (µ, σ 2 ) random variables. 1. Write down the MGF of Yi . 2. Derive the MGF of Y1 + · · · + Yn . 3. Hence, derive the MGF of Ȳ = (Y1 + · · · + Yn )/n. √
+4. Hence, derive the MGF of Z = (Ȳ − µ)/(σ/ n) and identify its distribution. In parts 2–4, you may use without proof general properties in Chapter 1 on MGFs. When you use a property, however, remember to state it, make clear how it is being
+applied, and check any assumptions required for the result. Exercise 2.3
+Let Y ∼ χ21 . Show that the MGF of Y is (1 − 2t)−1/2 . Exercise 2.4
+[Quiz #1, 2010-11, Term 2, except that showing “Var(Z 2 ) = 2” was not included]
+Let Z have a standard normal distribution with expectation 0 and variance 1, i.e.,
+Z ∼ N (0, 1). 1. Write down the definition of MZ 2 (t), the moment generating function (MGF)
+of Z 2 . 2. From the definition, show MZ 2 (t) = (1 − 2t)−1/2 . 3. Use MZ 2 (t) to show that E(Z 2 ) = 1 and Var(Z 2 ) = 2. 4. Argue that the distribution of Z 2 is χ21 . Exercise 2.5
+Show that the MGF of a random variable with a χ2d distribution is (1 − 2t)−d/2 .Exercise 2.6
+[Quiz #1, 2011-12, Term 1, except that part 5 was not included] Let Z1 , .. . , Zd be d
+independent N (0, 1) random variables, and let
+Y = Z12 + · · · + Zd2 . You may use without proof the result that Zi2 ∼ χ21 for i = 1, .. . , d, and that the
+moment generating function (MGF) of the χ21 distribution is (1 − 2t)−1/2 (see Exercise 2.4).

@@ -1,0 +1,1001 @@
+Statistical Inference: A Primer on
+Likelihood and Bayesian Methods
+
+5
+−354. 305
+STAT
+−354
+Introduction to Statistical
+Inference
+
+60
+
+5
+
+−353. 2
+
+s) )
+m
+k
+n(
+2 (millio
+50
+σ
+40
+30
+
+−352.5
+
+Course Notes Prepared by
+William J. Welch
+Department of Statistics
+University of British Columbia
+3182 Earth Sciences Building
+−352
+2207 Main Mall
+Vancouver BC, Canada−V6T
+353 1Z4
+−355
+
+66
+
+20
+
+Version: August 14, 2019
+
+56
+
+58
+β (1
+
+64
+
+62
+18 s))
+0
+6
+0
+1
+57 ×
+8
+. 0
+(3
+
+© Copyright William J. Welch 2009–2019
+
+All rights reserved. Contents
+1 Probability Tools
+1.1
+
+1.2
+
+1.3
+
+1.4
+
+1.5
+
+1-1
+
+Discrete and Continuous Random Variables . . . . . . . . . . . .. . 1-1
+
+1.1.1
+
+Probability mass function and probability density function . . 1-2
+
+1.1.2
+
+Cumulative distribution function . . . . . . . . . . . . . . . . 1-3
+
+Mean, Median, and Mode . . . . . . . . . . . . . . . . . . . . . . . . 1-4
+
+1.2.1
+
+Mean or expectation . . . . . . . . . . . . . . . . . . . . . . . 1-4
+
+1.2.2
+
+Median . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1-6
+
+1.2.3
+
+Mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1-6
+
+Variance
+
+.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1-7
+
+1.3.1
+
+Computation . . . . . . . . . . . . . . . . . . . . . . . . . . . 1-7
+
+1.3.2
+
+Standard deviation .. . . . . . . . . . . . . . . . . . . . . . . 1-9
+
+1.3.3
+
+Chebyshev’s inequality . . . . . . . . . . . . . . . . . . . .. . 1-9
+
+Commonly Used Discrete Distributions
+
+.. . . . . . . . . . . . .. . 1-9
+
+1.4.1
+
+Bernoulli distribution .. . . . . . . . . . . . . . . . . . . . . 1-11
+
+1.4.2
+
+Binomial distribution .. . . . . . . . . . . . . . . . . . . . . . 1-11
+
+1.4.3
+
+Geometric distribution . . . . . . . . . . . . . . . . . . . . . . 1-11
+
+1.4.4
+
+Negative-binomial distribution
+
+1.4.5
+
+Poisson distribution . . . . . . . . . . . . . . . . . . . . . . . 1-12
+
+. . . . . . . . . . . . . . .. . 1-12
+
+Commonly Used Continuous Distributions .. . . . . . . . . . . .. . 1-12
+1.5.1
+
+Beta distribution .. . . . . . . . . . . . . . . . . . . . . .. . 1-12
+
+1.5.2
+
+Exponential distribution .. . . . . . . . . . . . . . . . . . . . 1-14
+
+1.5.3
+
+Gamma distribution .. . . . . . . . . . . . . . . . . . . .. . 1-14
+
+1.5.4
+
+Laplace distribution .. . . . . . . . . . . . . . . . . . . .. . 1-16
+
+1.5.5
+
+Normal distribution .. . . . . . . . . . . . . . . . . . . .. . 1-16
+
+1.5.6
+
+Log-normal distribution .. . . . . . . . . . . . . . . . . .. . 1-16
+
+i
+
+ii
+
+CONTENTS
+
+1.6
+
+1.7
+
+1.8
+
+1.9
+
+1.5.7
+
+χ2 , F , and t distributions .. . . . . . . . . . . . . . . . . . . 1-17
+
+1.5.8
+
+Uniform distribution .. . . . . . . . . . . . . . . . . . . .. . 1-17
+
+Function of a Random Variable .. . . . . . . . . . . . . . . . . .. . 1-17
+1.6.1
+
+PDF of a function of a continuous random variable .. . .. . 1-17
+
+1.6.2
+
+Expectation of a function of a random variable .. . . . . . . 1-18
+
+Several Variables . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 1-20
+1.7.1
+
+Joint and marginal distributions .. . . . . . . . . . . . .. . 1-20
+
+1.7.2
+
+Conditional distributions
+
+1.7.3
+
+Statistical independence .. . . . . . . . . . . . . . . . . . . . 1-23
+
+1.7.4
+
+Random sample .. . . . . . . . . . . . . . . . . . . . . . . . . 1-24
+
+1.7.5
+
+Covariance .. . . . . . . . . . . . . . . . . . . . . . . . .. . 1-25
+
+1.7.6
+
+Expectation of a linear combination of random variables . . . 1-26
+
+1.7.7
+
+Variance of a linear combination of random variables .. . . . 1-28
+
+1.7.8
+
+Covariance between linear functions or combinations of random
+variables .. . . . . . . . . . . . . . . . . . . . . . . . . .. . 1-29
+
+1.7.9
+
+Bivariate normal distribution .. . . . . . . . . . . . . . . . . 1-30
+
+Moment Generating Functions
+
+.. . . . . . . . . . . . . . . . . . . 1-22
+
+. . . . . . . . . . . . . . . . . . . . . 1-31
+
+1.8.1
+
+Uses of moment generating functions
+
+. . . . . . . . . . .. . 1-31
+
+1.8.2
+
+Definition of the moment generating function .. . . . . .. . 1-32
+
+1.8.3
+
+Finding moments from the MGF .. . . . . . . . . . . . .. . 1-35
+
+1.8.4
+
+MGF of a linear function or a sum .. . . . . . . . . . . .. . 1-38
+
+1.8.5
+
+The MGF identifies a distribution .. . . . . . . . . . . . . . . 1-38
+
+Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . . . . 1-40
+
+1.10 Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . . . . 1-43
+1.11 Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 1-45
+2 The Normal Distribution in Statistics
+
+2-1
+
+2.1
+
+Introduction .. . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 2-1
+
+2.2
+
+Some Properties of the Normal Distribution .. . . . . . . . . . .. . 2-2
+
+2.3
+
+Distributions Derived From the Normal
+
+.. . . . . . . . . . . . . . . 2-2
+
+2.4
+
+2
+
+2.3.1
+
+The χ distribution
+
+. . . . . . . . . . . . . . . . . . . . . . . 2-2
+
+2.3.2
+
+The t distribution . . . . . . . . . . . . . . . . . . . . . . . . 2-4
+
+2.3.3
+
+The F distribution . . . . . . . . . . . . . . . . . . . . . .. . 2-7
+
+Estimating the Parameters of the Normal .. . . . . . . . . . . . . . 2-8
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+CONTENTS
+
+2.5
+
+2.6
+
+iii
+
+2.4.1
+
+Distribution of the sample mean (known variance) . . . .. . 2-9
+
+2.4.2
+
+Distribution of the sample variance
+
+2.4.3
+
+Distribution of the standardized sample mean (unknown variance) .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2-11
+
+. . . . . . . . . . . .. . 2-10
+
+Limiting Normal Distributions .. . . . . . . . . . . . . . . . . . .. . 2-14
+2.5.1
+
+Convergence in distribution .. . . . . . . . . . . . . . . .. . 2-14
+
+2.5.2
+
+Limiting distributions and large-sample approximations in
+statistics .. . . . . . . . . . . . . . . . . . . . . . . . . . .. . 2-16
+
+2.5.3
+
+Central limit theorem .. . . . . . . . . . . . . . . . . . . . . 2-18
+
+Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . .. . 2-19
+2.6.1
+
+Sample mean, standard deviation, and variance .. . . . .. . 2-19
+
+2.6.2
+
+Quantiles of the t distribution .. . . . . . . . . . . . . . .. . 2-19
+
+2.6.3
+
+Limiting normal distributions .. . . . . . . . . . . . . . .. . 2-20
+
+2.7
+
+Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . .. . 2-20
+
+2.8
+
+Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2-22
+
+2.9
+
+Appendix: Proof of Lemma 2.2 . . . . . . . . . . . . . . . . . . .. . 2-31
+
+2.10 Appendix: Proof of the Central Limit Theorem .. . . . . . . . . . . 2-32
+3 Statistical Estimation
+
+3-1
+
+3.1
+
+Statistical Models: The Role of Probability . . . . . . . . . . . . . . . 3-1
+
+3.2
+
+The Frequentist Philosophy . . . . . . . . . . . . . . . . . . . . . . . 3-2
+
+3.3
+
+Properties of an Estimator
+
+. . . . . . . . . . . . . . . . . . . . . . . 3-7
+
+3.3.1
+
+Bias . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3-7
+
+3.3.2
+
+Variance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3-7
+
+3.3.3
+
+Mean squared error . . . . . . . . . . . . . . . . . . . . . . . . 3-7
+
+3.3.4
+
+Practical perspective . . . . . . . . . . . . . . . . . . . . . . . 3-9
+
+3.3.5
+
+Consistency
+
+3.3.6
+
+Relative Error . . . . . . . . . . . . . . . . . . . . . . . . . . . 3-12
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . 3-10
+
+3.4
+
+Comparing Estimators . . . . . . . . . . . . . . . . . . . . . . . . . . 3-14
+
+3.5
+
+Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . . . . 3-14
+
+3.6
+
+Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . . . . 3-15
+
+3.7
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 3-15
+
+4 Maximum Likelihood Estimation
+4.1
+
+4-1
+
+Maximum Likelihood Estimation: Basic Ideas .. . . . . . . . . . . . © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 4-1
+
+2019.8.14
+
+iv
+
+CONTENTS
+4.1.1
+
+What is a likelihood function and why maximize it?. . . .. . 4-1
+
+4.1.2
+
+Maximum likelihood estimates in general .. . . . . . . . .. . 4-8
+
+4.2
+
+Properties of Maximum Likelihood Estimators
+
+4.3
+
+Consistency of the ML Estimator . . . . . . . . . . . . . . . . . .. . 4-11
+
+4.4
+
+Regularity conditions
+
+4.5
+
+Large-Sample Variance of the ML Estimator
+
+4.6
+
+.. . . . . . . . . . . 4-9
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . 4-13
+. . . . . . . . . . . . . 4-14
+
+4.5.1
+
+Observed information . . . . . . . . . . . . . . . . . . . . . . 4-15
+
+4.5.2
+
+Fisher information .. . . . . . . . . . . . . . . . . . . . .. . 4-20
+
+4.5.3
+
+Observed versus Fisher information
+
+4.5.4
+
+Large-sample normality of the maximum likelihood estimator
+
+Confidence Intervals From the ML Estimator
+
+.. . . . . . . . . . . . . 4-24
+4-25
+
+. . . . . . . . . . . . . 4-28
+
+4.6.1
+
+Large-sample approximations . . . . . . . . . . . . . . . .. . 4-28
+
+4.6.2
+
+Parameter transformation for better approximation .. . . . . 4-32
+
+4.7
+
+Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . .. . 4-34
+
+4.8
+
+Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . . . . 4-35
+
+4.9
+
+Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 4-36
+
+4.A Appendix: Equivalence of Observed and Fisher Information .. . . . 4-46
+5 Maximum Likelihood Estimation: Several Parameters
+
+5-1
+
+5.1
+
+Introduction .. . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 5-1
+
+5.2
+
+Maximum likelihood estimates
+
+.. . . . . . . . . . . . . . . . . . . . 5-1
+
+5.3
+
+Large-sample unbiasedness of ML estimators . . . . . . . . . . . . . . 5-3
+
+5.4
+
+Large-Sample Variances and Covariances of ML Estimators . . . .. . 5-4
+
+5.5
+
+Confidence Intervals .. . . . . . . . . . . . . . . . . . . . . . . .. . 5-6
+
+5.6
+
+Censored Data .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5-8
+
+5.7
+
+Computation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5-11
+
+5.8
+
+Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . .. . 5-12
+
+5.9
+
+Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . . . . 5-13
+
+5.10 Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5-14
+6 Bayesian Estimation
+
+6-1
+
+6.1
+
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-1
+
+6.2
+
+Bayes’ Rule .. . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 6-2
+
+6.3
+
+Bayesian Posterior Distribution of a Parameter .. . . . . . . . . . . 6-6
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+CONTENTS
+
+v
+
+6.4
+
+Bayesian Credible Intervals . . . . . . . . . . . . . . . . . . . . .. . 6-14
+
+6.5
+
+Normal Distribution .. . . . . . . . . . . . . . . . . . . . . . . . . . 6-16
+
+6.6
+
+Priors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-24
+
+6.7
+
+Bayesian Predictive Distributions . . . . . . . . . . . . . . . . . . . . 6-25
+
+6.8
+
+Computation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-27
+
+6.9
+
+Bayesian Versus Frequentist Paradigms . . . . . . . . . . . . . . . . . 6-30
+
+6.10 Getting It Done in R .. . . . . . . . . . . . . . . . . . . . . . . . . . 6-31
+6.10.1 Monte Carlo predictive distribution . . . . . . . . . . . . .. . 6-31
+6.10.2 Gibbs sampling from the posterior distribution .. . . . .. . 6-31
+6.11 Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . .. . 6-32
+6.12 Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 6-33
+7 Hypothesis Testing
+
+7-1
+
+7.1
+
+Introduction
+
+.. . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 7-1
+
+7.2
+
+What is a Hypothesis Test?. . . . . . . . . . . . . . . . . . . . .. . 7-1
+
+7.3
+
+Formulation of a Hypothesis Test .. . . . . . . . . . . . . . . . .. . 7-4
+
+7.4
+
+Tests Based on the Likelihood Ratio .. . . . . . . . . . . . . . . . . 7-10
+7.4.1
+
+Neyman-Pearson Lemma . . . . . . . . . . . . . . . . . . . . . 7-10
+
+7.4.2
+
+Composite hypotheses . . . . . . . . . . . . . . . . . . . .. . 7-17
+
+7.5
+
+Generalized likelihood ratio tests .. . . . . . . . . . . . . . . . .. . 7-20
+
+7.6
+
+Normal Distribution: Testing µ With σ 2 Unknown .. . . . . . .. . 7-25
+
+7.7
+
+p-values .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 7-30
+
+7.8
+
+Practical Significance Versus Statistical Significance
+
+7.9
+
+Connection With Confidence Intervals .. . . . . . . . . . . . . . . . 7-34
+
+. . . . . . . . . 7-33
+
+7.10 Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . .. . 7-37
+7.11 Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . .. . 7-38
+7.12 Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-40
+7.13 Appendix: Sketch proof of Wilks’ Theorem
+
+. . . . . . . . . . . . . . 7-52
+8-1
+
+8 Analysis of Categorical Data
+8.1
+
+The Multinomial Distribution . . . . . . . . . . . . . . . . . . . .. . 8-1
+
+8.2
+
+Maximum Likelihood Estimation .. . . . . . . . . . . . . . . . . . . 8-3
+
+8.3
+
+Hypothesis Tests for the Multinomial . . . . . . . . . . . . . . . .. . 8-5
+
+8.3.1
+
+8-5
+
+Generalized likelihood ratio tests .. . . . . . . . . . . . . . . © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+vi
+
+CONTENTS
+8.3.2
+
+Pearson’s statistic . . . . . . . . . . . . . . . . . . . . . . . . 8-9
+
+8.4
+
+Goodness of Fit Tests . . . . . . . . . . . . . . . . . . . . . . . . . . 8-10
+
+8.5
+
+Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . .. . 8-18
+
+8.6
+
+Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . . . . 8-19
+
+8.7
+
+Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 8-20
+
+9 Comparative Studies
+
+9-1
+
+9.1
+
+Independent Versus Paired Samples .. . . . . . . . . . . . . . . .. . 9-1
+
+9.2
+
+Two Independent Samples .. . . . . . . . . . . . . . . . . . . . .. . 9-2
+
+9.2.1
+
+Likelihood methods
+
+.. . . . . . . . . . . . . . . . . . . .. . 9-2
+
+9.2.2
+
+Methods for the normal distribution .. . . . . . . . . . . . . 9-9
+
+9.3
+
+Several Independent Multinomial Samples .. . . . . . . . . . . . . . 9-12
+
+9.4
+
+Two-Way Contingency Tables . . . . . . . . . . . . . . . . . . . . . . 9-15
+
+9.5
+
+Paired Samples .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9-17
+
+9.6
+
+9.5.1
+
+Paired data .. . . . . . . . . . . . . . . . . . . . . . . . .. . 9-17
+
+9.5.2
+
+Model for difference data
+
+9.5.3
+
+Estimation and hypothesis testing .. . . . . . . . . . . . . . 9-19
+
+9.5.4
+
+Statistical advantages of paired data . . . . . . . . . . . . . . 9-22
+
+. . . . . . . . . . . . . . . . . . . . 9-18
+
+Getting It Done in R . . . . . . . . . . . . . . . . . . . . . . . . .. . 9-24
+9.6.1
+
+Several multinomial samples or a contingency table .. . . . . 9-24
+
+9.6.2
+
+Paired data .. . . . . . . . . . . . . . . . . . . . . . . . .. . 9-25
+
+9.7
+
+Learning Outcomes .. . . . . . . . . . . . . . . . . . . . . . . . . . . 9-25
+
+9.8
+
+Exercises .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9-27
+
+10 Solutions
+
+10-1
+
+Bibliography
+
+Bib-1
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+List of Tables
+1.1
+
+Probability mass function for the final-exam grade . . . . . . . . .. . 1-4
+
+1.2
+
+Binomial PMF and CDF for n = 3 trials and probability of success
+π = 1/4 .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 1-6
+
+1.3
+
+Some commonly used discrete distributions .. . . . . . . . . . . .. . 1-10
+
+1.4
+
+Some commonly used continuous distributions .. . . . . . . . . .. . 1-13
+
+1.5
+
+HIV vaccine: two-way frequency table by treatment and HIV-infection
+status .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 1-21
+
+1.6
+
+Joint probability function for the final-exam and quiz grades .. . . . 1-27
+
+1.7
+
+Probability mass function for the course grade .. . . . . . . . . .. . 1-28
+
+1.8
+
+PMF of a negative-binomial random variable with n = 2 and π = 0.1
+
+1.9
+
+R functions for the PMF or PDF of some common distributions . . . 1-41
+
+3.1
+
+Faults on data lines .. . . . . . . . . . . . . . . . . . . . . . . . .. . 3.2
+
+Sample size to estimate the binomial parameter π: nabs achieves
+sd(π̃) ≤ 0.015 and nrel achieves sd(π̃)/π ≤ 0.03 .. . . . . . . . . .. . 3-13
+
+3.3
+
+R functions to return the PDF, CDF, quantile, or random numbers for
+the normal distribution .. . . . . . . . . . . . . . . . . . . . . . . . . 3-15
+
+4.1
+
+Exponential distribution: approximate variance of λ̃ from observed
+information compared with the variance over repeated samples . .. . 4-18
+
+4.2
+
+Faults on data lines of length about 22 km .. . . . . . . . . . . .. . 4-37
+
+4.3
+
+Number of expression events for a sample of 298 cell cycles .. . .. . 4-38
+
+5.1
+
+Lung function: exact and ML confidence intervals for the normal mean 5-7
+
+6.1
+
+Conjugate priors for some distributions .. . . . . . . . . . . . . .. . 6-25
+
+7.1
+
+Definitions of Type I and Type II errors .. . . . . . . . . . . . .. . 7.2
+
+Normal distribution: rejection regions for testing H0 : µ = µ0 .. . . . 7-26
+vii
+
+1-41
+
+3-3
+
+7-7
+
+viii
+
+LIST OF TABLES
+7.3
+
+Data summaries of a measure of depression for four groups of patients
+in a smoking-cessation study . . . . . . . . . . . . . . . . . . . . .. . 7-48
+
+8.1
+
+Frequencies of XX, XY, and YY genotypes .. . . . . . . . . . . .. . 8-3
+
+8.2
+
+Wilks’ and Pearson’s statistics to test the 9:3:3:1 Mendelian ratio . . 8-7
+
+8.3
+
+Wilks’ and Pearson’s statistics to test the Hardy-Weinberg principle . 8-9
+
+8.4
+
+Faults on data lines of length about 90 km .. . . . . . . . . . . .. . 8-11
+
+8.5
+
+Faults on data lines of length about 90 km and Pearson’s goodness of
+fit statistic .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 8-12
+
+8.6
+
+Observed and expected frequencies of differences in grapefruit solids . 8-17
+
+8.7
+
+Number of expression events for a sample of 298 cell cycles .. . .. . 8-22
+
+9.1
+
+Data summaries for two samples of data-transmission lines .. . .. . 9-3
+
+9.2
+
+Data summaries of smoking-cessation rates for two groups of patients
+
+9-7
+
+9.3
+
+Data on average recall index for an advertisement . . . . . . . . .. . 9-11
+
+9.4
+
+Observed and expected frequencies in a study of sugar-intake and diabetes .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 9-13
+
+9.5
+
+Observed frequencies in I categories for J independent samples . . . 9-14
+
+9.6
+
+Biological activities of 10 samples .. . . . . . . . . . . . . . . . .. . 9-21
+
+9.7
+
+Frequencies of people with and without diabetes in three independent
+samples .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . 9-32
+
+9.8
+
+Frequencies of not smoking versus smoking after one year in four independent samples .. . . . . . . . . . . . . . . . . . . . . . . . .. . 9-34
+
+9.9
+
+Frequency data on flower colour and shape .. . . . . . . . . . . .. . 9-35
+
+9.10 Frequencies of breast cancer, all other cancers, or no cancer in two
+independent samples .. . . . . . . . . . . . . . . . . . . . . . . .. . 9-37
+9.11 International roughness index (IRI) measurements .. . . . . . . . . . 9-40
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+List of Figures
+1.1
+
+PDF of the exponential distribution . . . . . . . . . . . . . . . . .. . 1-14
+
+1.2
+
+PDF of the gamma distribution .. . . . . . . . . . . . . . . . . .. . 1-15
+
+1.3
+
+PDFs of the Laplace and normal distributions .. . . . . . . . . .. . 1-16
+
+1.4
+
+PDF of the t distribution with 10 degrees of freedom .. . . . . .. . 1-43
+
+2.1
+
+Relationships between distributions derived from the normal .. . . . 2-3
+
+2.2
+
+PDF of the χ2 distribution .. . . . . . . . . . . . . . . . . . . . .. . 2-4
+
+2.3
+
+PDF of the t distribution
+
+.. . . . . . . . . . . . . . . . . . . . .. . 2-5
+
+2.4
+
+χ23 PDF and t3 PDF as a mixture of normals .. . . . . . . . . . .. . 2-7
+
+2.5
+
+PDF of the F distribution .

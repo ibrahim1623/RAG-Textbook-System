@@ -1,0 +1,1019 @@
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.1. DISCRETE AND CONTINUOUS RANDOM VARIABLES
+
+1-3
+
+Example 1.3 (Normal distribution: symmetry)
+A random variable with a normal distribution has PDF
+1
+2
+1
+e− 2σ2 (y−µ)
+2πσ
+over possible values −∞ < y < ∞, for given constants µ and σ 2 > 0. The PDF
+satisfies
+fY (µ − x) = fY (µ + x) (0 ≤ x < ∞)
+
+fY (y) = √
+
+and hence is symmetric around µ for any value of σ 2 . 1.1.2
+
+Cumulative distribution function
+
+For either a continuous or a discrete random variable, Y , the cumulative distribution
+function (CDF) is defined as
+FY (y) = Pr(Y ≤ y). For a particular value y, the probability will be evaluated by summation (discrete Y )
+or integration (continuous Y ) over values up to y. For a continuous random variable,
+it does not matter whether the CDF is defined as Pr(Y ≤ y) or Pr(Y < y). For a discrete random variable, there is usually little choice but to sum the PDF
+explicitly to compute the CDF. For instance, the Poisson CDF evaluated at, say,
+y = 3 is
+3
+∑
+e−µ µy
+,
+FY (3) = Pr(Y ≤ 3) =
+y! y=0
+and not much simplification is possible. For some commonly met continuous distributions, however, simple expressions for
+the CDF are available by integrating the PDF. Conversely, the PDF is obtained by
+differentiating the CDF. Example 1.4 (Exponential distribution: CDF)
+Let Y have an Expon (λ) distribution. From the definition of the CDF,
+∫ y
+∫ y
+t=y
+λe−λt dt = −e−λt t=0 = −e−λy −(−1) = 1−e−λy . FY (y) = Pr(Y ≤ y) =
+fY (t) dt =
+0
+
+0
+
+(Here, t is a dummy variable as we want to integrate over all values t of Y up to
+y.)
+Similarly, we can go from the CDF to the PDF:
+dFY (y)
+d
+= (1 − e−λy ) = λe−λy = fY (y). dy
+dy
+
+♢♢♢
+
+Statisticians sometimes find it convenient to work in terms of the survival function
+or survivor function,
+SY (y) = Pr(Y > y) = 1 − FY (y). It is just the complement of the CDF. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-4
+
+CHAPTER 1. PROBABILITY TOOLS
+Grade on
+final (y)
+60
+90
+
+fY (y)
+0.2
+0.8
+
+Table 1.1: Probability mass function for the final-exam grade of a randomly chosen
+student in a given section of a statistics course
+
+1.2
+
+Mean, Median, and Mode
+
+Much statistical analysis is concerned with estimating an average or typical value to
+represent a distribution of possible values. There are several definitions of “average”. 1.2.1
+
+Mean or expectation
+
+The mean or expected value of a random variable Y is just a weighted average over
+the possible values, y, with the weights given by fY (y). Definition 1.1 (Expectation (mean))
+The expected value or mean of a random variable Y is given by the sum
+E(Y ) =
+
+∑
+
+yfY (y)
+
+y
+
+if Y takes discrete values, or by the integral
+∫
+E(Y ) = yfY (y) dy
+if Y takes continuous values. The integral or sum is over all possible values
+y. Example 1.5 (Final-exam grade: expectation)
+As a simple illustration of expectation of a discrete random variable, let Y represent the grade on the final exam of a randomly chosen student from a given section
+of a statistics course. For simplicity, let us say Y can take only two values, 60%
+and 90%. The probability mass function, fY (y), for Y is given in Table 1.1. Definition 1.1 immediately gives
+E(Y ) = 60(.2) + 90(.8) = 84,
+i.e., the mean grade of students is 84%. This example shows that the so-called
+expected value does not have to be a possible value of the random variable.♢♢♢
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.2. MEAN, MEDIAN, AND MODE
+
+1-5
+
+Example 1.6 (Uniform distribution: expectation)
+If Y has a uniform distribution, it has possible values a < y < b, for given
+constants a and b, and PDF
+fY (y) =
+
+1
+b−a
+
+(a < y < b; a < b). The distribution is denoted by Unif (a, b). From Definition 1.1, the expectation or mean of Y is
+∫ b
+∫ b
+y=b
+1
+y2
+b 2 − a2
+a+b
+E(Y ) =
+yfY (y) dy =
+y
+dy =
+=
+=
+. b−a
+2(b − a) y=a 2(b − a)
+2
+a
+a
+♢♢♢
+In later probability and statistical results we will often have a condition that a property, like expectation, of a random variable has to exist. The∑condition is just requiring that the expectation is defined, that is, if and only if y |y|fY (y) (discrete)
+∫
+or |y|fY (y) dy (continuous) is finite. To illustrate this technicality, consider the
+Poisson distribution,
+fY (y) =
+
+e−µ µy
+y! (y = 0, 1, . . . , ∞; µ > 0),
+
+where µ is a parameter controlling the shape of the distribution. The expectation is
+∞
+∑
+e−µ µy
+E(Y ) =
+y
+. y! y=0
+
+It may look like this sum diverges, because the infinite sum averages y values tending
+to infinity. But the growth in y (and possibly µy ) is dominated by 1/y!, which
+decreases much more rapidly. Thus, the sum converges to a finite quantity, and the
+expectation is µ (Exercise 1.4). The notation µ is often used for the mean of a random
+variable in general. In contrast, take the distribution
+fY (y) =
+
+6 1
+π2 y2
+
+for y = 1, 2, . . . , ∞,
+
+where π ≃ 3.14159 (not a parameter). This is a valid PMF, because its values are
+positive and sum to 1. If we try to calculate
+E(Y ) =
+
+∞
+∑
+
+∑∞
+
+y=1
+
+y
+
+6 1
+,
+π2 y2
+
+however, the sum does not converge ( y=1 1/y is divergent). Here, the PMF does not
+decay fast enough to offset the growth in the value of y; the expectation is infinite. This simple illustration shows that not every PMF or PDF yields an expected value. A constant a has expectation a. This is seen by applying Definition 1.1 to the degenerate discrete random variable A that takes value a with probability 1.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-6
+
+CHAPTER 1. PROBABILITY TOOLS
+y
+PMF
+CDF
+
+0
+1
+0.421875 0.421875
+0.421875 0.843750
+
+2
+0.140625
+0.984375
+
+3
+0.015625
+1.000000
+
+Table 1.2: Binomial PMF and CDF for n = 3 trials and probability of success π = 1/4
+
+1.2.2
+
+Median
+
+The median m of a random variable Y essentially divides its range such that the
+total probability of 1 is divided equally left and right of m. Thus, from the CDF,
+m satisfies FY (m) = Pr(Y ≤ m) = 1/2 or FY (m) ≃ 1/2. The latter approximation
+arises because there may be no solution m exactly satisfying FY (m) = 1/2 when Y
+is discrete. The definition of the median has to accommodate such cases. Definition 1.2 (Median of a distribution)
+The median m of a random variable Y is the smallest possible value of Y such
+that FY (m) = Pr(Y ≤ m) ≥ 1/2. For a continuous random variable with
+continuous CDF, m is the solution of FY (m) = 1/2. The definition is thus straightforward for continuous distributions. Example 1.7 (Exponential distribution: median)
+As FY (y) = 1 − e−λy , the median m satisfies 1 − e−λm = 1/2. Rearrangement
+gives e−λm = 1/2, then −λm = − ln(2), and finally m = ln(2)/λ. ♢♢♢
+For a discrete random variable, there are rules for some special cases, but m is usually
+found by enumeration. Example 1.8 (Binomial distribution: median)
+The binomial distribution with n trials and probability of “success” π has PMF
+( )
+n y
+fY (y) =
+π (1 − π)n−y (y = 0, 1, . . . , n). y
+Suppose n = 3 and π = 1/4, for which the PMF and CDF are given computed in
+Table 1.2. It is seen that the y = 1 is the smallest value such that FY (y) ≥ 1/2,
+and the median is m = 1. Also note that FY (1) = Pr(Y ≤ 1) ≥ 1/2 and
+Pr(Y ≥ 1) = 1 − 0.421875 ≥ 1/2, and in this sense m = 1 divides the total
+probability of 1 into 2 halves. ♢♢♢
+
+1.2.3
+
+Mode
+
+The mode of a distribution is a value maximizing the PMF or PDF.It may not be
+unique. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.3. VARIANCE
+
+1-7
+
+Example 1.9 (Binomial distribution: mode)
+The binomial distribution with n = 3 trials and probability of success π = 1/4
+has the PMF computed in Table 1.2. We see that the PMF is maximized by both
+y = 0 and y = 1. Hence, there are two modal values. ♢♢♢
+
+1.3
+
+Variance
+
+1.3.1
+
+Computation
+
+The variance of Y is the expected (mean) of the squared deviation of Y around its
+mean. Definition 1.3 (Variance)
+The variance of Y is
+Var(Y ) = E (Y − E(Y ))2 ,
+where the expectation on the right is with respect to the distribution of Y . An
+equivalent definition, often used, is
+Var(Y ) = E(Y 2 ) − (E(Y ))2 . The definition of variance requires computation of expectations, which are handled
+by referring back to Definition 1.1. For a discrete random variable, expectation and hence variance are computed by
+summation over all the possible values y:
+∑
+Var(Y ) = E (Y − E(Y ))2 = E (Y − µ)2 =
+(y − µ)2 fY (y)
+y
+
+or, equivalently,
+Var(Y ) = E(Y 2 ) − (E(Y ))2 = E(Y 2 ) − µ2 =
+
+∑
+
+y 2 fY (y) − µ2 ,
+
+y
+
+where µ = E(Y ). Example 1.10 (Final-exam grade: variance)
+For the distribution fY (y) of final grades in Table 1.1, we already computed
+E(Y ) = µ = 84. Hence,
+Var(Y ) = E (Y − µ)2 = (60 − 84)2 (.2) + (90 − 84)2 (.8) = 144. Alternatively, using the second definition of variance,
+Var(Y ) = E(Y 2 ) − µ2 = (60)2 (.2) + (90)2 (.8) − (84)2 = 144.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-8
+
+CHAPTER 1. PROBABILITY TOOLS
+
+To see the equivalence of the definition in general for discrete random variables, we just
+expand the square in the first definition and rearrange the sum for the expectation:
+∑
+∑
+E(Y − µ)2 =
+(y − µ)2 fY (y) =
+(y 2 − 2µy + µ2 )fY (y)
+y
+
+=
+
+∑
+
+y 2 fY (y) − 2µ
+
+∑
+
+y
+
+y
+
+yfY (y) + µ2 = E(Y 2 ) − 2µE(Y ) + µ2
+
+y
+
+= E(Y ) − 2µµ + µ = E(Y 2 ) − µ2 . 2
+
+2
+
+For a continuous random variable, summation is again replaced by integration, and
+∫
+2
+Var(Y ) = E (Y − µ) = (y − µ)2 fY (y) dy
+or, equivalently,
+∫
+Var(Y ) = E(Y ) − (E(Y )) =
+2
+
+2
+
+y 2 fY (y) dy − µ2 . The equivalence is shown in the same way as for a discrete random variable. Example 1.11 (Uniform distribution: variance)
+Let Y have a Unif (a, b) distribution, i.e., it has PDF
+fY (y) =
+
+1
+b−a
+
+(a < y < b; a < b). From Example 1.6 we already know that E(Y ) = (a + b)/2. To use the second expression for the variance in Definition 1.3, we also need
+∫ b
+
+∫ b
+
+y=b
+
+y3
+a2 + b2 + ab
+b 3 − a3
+1
+dy =
+=
+. =
+E(Y ) =
+y fY (y) dy =
+y
+b−a
+3(b − a) y=a 3(b − a)
+3
+a
+a
+2
+
+2
+
+2
+
+Hence,
+a2 + b2 + ab
+Var(Y ) = E(Y ) − (E(Y )) =
+−
+3
+2
+
+2
+
+(
+
+a+b
+2
+
+)2
+=
+
+(b − a)2
+. 12
+
+♢♢♢
+
+The variance exists only if the sum or integral converges. The expectation must exist
+for the variance to exist. A constant a has variance 0. This is seen by applying Definition 1.3 to the degenerate
+discrete random variable A that takes value a with probability 1:
+Var(A) = E(A − E(A))2 = (a − a)2 × 1 = 0. Often, σ 2 is used as notation for a variance.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.4. COMMONLY USED DISCRETE DISTRIBUTIONS
+
+1.3.2
+
+1-9
+
+Standard deviation
+
+The standard deviation, often denoted by σ, is
+√
+sd(Y ) = Var(Y ). As the variance and standard deviation of a random variable are trivially related,
+we can use either. For mathematical manipulation, it is often easier to work with
+variances. For example, variances, not standard deviations, add for independent
+random variables (Section 1.7.7). On the other hand, when reporting results the
+standard deviation is easier to interpret because it has the same physical units as Y
+and not the square of the original units. For instance, the variance of the exam grade
+in Example 1.10 is 144%2 and having units of %2 is bizarre. We could also say that
+the standard deviation of Y is
+√
+sd(Y ) = Var(Y ) = 12%,
+which is much easier to interpret. Hence, we will switch back and forth between
+variance and standard deviation. 1.3.3
+
+Chebyshev’s inequality
+
+Chebyshev’s inequality uses the variance to bound how far a random variable, Y , can
+deviate from its mean in the following probabilistic sense. Theorem 1.1 (Chebyshev’s inequality)
+Let the random variable Y have a distribution such that the mean and variance,
+µ and σ 2 , exist. Then
+σ2
+Pr(|Y − µ| > t) ≤ 2 ,
+t
+for any t > 0. The result holds for any distribution for Y , and hence the probability bound on the
+right can be weak. Nonetheless, if Y has a small enough variance then there is only
+a small probability that Y is more than an arbitrary distance from its mean, an
+argument used to prove the law of large numbers in Theorem 3.1, for instance. 1.4
+
+Commonly Used Discrete Distributions
+
+Table 1.3 summarizes some commonly used discrete distributions, along with their
+expectations and variances. It also gives their moment generating functions (to be
+developed in Section 1.8). In the table, parameters of the distributions (e.g., the
+parameter π of the Bernouilli distribution) are denoted by lower-case Greek letters
+if they are usually unknown in practice (and hence estimated in statistical inference)
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-10
+
+CHAPTER 1. PROBABILITY TOOLS
+
+Distribution
+and
+
+PMF, fY (y)
+
+E(Y )
+
+Var(Y )
+
+MGF, MY (t)
+
+Bernoulli
+
+fY (0) = 1 − π,
+
+π
+
+π(1 − π)
+
+1 − π + πet
+
+Bern (π)
+
+fY (1) = π
+
+Binomial
+
+(y = 0, 1; 0 < π < 1)
+(n ) y
+π (1 − π)n−y
+y
+
+Bin (n, π)
+
+(y = 0, 1, .. . , n;
+
+notation
+
+(−∞ < t < ∞)
+
+nπ
+
+nπ(1−π)
+
+(1 − π + πet )n
+(−∞ < t < ∞)
+
+n = 1, 2, . . .;
+0 < π < 1)
+Geometric
+
+(1 − π)y π
+
+Geom0 (π)
+
+(y = 0, 1, . . . , ∞;
+
+1−π
+π
+
+1−π
+π2
+
+π
+1 − (1 − π)et
+(−∞ < t < − ln(1−π))
+
+1
+π
+
+1−π
+π2
+
+et π
+1 − (1 − π)et
+(−∞ < t < − ln(1−π))
+
+n
+π
+
+n(1 − π)
+π2
+
+µ
+
+µ
+
+0 < π < 1)
+Geometric
+
+(1 − π)y−1 π
+
+Geom1 (π)
+
+(y = 1, 2, . . . , ∞;
+0 < π < 1)
+
+Negative
+binomial
+
+(y−1 )
+n−1
+
+(1 − π)
+
+y−n n
+
+π
+
+(y = n, n + 1, . . . , ∞;
+
+(
+
+)n
+et π
+1 − (1 − π)et
+(−∞ < t < − ln(1−π))
+
+NegBin (n, π) n = 1, 2, . . . , ∞;
+0 < π < 1)
+Poisson
+Pois (µ)
+
+e−µ µy
+(y =
+y!0, 1, .. . , ∞; µ > 0)
+
+eµ(e −1) (−∞ < t < ∞)
+t
+
+Table 1.3: Some commonly used discrete distributions, along with their expectations,
+variances, and moment generating functions (MGFs)
+
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.4. COMMONLY USED DISCRETE DISTRIBUTIONS
+
+1-11
+
+or by Roman lower-case letters if they are usually known quantities. (The Greek
+alphabet, with pronunciations, is given on page xxi.)
+The distributions in Table 1.3 are now briefly described. 1.4.1
+
+Bernoulli distribution
+
+A Bernoulli random variable has only two possible outcomes, coded as 0 (“no”, “absent”, “failure”, etc.) or 1 (“yes”, “present”, “success”, etc.), with probabilities 1 − π
+and π, respectively. Thus, the PMF can be represented as
+fB (b) = π b (1 − π)1−b
+
+(b = 0, 1; 0 < π < 1). The Bernoulli distribution Bern (π) is the building block for the remaining discrete
+distributions, which can all be thought of as counting the number of “successes”
+(B = 1) observed from independent Bernoulli events. (We will refer to the event
+B = 1 generically as a “success” when outlining the remaining distributions.)
+
+1.4.2
+
+Binomial distribution
+
+The binomial distribution counts the number of “successes” among a fixed number,
+n, of independent and identically distributed∑(IID) Bernoulli trials, each of which is
+a success or not. Thus, Y ∼ Bin (n, π) is ni=1 Bi , where the Bi are independent
+Bern (π). The binomial distribution is perhaps the most important discrete distribution, because Y /n is the sample proportion, of interest in numerous applications. For
+instance, the efficacy of an experimental drug might be assessed by the proportion of
+patients in a clinical trial of n patients who respond positively to the drug. 1.4.3
+
+Geometric distribution
+
+A random variable with a geometric distribution arises from a sequence of IID
+Bernoulli trials. It counts the number of trials until one success is observed. There are two equivalent versions of the geometric distribution; the one used is just a
+matter of convenience for the application. The difference is whether the terminating
+trial with a success outcome is counted. A Geom0 (π) random variable does not count
+the terminating successful trial, and hence takes values 0, 1, 2, . . . for the number of
+failures observed. The Geom1 (π) version does count the terminating trial, so there
+must be at least one trial, and the random variable takes values 1, 2, . . .. Thus, the
+Geom0 (π) versus Geom1 (π) notation indicates whether the support of the random
+variable starts at 0 or 1.© Copyright William J. Welch 2009–2019. All rights reserved.Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1-12
+
+1.4.4
+
+CHAPTER 1. PROBABILITY TOOLS
+
+Negative-binomial distribution
+
+A negative-binomial random variable Y ∼ NegBin (n, π) arises as the sum of n independent Geom1 (π) random variables. Thus it counts the number of Bernoulli trials
+until n successes have occurred. The Geom1 (π) distribution is the special case of the
+NegBin (n, π) distribution with n = 1. The negative-binomial distribution is also related to the binomial in the following
+sense. If Y ∼ NegBin (n, π), then Y represents a random sample size to achieve a
+fixed number, n, of successes. The binomial switches what is random and what is
+fixed: Y ∼ Bin (n, π) represents a random number of successes for a fixed sample size,
+n. 1.4.5
+
+Poisson distribution
+
+A Poisson random variable can be thought of as a limiting case of the binomial. If
+Y ∼ Bin (n, π), and we take the limits n → ∞ and π → 0 such that µ = nπ tends
+to a constant, then Y ∼ Pois (µ) is the limiting distribution. Thus, the Poisson
+distribution is called the law of rare events: the probability of a success is vanishingly
+small, but a proper distribution arises because there are many such potential events. The parameter µ is the mean and variance, which can be restrictive for applications. Often empirical data suggest that the variance is larger than the mean, so-called
+“over-dispersion”. Thus, even when first principles suggest a Poisson probability
+model, a distribution with more flexibility in the mean-variance relationship, such as
+the negative-binomial, might be substituted. 1.5
+
+Commonly Used Continuous Distributions
+
+Table 1.4 summarizes some commonly used continuous distributions, which we now
+describe briefly. 1.5.1
+
+Beta distribution
+
+The beta distribution takes values on (0, 1) and hence is useful for modelling quantities
+that must lie on that interval. It finds particular utility in Chapter 6 on Bayesian
+inference, where uncertainty about a parameter representing a probability is often
+treated as a beta random variable. In that chapter we shall see that the parameters
+a and b of the Beta (a, b) distribution make the shape of its PDF fairly flexible. The beta function,
+
+∫ 1
+y a−1 (1 − y)b−1 dy,
+
+B(a, b) =
+
+(1.1)
+
+0
+
+is the normalizing factor of the beta distribution.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.5. COMMONLY USED CONTINUOUS DISTRIBUTIONS
+
+1-13
+
+Distribution
+and notation
+
+PDF, fY (y)
+
+E(Y )
+
+Var(Y )
+
+MGF, MY (t)
+
+Beta
+
+a
+a+b
+
+ab
+(a + b)2 (a + b + 1)
+
+Not useful
+
+d
+
+2d
+
+χ2d
+
+1 y a−1 (1 − y)b−1
+B(a, b)
+(0 < y < 1; a > 0; b > 0)
+1
+y d/2−1 e−y/2
+2d/2 Γ(d/2)
+(y > 0; d = 1, 2, . . .)
+
+Exponential
+
+λe−λy (y > 0; λ > 0)
+
+1
+λ
+
+1
+λ2
+
+Beta (a, b)
+Chi-squared
+
+1
+(1 − 2t)d/2
+(−∞ < t < 21 )
+λ
+λ−t
+(−∞ < t < λ)
+
+Expon (λ)
+Fisher’s F
+Fd1 ,d2
+
+(d1 /d2 )d1 /2 y d1 /2−1
+) d1 +d
+2
+(
+)(
+2
+B d21 , d22 1 + dd12 y
+(y > 0; d1 , d2 = 1, 2, . . .)
+
+1 λ(λy)ν−1 e−λy
+Gamma
+Γ(ν)
+Gamma (ν, λ) (y > 0; ν > 0; λ > 0)
+1 e− |y−µ|
+ϕ
+Laplace
+2ϕ
+(−∞ < y < ∞; −∞ <
+Lap (µ, ϕ)
+Log-normal
+logN (µ, σ 2 )
+Normal
+N (µ, σ 2 )
+
+µ < ∞; ϕ > 0)
+1
+2
+√ 1 e− 2σ2 (ln(y)−µ)
+2πσy
+(y > 0; µ > 0; σ 2 > 0)
+1
+2
+√ 1 e− 2σ2 (y−µ)
+2πσ
+(−∞ < y < ∞;
+
+d2
+d2 − 2
+(d2 >
+
+2d22 (d1 + d2 − 2)
+Does not exist
+d1 (d2 − 2)2 (d2 − 4)
+(d2 > 4)
+
+2)
+ν
+λ
+
+ν
+λ2
+
+µ
+
+2ϕ2
+
+2
+
+eµ+σ /2
+
+(eσ − 1)e2µ+σ
+2
+
+)
+λ ν
+λ−t
+(−∞ < t < λ)
+eµt
+1 − ϕ2 t2
+(|t| < 1/ϕ)
+(
+
+2
+
+Does not exist
+at t = 0
+
+µ
+
+σ
+
+2
+
+1
+
+2 2
+
+eµt+ 2 σ t
+
+(−∞ < t <
+
+−∞ < µ < ∞; σ 2 > 0)
+(
+) d+1
+2 − 2
+( 1 1d ) √ 1 + yd
+0
+B 2, 2
+d
+(−∞ < y < ∞;
+(d > 1)
+
+∞)
+d (d > 2)
+d−2
+
+Does not exist
+
+(b − a)2
+12
+
+(rectangu-
+
+ebt − eat
+(b − a)t
+(−∞ < t <
+
+lar)
+
+∞)
+
+Student’s t
+td
+Uniform
+
+d = 1, 2, .. .)
+1 (a < y < b; a < b)
+b−a
+
+a+b
+2
+
+Unif (a, b)
+Table 1.4: Some commonly used continuous distributions, along with their expectations, variances, and moment generating functions (MGFs)
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+CHAPTER 1. PROBABILITY TOOLS
+5
+
+1-14
+
+λ
+
+0
+
+1
+
+2
+
+fY(y)
+
+3
+
+4
+
+1
+2
+5
+
+0
+
+1
+
+2
+y
+
+3
+
+4
+
+Figure 1.1: PDF of the exponential distribution with rate parameter λ taking values
+1, 2, or 5
+
+1.5.2
+
+Exponential distribution
+
+The PDF of the exponential distribution has a parameter λ called the rate, and
+we denote the PDF by Expon (λ). As its name suggests, the PDF is exponentially
+decreasing, as illustrated in Figure 1.1. As the rate increases, the distribution has
+more mass to the left. For instance, if Y is an exponential distribution representing
+the time to occurrence of an event, then a larger value of λ says that the rate at
+which the event occurs is faster and Y tends to take smaller values. Mathematically,
+E(Y ) = 1/λ for the exponential distribution, i.e., the mean decreases with increasing
+rate (Exercise 1.7), which is summarized in Table 1.4 along with other properties. Hence, if Y is measured in days say, E(Y ) also has units of days, and λ = 1/E(Y )
+has units 1/day, a rate per day. That is why λ is often called the “rate” parameter. 1.5.3 Gamma distribution
+The gamma PDF is a generalization of the exponential PDF: putting ν = 1 in
+Gamma (ν, λ) gives Expon (λ). As with the exponential distribution, λ is interpreted
+as a rate, but the extra parameter ν controls the shape of the distribution. Figure 1.2 shows that the gamma PDF is skewed like the exponential but approaches a
+symmetric, bell-shape as ν increases. A further connection between the exponential and gamma distributions is that a
+sum of ν IID Expon (λ) random variables has a Gamma (ν, λ) distribution, a result
+demonstrated in Example 1.31.© Copyright William J. Welch 2009–2019. All rights reserved.Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+1.5. COMMONLY USED CONTINUOUS DISTRIBUTIONS
+
+λ
+1
+2
+5
+
+0.2
+0.0
+
+0.0
+
+0.5
+
+fY(y)
+0.4
+
+0.6
+
+λ
+1
+2
+5
+
+fY(y)
+1.0
+
+1.5
+
+0.8
+
+(b) ν = 10
+
+2.0
+
+(a) ν = 2
+
+1-15
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+0
+
+y
+
+5
+
+10
+y
+
+15
+
+20
+
+Figure 1.2: PDF of the gamma distribution with rate parameter λ taking values 1,
+2, or 5: (a) shape parameter ν = 2 and (b) shape parameter ν = 10
+The normalizing factor in the denominator of the gamma PDF is the gamma function,
+∫ ∞
+y ν−1 e−y dy (ν > 0). (1.2)
+Γ(ν) =
+0
+
+It has the following properties. • Γ(1) = 1 and Γ( 12 ) =
+
+√
+π (Exercise 1.8). • Γ(ν + 1) = νΓ(ν) (by integration by parts). • For integer ν > 0, from the previous result and Γ(1) = 1, we have Γ(ν + 1) = ν!. The gamma and beta functions are related via B(a, b) = Γ(a)Γ(b)/Γ(a + b). If Y has a Gamma (ν, λ) distribution, then Z = 1/Y has an inverse-gamma distribution with PDF
+( )ν
+1 1 λ
+fZ (z) =
+e−λ/z (0 < z < ∞; ν > 0; λ > 0)
+Γ(ν) z z
+(Exercise 1.9). Here ν is the shape parameter of the gamma distribution, but λ is
+now called the scale (not rate). The gamma and inverse-gamma distributions are much used in Bayesian estimation
+of the parameters of other distributions (Chapter 6).

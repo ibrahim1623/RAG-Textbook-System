@@ -18,15 +18,29 @@ def api_call(text: str, index: int) -> str:
             {"role": "system", "content": "You are a helpful assistant."},
             {
                 "role": "user",
-                "content": f'''You are an expert at converting raw text to LaTex for math textbooks. 
-                Convert the following text to LateX code without omitting or adding anything: {text}'''
+                "content": f'''You are a skilled markdown expert working on formatting raw text from a math textbook. 
+                            Your task is to convert the following text into precise markdown code, preserving every detail exactly as presented. 
+                            This text is part of a structured textbook, so accuracy in mathematical notation, symbols, numbers, and all textual elements is crucial.
+
+                            Please follow these guidelines:
+                            1. **Do not omit or add** any content. Each element should be preserved exactly as in the original text.
+                            2. **Mathematical notation** should follow conventional markdown standards and should represent the content precisely.
+                            3. **Text and paragraph structure** should be accurately reflected, keeping line breaks, spacing, and any emphasized text (e.g., bold or italicized) consistent with the original.
+                            4. Ensure that **any special characters** are converted properly into markdown syntax to maintain the intended meaning.
+                            5. You will be passed part of the textbook so ensure that you convert ALL the text without leaving anything out.
+                            6. REMEMBER TO GO THROUGH THE ENTIRE TEXT SO THAT YOU DO NOT MISS OUT ON ANYHTING, THE TOKEN COUNTS SHOUDL BE SIMILAR AT THE END
+                            
+                            Text to convert:
+                            {text}
+                            '''
+
             }
         ]
     )
     response_text = completion.choices[0].message.content
 
     # change to .tex later
-    with open(f'./output_LLM/output-{index}.tex', 'w') as file:
+    with open(f'./output_LLM/output-{index}.md', 'w') as file:
         file.write(response_text)
 
     print("Response saved.")

@@ -1,0 +1,477 @@
+Again, particularly for complex problems, this is not easy. 4. Use the probability model to answer questions of scientific interest, make predictions, etc. 3.2
+
+The Frequentist Philosophy
+
+This chapter concentrates on the second of the steps outlined above: estimating the
+parameters of a given (chosen) distribution. In general, let θ be a parameter of interest
+(e.g., π for the binomial distribution). We use some method to generate an estimate,
+θ̂, from the data. When we compute a numeric value for θ̂ this is an estimate. For instance, consider
+Example 2.3 where the parameter π of interest was the proportion in a large population agreeing with the statement that Trudeau was the best Prime Minister. The
+binomial distribution was the probability model, and π had the estimate π̂ = 0.36. In general, an estimate of a parameter is based on one or more statistics, functions of
+the data like the sample mean or sample proportion. Without knowing the true value
+of the parameter we cannot say how good an estimate is. Furthermore, a number has
+no statistical properties. It is just a number. In the frequentist philosophy of statistics, we consider the values of θ̂ that would
+have occurred in repeated random samples from the assumed probability distribution
+for the data. (The term “frequentist” here parallels the frequentist interpretation of
+probability, where probabilities are defined by long-run relative frequencies in repetitions of an experiment like rolling a die.) Often, this is a hypothetical argument as
+there is only one sample of data values. Nonetheless, if we consider other samples
+that might have occurred, each sample would generate its own value of θ̂, and now
+θ̂ has a sampling distribution, i.e., it is a random variable. The random variable is
+called an estimator of θ and will be denoted by θ̃. The statistical properties of the
+random variable θ̃, explored in the next subsection, can be used to make statements
+about how accurate θ̃ is in estimating θ over repeated random samples of data.© Copyright William J. Welch 2009–2019. All rights reserved.Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.2. THE FREQUENTIST PHILOSOPHY
+
+3-3
+
+Faults
+Frequency
+(y) observed expected
+0
+1
+1.5
+1
+5
+3.7
+2
+3
+4.4
+3
+4
+3.6
+4
+2
+2.2
+5
+2
+1.0
+>5
+0
+0.6
+17
+17.0
+Table 3.1: Observed numbers of faults on data lines of length about 170 km, and the
+expected numbers under a Poisson probability model
+Many textbooks and articles use the notation θ̂ both for an estimate, i.e., a number for
+a specific data set, and for the estimator. The context has to guide the reader whether
+this refers to an estimate or an estimator. In our text, however, the distinction
+between θ̃ and θ̂ is just like that between a random variable, Y , and one of its values, y,
+and hopefully helps the reader better understand the frequentist concept of properties
+over hypothetical repeated samples. The θ̃ versus θ̂ notation is borrowed from my
+colleagues Professors MacKay and Oldford, with whom I taught at the University of
+Waterloo. Example 3.1 (Faults on data lines: estimating the Poisson mean)
+The number of faults (y) over a period of time was collected for a sample of 17
+data-transmission lines, all of length about 170 km. The observed frequencies are
+in Table 3.1. For instance, there are 5 lines with exactly 1 fault. The data are
+displayed as a histogram in Figure 3.1(a). Suppose the number of faults per line in the population of all lines is represented
+by a Poisson distribution, i.e., Pois (µ), which has PMF
+fY (y) =
+
+e−µ µy
+y!(y = 0, 1, .. . , ∞; µ > 0). (There are good engineering reasons for using the Poisson distribution here.) The
+parameter µ is the expectation or mean of the Pois (µ) distribution, which we
+need to estimate to assess the reliability of the system. As µ is the mean of the
+assumed distribution, we use the sample mean, ȳ, as an obvious estimate of µ
+from the data. The observed sample mean is
+0×1+1×5+2×3+3×4+4×2+5×2
+41
+1 ∑
+yi =
+=
+= 2.41
+ȳ =
+17 i=1
+17
+17
+17
+
+for the faults data. We write µ̂ = 2.41 for the estimate of µ here.© Copyright William J. Welch 2009–2019. All rights reserved.Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-4
+
+CHAPTER 3. STATISTICAL ESTIMATION
+
+(b) Poisson sample (µ = 2.41, y = 2.06)
+8
+6
+Frequency
+4
+2
+0
+
+0
+
+2
+
+Frequency
+4
+
+6
+
+8
+
+(a) Faults data (y = 2.41)
+
+0
+
+2
+
+4
+Faults (y)
+
+6
+
+8
+
+0
+
+4
+y
+
+6
+
+8
+
+6
+Frequency
+4
+2
+0
+
+0
+
+2
+
+Frequency
+4
+
+6
+
+8
+
+(d) Poisson sample (µ = 2.41, y = 3)
+
+8
+
+(c) Poisson sample (µ = 2.41, y = 2.59)
+
+2
+
+0
+
+2
+
+4
+y
+
+6
+
+8
+
+0
+
+2
+
+4
+y
+
+6
+
+8
+
+Figure 3.1: (a) Histogram of the faults data in Table 3.1. (b), (c), and (d) Histograms
+of three random samples of size n = 17 from a Poisson distribution with the parameter
+µ set to 2.41, which is the value of ȳ observed for the faults data. The sample mean,
+ȳ, is also given for each random sample.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.2. THE FREQUENTIST PHILOSOPHY
+
+3-5
+
+How good is this estimate? This question is difficult to answer for the specific
+sample, but we can look at properties over random samples. Such properties
+are defined mathematically in Section 3.3. For now, we can informally compare
+the sample data with random samples of size n = 17 drawn from a Pois (µ)
+distribution. The value of µ is unknown—the objective here is to estimate it—
+but we proceed by setting µ to 2.41, the estimate from the data. This gives an
+idea of how much the data and hence µ̂ vary from one sample to another just by
+chance if µ is about 2.41. The histograms in Figures 3.1(b), (c), and (d) show
+three such random samples created via rpois in R. Two features of the plots are
+worth noting. • There is a fair amount of difference in shape in the histograms of Figures 3.1(b), (c), and (d) because the sample size is small. The histogram of
+the faults data in Figure 3.1(a) does not stand out compared to the Poisson
+samples. • The sample mean, ȳ, is reported for the three samples from a Pois (µ = 2.41)
+distribution. It ranges from 2.06 to 3.00. Thus, just by chance, the sample
+mean varies from one random sample to another. Such sampling variation
+across repeat random samples is the basis for treating the sample mean as
+a random variable, Ȳ . The variation in Ȳ across samples defines the uncertainty attached to an estimate in this chapter: the frequentist paradigm. Although Figure 3.1 demonstrates considerable variation in the sample mean here
+just due to chance, the data are good enough to narrow down the range of possible
+values of µ in a statistical sense. Figure 3.2 repeats Figure 3.1, but now µ = 5 when
+generating three random samples from the Pois (µ) distribution. The histogram of
+the data in Figure 3.2(a) now stands out: The other three histograms are shifted
+to the right. Furthermore, the sample means from the Pois (µ = 5) distributions
+still vary but take values much larger than ȳ = 2.41 for the faults data. We really
+need more random samples to say much more, but it looks like the data rule out
+µ = 5 via this statistical sampling argument. Is the Poisson distribution a reasonable probability model here? If we set µ to the
+estimate 2.41, the Poisson PMF is
+fY (y) =
+
+e−2.41 (2.41)y
+. y! Thus, in a sample of size 17 we would expect 17fY (0) = 17×0.0898 = 1.5 values of
+0, 17fY (1) = 17 × 0.216 = 3.7 values of 1, etc. These expected frequencies are also
+given in Table 3.1. The agreement between observed and expected frequencies
+appears good. Goodness of fit between data and a hypothesized distribution is
+taken up more formally in Section 8.4.♢♢♢
+
+© Copyright William J. Welch 2009–2019. All rights reserved.Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-6
+
+CHAPTER 3. STATISTICAL ESTIMATION
+
+(b) Poisson sample (µ = 5, y = 4.76)
+5
+4
+Frequency
+2
+3
+1
+0
+
+0
+
+1
+
+Frequency
+2
+3
+
+4
+
+5
+
+(a) Faults data (y = 2.41)
+
+0
+
+2
+
+4
+
+6
+Faults (y)
+
+8
+
+10
+
+12
+
+0
+
+4
+
+6
+y
+
+8
+
+10
+
+12
+
+4
+Frequency
+2
+3
+1
+0
+
+0
+
+1
+
+Frequency
+2
+3
+
+4
+
+5
+
+(d) Poisson sample (µ = 5, y = 5.76)
+
+5
+
+(c) Poisson sample (µ = 5, y = 5.47)
+
+2
+
+0
+
+2
+
+4
+
+6
+y
+
+8
+
+10
+
+12
+
+0
+
+2
+
+4
+
+6
+y
+
+8
+
+10
+
+12
+
+Figure 3.2: (a) Histogram of the faults data in Table 3.1. (b), (c), and (d) Histograms
+of three random samples of size n = 17 from a Poisson distribution with the parameter
+µ set to 5, which is much larger than the ȳ = 2.41 observed for the faults data. The
+sample mean, ȳ, is also given for each random sample.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.3. PROPERTIES OF AN ESTIMATOR
+
+3.3
+
+3-7
+
+Properties of an Estimator
+
+Let θ̃ be an estimator of the parameter θ. How good is θ̃: How much error does
+it have in estimating θ? We can answer this question, at least probabilistically, by
+examining the statistical properties of θ̃ and hence its error, θ̃ − θ. All the properties,
+like expectation and variance of θ̃, are with respect to its sampling distribution over
+repeated random samples. 3.3.1
+
+Bias
+
+The bias of θ̃ as an estimator of θ follows from its expectation. Definition 3.1 (Bias)
+The bias of the estimator θ̃ of a parameter θ is
+Bias(θ̃) = E(θ̃) − θ. Rewriting the bias as
+Bias(θ̃) = E(θ̃) − θ = E(θ̃ − θ),
+we see that the bias is the mean of the error distribution. If E(θ̃) = θ, then the bias is zero, and we say that θ̃ is unbiased. Unbiasedness means
+that the sampling distribution of θ̃ is centred on the true value, θ, in the sense that
+the error might be positive or negative from one sample to another, but these errors
+cancel out on average. Thus, unbiasedness is desirable. 3.3.2
+
+Variance
+
+The variance of θ̃ as estimator of θ is defined just like the variance of any random
+variable (Definition 1.3). Small values of Var(θ̃) are desirable in the sense that the
+estimator has small variability over random samples. 3.3.3
+
+Mean squared error
+
+A measure of accuracy summarizing the distribution of the error θ̃ − θ is the mean
+squared error (MSE), the expectation of the squared error.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-8
+
+CHAPTER 3. STATISTICAL ESTIMATION
+Definition 3.2 (Mean squared error (MSE))
+The mean squared error of θ̃ as an estimator of θ is
+MSE(θ̃) = E(θ̃ − θ)2 . It can be decomposed as
+MSE(θ̃) = Var(θ̃) + Bias2 (θ̃). The MSE combines the bias and variance properties of θ̃ in a single measure. The
+decomposition of the MSE into its two components can be seen by writing:
+(
+)2
+(
+)2
+MSE(θ̃) =E θ̃ − θ = E θ̃ − E(θ̃) + E(θ̃) − θ
+(
+)2
+=E θ̃ − E(θ̃) + Bias(θ̃)
+(from the definition of Bias(θ̃)
+(
+)
+=E (θ̃ − E(θ̃))2 + 2(θ̃ − E(θ̃)) Bias(θ̃) + Bias2 (θ̃)
+(
+)2
+(
+)
+=E θ̃ − E(θ̃) + 2E θ̃ − E(θ̃) Bias(θ̃) + Bias2 (θ̃)
+(from the expectation of a linear combination of random variables
+and noting that E(θ̃) and hence Bias(θ̃) are constants)
+=Var(θ̃) + 2 × 0 × Bias(θ̃) + Bias2 (θ̃)
+
+)
+(
+(from the definition of variance and E θ̃ − E(θ̃) = E(θ̃) − E(θ̃) = 0)
+
+=Var(θ̃) + Bias2 (θ̃). Thus, mean squared error penalizes an estimator both for having bias (i.e., the wrong
+expectation or mean) and for its variance. As MSE decreases, the accuracy of θ̃ in
+estimating θ increases in this statistical sense. If θ̃ is unbiased, then MSE(θ̃) = Var(θ̃). This is often the case, exactly or approximately, hence the emphasis on variance calculations in statistical inference about
+parameters. Example 3.2 (Faults on data lines: properties of the estimator of µ)
+Example 3.1 used µ̂ = ȳ = 2.41 as an obvious estimate of the Poisson parameter,
+µ, for the faults data with n = 17. To assess the accuracy of this estimate we can
+think in terms of repeated random samples of the data and the estimator µ̃. How
+far can µ̃ stray from µ in a probabilistic sense just by chance sampling variation? The sample mean Ȳ is the mean of 17 IID Poisson random variables here. From
+the properties in Table 1.3, a Poisson random variable Y has mean µ and variance
+µ. The following properties of Ȳ are shown more generally in Section 2.4.1. ∑
+• Unbiasedness. As Ȳ = 17
+i=1 Yi /17 has the same expectation as E(Yi ) = µ,
+we have E(Ȳ ) = µ and µ̃ is an unbiased estimator of µ for any value of n. • Variance. As Ȳ has variance Var(Yi )/17, we have Var(µ̃) = µ/17.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3.3. PROPERTIES OF AN ESTIMATOR
+
+3-9
+
+• Estimated standard deviation or standard error. Because Var(µ̃) =
+µ/17 depends on µ, in practice it has to be estimated. An obvious estimate
+d
+is Var(µ̃)
+= µ̂/17 = 2.41/17
+√ = 0.142. Equivalently, the estimated standard
+b
+deviation of µ̃ is sd(µ̃)
+= 0.142 = 0.38. An estimated standard deviation
+is often called a standard error, which we write as se(µ̃) here. Note that
+only a random variable, here µ̃, can have a variance or standard deviation,
+b
+whether it is estimated or not. Thus, sd(µ̃)
+= se(µ̃) = 0.38 makes statistical
+b
+sense, but sd(µ̂) or se(µ̂) do not. Authors will often write a looser statement like, “an estimate µ̂ = 2.41 with
+a standard error of 0.38,” but we need to interpret “with” in the sense of a
+property of µ̃ not µ̂. • Mean squared error. Because µ̃ is an unbiased estimator of µ, the MSE
+of µ̃ is also µ/17. To summarize, while the estimate µ̂ = 2.41 is a number with no statistical properties, the corresponding estimator µ̃ is unbiased over repeated samples of size
+n = 17. Hence, the MSE of the estimator is entirely due to its variance, namely
+µ/17. The estimator has an estimated variance of 0.142 or equivalently an estimated standard deviation of 0.38. ♢♢♢
+Several facts specific to the Poisson distribution were used in Example 3.2 to obtain
+statistical properties of the estimator of µ. Chapter 4 takes a general approach, the
+method of maximum likelihood, for estimation and quantification of the uncertainty
+of estimators. It relies less on knowledge of specific properties and can be extended
+to applications where exact properties are unavailable. 3.3.4
+
+Practical perspective
+
+Estimation bias is usually of little practical consequence, as it is typically zero or small
+relative to the standard deviation of an estimator. The following example questions
+whether a familiar unbiasedness argument is compelling. Example 3.3 (Sample variance: divisor of n − 1 or n?)
+Let Y1 , . . . , Yn have constant mean µ and constant variance σ 2 . A vexing question
+to countless students of statistics is why not define their sample variance with a
+divisor of n, i.e.,
+1
+σe2 = X,
+n
+where
+n
+∑
+X=
+(Yi − Ȳ )2 ,
+i=1
+
+instead of the familiar S 2 = X/(n − 1)?

@@ -1,0 +1,671 @@
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.8. EXERCISES
+
+2-23
+
+1. Write down the definition of MY (t), the MGF of Y . 2. Show that the MGF of Y is (1 − 2t)−d/2 , either directly starting from the
+definition or by stating and applying an appropriate result. In either case be
+sure to explain the assumption(s) you are using. 3. Hence, what is the distribution of Y ? Explain briefly. 4. From the MGF find E(Y ). 5. From the MGF find Var(Y ). Exercise 2.7
+Let X1 and X2 have independent χ2 distributions with degrees of freedom d1 and d2 ,
+respectively. Show that X1 + X2 has a χ2d1 +d2 distribution. Exercise 2.8
+Let Y1 , . . .∑
+, Yn be independent random variables with mean µ and variance σ 2 , and
+1
+let Ȳ = n ni=1 Yi . 1. Show that the covariance between Ȳ and Yi − Ȳ is zero. 2. Assume also that Y1 , . . . , Yn are normally distributed. Are Ȳ and Yi − Ȳ independent? Why? Exercise 2.9
+Let Y1 , . . . , Yn be independent random variables, each with mean µ and variance σ 2 . The values of µ and σ 2 are both unknown. Consider the sum of squares
+X=
+
+n
+∑
+
+(Yi − Ȳ ) =
+
+i=1
+
+2
+
+n
+∑
+
+Yi2 − nȲ 2 . i=1
+
+1. Show that E(X) = (n − 1)σ 2 . 2. Hence give an estimator of σ 2 based on X that has expectation σ 2 . Exercise 2.10
+In this exercise we calculate further confidence intervals for the study in Example 2.1. Recall that Schlaich et al. (1998) collected data on adjusted forced expiratory volume
+for n = 34 patients with manifest osteoporosis. The data summaries for the sample
+are:
+ȳ = 94.3 and s = 14.7,
+where the units are percentage points. As before, we will assume that the n = 34 data values are a random sample from a
+N (µ, σ 2 ) distribution, and that the objective is to estimate µ. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-24
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+1. Compute 90% and 99% confidence intervals for µ based on Student’s t distribution. What are their widths? 2. Before Student derived the t distribution, common practice was to carry out
+calculations as above using the standard normal distribution rather than the t
+distribution. (a) Use R to plot the PDF of the standard normal for values in the range
+[−4, 4]. You can set up such a grid of values at spacing of 0.01 using
+x <- seq(-4, 4, by = 0.01)
+When you use plot with x on the x-axis and the corresponding values of
+the normal PDF on the y-axis, include the argument type = "l" to tell
+R to join the coordinates as lines to create a curve. (b) Add the PDF of the t distribution (with appropriate degrees of freedom)
+to your plot. Using lines rather than plot will add to the current plot
+rather than generating a new one. To distinguish the two curves, the
+argument lty = 2 will make the new curve from dashed lines. (c) Comment on how well the standard normal approximates the t distribution
+here. 3. Recompute the 90% and 99% confidence intervals in part 1 but use the standard
+normal rather than the t distribution. What are their widths? 4. How much wider are the confidence intervals using the t distribution relative to
+those using the standard normal? (“Relative” here is a ratio of widths.)
+5. Look again at your plots of the standard normal and t PDFs. Why is there more
+more discrepancy in the confidence interval from the t distribution relative to
+the normal distribution as the confidence level increases? Exercise 2.11
+Example 2.1 analyzed data collected by Schlaich et al. (1998) on lung function in
+patients with manifest osteoporosis. The investigators also collected data on a second
+sample of n = 51 patients without manifest osteoporosis. The second sample is a
+“control” group for comparison. The definition of the measure FEV1% we will use
+for the control group is the same as in Example 2.1 and is again called y. The control sample gives the following data summaries:
+ȳ = 96.1 and s = 14.4,
+where s is the sample standard deviation. We will again assume the data are a
+random sample from a normal distribution and that interest centres on estimation of
+the mean of the distribution. 1. Based on the above description, write down a formal probability model for the
+way that the control-sample data, y1 , .. . , y51 , arose. Be sure to specify:
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.8. EXERCISES
+
+2-25
+
+(a) the random variable(s);
+(b) the distribution of the random variable(s);
+(c) a description of any parameters of the distribution;
+(d) any other assumption(s) about the random variable(s). 2. Assuming the probability model holds, calculate:
+(a) an estimate of the mean of the distribution;
+(b) an estimate of the standard deviation of the sample mean over repeated
+samples;
+(c) a 95% confidence interval for the mean of the assumed distribution. 3. Again assuming the probability model is correct, are there any approximations
+in the confidence-interval calculation? Briefly explain why or why not. 4. Compare the confidence intervals in Example 2.1 and in this exercise, and comment briefly. Exercise 2.12
+[Parts 1–5 appeared on Quiz #1, 2010-11, Term 2] Suppose a random sample of
+size n = 2 is drawn from a N (µ, σ 2 ) distribution to estimate µ when σ 2 is unknown. There is a big impact on the 95% confidence interval for µ from using the t distribution
+instead of the standard normal. > qnorm (0.975)
+[1] 1.959964
+> qt (0.975 , df = 1)
+[1] 12.7062
+
+Thus, a confidence interval for µ based on the t distribution will be much, much
+wider. Why? And why does the t distribution have 1 degree of freedom here (and
+not 2 from n = 2)? The exercise sheds some light on these questions. Let Y1 and Y2 be independent random variables sampled from a N (µ, σ 2 ) distribution. For such a sample of size n = 2 it is easily shown that the sample variance,
+n
+1 ∑
+(Yi − Ȳ )2 ,
+S =
+n − 1 i=1
+2
+
+simplifies to
+
+(
+2
+
+S =
+
+Y1 − Y2
+√
+2
+
+)2
+.You may use this result without proof. √
+1. Let V = (Y1 − Y2 )/ 2. Show the following properties of V . Carefully state any
+result you are using (no proof of the result required) and how it is applied here. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-26
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+(a) E(V ) = 0. (b) Var(V ) = σ 2 . (c) V has a normal distribution. 2. Explain why the distribution of V /σ is standard normal. 3. Hence argue that when n = 2, the distribution of S 2 /σ 2 is χ21 . (A result on the
+connection between N (0, 1) and χ21 random variables may be stated and used
+without proof.)
+4. Using (without proof) the properties of the χ21 distribution, what are the expectation and variance of S 2 /σ 2 when n = 2? 5. Hence, what is the expectation of S 2 when n = 2? 6. What is the variance of S 2 when n = 2? 7. Use qchisq in R to find quantiles l and u such that
+Pr(S 2 /σ 2 < l) = 0.025 and
+
+Pr(S 2 /σ 2 > u) = 0.025. Hence, l and u are lower and upper bounds on S 2 /σ 2 in the sense that
+Pr(l < S 2 /σ 2 < u) = 0.95. 8. Suppose S 2 is used to estimate σ 2 from a sample of size n = 2. Comment on
+the values of S 2 /σ 2 that could occur. Exercise 2.13
+[Parts 1–3 appeared on the final exam, 2010-11, Term 1.] Let Y1 , . . . , Yn be independent N (µ, σ 2 ) random variables. Their sample variance is
+n
+1 ∑
+S =
+(Yi − Ȳ )2 . n − 1 i=1
+2
+
+This question explores the properties of S 2 /σ 2 and why the tn−1 distribution approaches the standard normal as n → ∞. Section 2.4.2 argued that S 2 /σ 2 has the
+same distribution as X/(n − 1), where X ∼ χ2n−1 . You may use this result and
+properties of the χ2 distribution without proof. 1. Find E(S 2 /σ 2 ). 2. Find Var(S 2 /σ 2 ). 3. Let ϵ > 0 be a fixed constant representing an arbitrarily small “error”. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.8. EXERCISES
+
+2-27
+
+(a) As n → ∞, what is the limiting probability
+Pr(1 − ϵ < S 2 /σ 2 < 1 + ϵ)? (b) Briefly describe how you would justify the limiting probability (a complete
+proof is not required). 4. In Section 2.4.3 the sample mean was standardized by its expectation and sample variance and then expanded in equation (2.4):
+√
+(Ȳ − µ)/ σ 2 /n
+Ȳ − µ
+√
+√
+=
+. S 2 /n
+S 2 /σ 2
+It was shown that this quantity has a tn−1 distribution. As n → ∞, it is known
+that the tn−1 distribution converges to N (0, 1). Use the above results to justify
+this convergence. 5. Using the R function rnorm, simulate 1000 samples of size n = 10 from the
+normal distribution with µ = 0 and σ = 2. For each sample, compute its
+sample variance using var. 6. Construct a histogram of the 1000 sample variances. Does it have a shape that
+looks like one of the distributions in Figure 2.2?If so, which? 7. Compute the sample mean and sample variance of the 1000 sample variances
+using mean and var. Compare to the theoretical mean and variance of the
+sample variance you found in parts 1 and 2. Exercise 2.14
+Let X have a χ2d distribution. Show that a standardized version of X has a limiting
+standard normal distribution as d → ∞. Be sure to be specific about the standardization of X and to check the conditions of any result on limiting distribution that
+you use. Exercise 2.15
+This exercise demonstrates the CLT via simulation. 1. In R, generate a sample of 1000 independent Unif (−1, 1) random variables. n <- 1000
+x <- runif (n, min = -1, max = 1)
+
+Take a look at the first 10 elements of the vector x that contains the sample
+using x[1:10], and make sure they look good. For example, all values should
+be in [−1, 1]! 2. Use hist to draw a histogram of all the data in x. Look at help(hist) to find
+out how to do this. © Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-28
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+3. Compute the sample mean and sample variance of the data. Compare with
+the theoretical mean and variance of the Unif (−1, 1) distribution. Why do the
+sample and theoretical quantities not agree exactly? 4. Generate a second, independent sample
+y <- runif (n, min = -1, max = 1)
+
+and then compute the sums z[1] = x[1] + y[1], z[2] = x[2] + y[2], etc. using
+z <- x + y
+
+Note that R will apply the sum operator element-wise to the vectors. Take
+a look at the first few elements of x, y, z to make sure the summation has
+worked correctly. Thus, z contains 1000 values, where each element is generated
+as the sum of a sample of two independent Unif (−1, 1) random variables. 5. Draw a histogram of the sample data in z. Does the histogram look more
+normal than a single sample from the uniform distribution? 6. Repeat Steps 4–5 to generate a total of 5 independent samples, and compute
+z as the sum across all 5 vectors. Does the histogram of z have a shape that
+looks fairly normal? 7. Why do the z values not appear to be from a standard normal distribution? What would we have to do to the z values to standardize them?Exercise 2.16
+Throughout this question, whenever you use a general result, make sure you state it
+clearly and check its conditions (if any). 1. Let U ∼ Unif (−1, 1), i.e., U has a uniform distribution with parameters a = −1
+and b = 1 in Table 1.4. (a) From the definition of expectation, find E(U ). (b) From the definition of variance, find Var(U ). (c) From the definition of the moment generating function, find MU (t). (d) From the moment generating function, find E(U ) and Var(U ). (As in
+Example 1.29, you may find it easier to expand the exponential functions,
+collect leading terms, then differentiate.)
+2.Let U1 , . . . , Un be independent Unif (−1, 1) random variables. Consider the random variable
+n
+∑
+Y =
+Ui .i=1
+
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.8. EXERCISES
+
+2-29
+
+(a) What is E(Y )? (b) What is Var(Y )? (c) What is the MGF of Y ? 3. Now standardize Y to find a new random variable, Z, with mean 0 and variance
+1. (a) What is Z? (b) What is the MGF of Z? (c) What is the MGF of Z as n → ∞? One approach is to expand the
+exponential functions and collect terms before taking the limit. Note also
+that (1 + a/n)n → ea as n → ∞. (d) What is the distribution of Z? (e) You have just proved a special case of a more general theorem. What is
+it? Exercise 2.17
+Example 2.2 worked through the normal approximation to Xn , a Bin (n, π) random
+variable. It was shown that
+Xn − nπ
+Z=√
+nπ(1 − π)
+is approximately N (0, 1) for large n. Here, Xn is a discrete random variable, whereas
+Z is continuous. How can a random variable with a discrete PMF be approximated
+by another with a continuous PDF? Exercise 2.18
+[This exercise appeared on Quiz #1, 2011-12, Term 1 without Parts 3 and 5. The quiz
+included the fact that the R function qnorm(0.975) returns 1.959964.] Let Y1 , . . . , Yn
+be independent random variables, each with mean µ and variance σ 2 . Note that we
+are not necessarily assuming any distribution for the Yi yet. ∑
+Consider using Ȳ = n1 ni=1 Yi to estimate µ. 1. Show that E(Ȳ ) = µ. 2. Show that Var(Ȳ ) = σ 2 /n. 3. What does Chebyshev’s
+inequality give for the probability Pr(|Ȳ − µ| > ϵ),
+√
+where ϵ = 1.96 σ 2 /n? 4. What does the CLT say about the distribution of Ȳ as n → ∞? 5. Give√an approximation based on the CLT to Pr(|Ȳ − µ| > ϵ), where ϵ =
+1.96 σ 2 /n.Explain briefly. 6. Suppose Y1 , . . . , Yn also have a normal distribution.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-30
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+(a) What is the distribution of Ȳ ? Explain briefly. √
+(b) What is Pr(|Ȳ − µ| > ϵ), where ϵ = 1.96 σ 2 /n? Explain briefly. (c) Is the calculated probability a large-sample approximation? briefly. Explain
+
+Exercise 2.19
+Example 2.2 argued that a standardized version of a binomial random variable has
+a limiting standard normal distribution as n → ∞. Outline the key steps in the
+argument, pointing to results that would be used, without tedious algebraic detail. For instance, you might start with
+Step 1. Let Xn ∼ Bin (n, π). Its MGF, MXn (t), can be obtained from
+Table 1.3. In other words, there is no need to derive MXn (t) for this first step. Indeed, there is no
+need even to give an explicit expression for MXn (t) as you will not be manipulating
+it algebraically in subsequent steps. On the other hand, you will need to define
+carefully and mathematically various terms like MXn (t) as you go along, just to make
+your argument clear. Exercise 2.20
+This exercise explores the shape of the Poisson distribution, via simulation and via a
+limiting-distribution argument. 1. Using rpois in R, generate a random sample of 1000 values from a
+Pois (µ = 0.35) distribution and plot the values using hist. Does the empirical distribution have a roughly normal shape? 2. Repeat part 1 but sample from a Pois (µ = 25) distribution. 3. What do the two simulations suggest about the condition(s) for the normal
+distribution to be a good approximation to the Poisson distribution. √
+4. Let Y ∼ Pois (µ). The standardized variable Z = (Y − µ)/ µ has mean 0 and
+variance 1. The MGF of Z can be written as
+(
+))
+( 2
+1
+t
++O √
+. MZ (t) = exp
+2
+µ
+( √ )
+The notation O 1/ µ says that, for any t, the sum of all terms after the t2
+term becomes negligible for sufficiently large µ. Also, see the last part of this
+question for the derivation of the expansion here. What is the limiting distribution of Z as µ → ∞?© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.9. APPENDIX: PROOF OF LEMMA 2.2
+
+2-31
+
+5. In Worksheet 1.3 we ended up with a random variable Y with a Pois (µ) distribution (approximately). Based on the data in Worksheet 3.1, µ appears to be
+fairly small, of the order µ ≃ 0.35. Comment on whether the result in part 4 of
+this exercise justifies further approximating the distribution of Y by a normal
+distribution. 6. In Worksheet 3.1 we assume the data are a realization of Y1 , . . . , Yn ,∑where
+n = 74 and the Yi are IID Pois (µ). Exercise 1.20 showed that Xn = ni=1 Yi
+has a Pois (nµ) distribution. As n = 74, we clearly have nµ ≫ µ. Comment on
+whether a normal distribution might be a good approximation to the distribution of Xn and hence the sample mean, Ȳ = X/n. 7. Derive the expansion in part 4. (a) Write down the MGF of Y . √
+(b) The standardized variable Z = (Y − µ)/ µ has mean 0 and variance 1. What is the MGF of Z? (c) Using
+expansion
+of the exp function, show that the exponent
+(
+(a series
+)
+√ )
+µ exp t/ µ − 1 appearing in MZ (t) can be written as
+(
+)
+t2
+1
+√
+µt + + O √
+. 2
+µ
+(d) Hence collect terms and obtain the expansion of MZ (t). 2.9
+
+Appendix: Proof of Lemma 2.2
+
+From Section 2.3.2 we already established that the PDF of T = Z/
+Lemma 2.2 is given by
+∫ ∞
+fT (t) =
+fT |W (t | w)fW (w) dw,
+
+√
+Xd /d in
+
+0
+
+where W = Xd /d. It was also argued that fT |W (t | w) is the N (0, 1/w) PDF. Hence
+1
+
+w2
+2
+fT |W (t | w) = √ e−(w/2)t
+2π
+by substituting y = t, µ = 0, and σ 2 = 1/w in the normal PDF of Table 1.4. Furthermore, W = Xd /d is a simple linear transformation of the χ2d random variable
+Xd . From the χ2d PDF in Table 1.4 transformed according to (1.3), the PDF of W is
+1
+fW (w) = d d/2 ( d ) (dw)d/2−1 e−dw/2 . 2 Γ 2
+© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-32
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+
+(The factor d comes from the derivative of the linear inverse transformation Xd =
+dW .)
+Combining the two PDFs, the required integral is
+∫ ∞
+
+1
+
+w2
+1
+2
+√ e−(w/2)t × d d/2 ( d ) (dw)d/2−1 e−dw/2 dw,
+fT (t) =
+2 Γ 2
+2π
+0
+∫
+∞
+dd/2
+2
+(
+)
+=√
+w(d+1)/2−1 e−w(d+t )/2 dw. d
+d/2
+2π2 Γ 2 0
+Up to constants, the integrand is the gamma PDF in Table 1.4 with
+ν )= (d + 1)/2
+( d+1
+2
+and λ = (d + t )/2. Inserting the required constants Γ(ν) = Γ 2 and λν =
+((d + t2 )/2)(d+1)/2 gives
+( )
+∫ ∞
+Γ d+1
+dd/2
+1
+2
+(d)
+fT (t) = √
+λ(λw)ν−1 e−λw dw. 2
+(d+1)/2
+d/2
+((d
++
+t
+)/2)
+Γ(ν)
+2π2 Γ 2
+0
+The integrand is now a Gamma (ν, λ) PDF, which integrates to 1, leaving only the
+constants outside the integral. Those constants
+can( be
+) simplified
+( ) using
+( ) properties
+( )
+√
+π = Γ 12 and Γ 21 Γ d2 /Γ d+1
+of (the )gamma function in Section 1.5.3:
+=
+2
+1 d
+B 2 , 2 , where B(·, ·) is the beta function. Hence,
+dd/2
+1
+fT (t) = ( 1 d ) (d+1)/2
+= (1 d) √
+2
+(d+1)/2
+((d + t )/2)
+B 2, 2 2
+B 2, 2
+d
+
+)− d+1
+(
+2
+t2
+,
+1+
+d
+
+which is the PDF of the td distribution in Table 1.4. 2.10
+
+Appendix: Proof of the Central Limit Theorem
+
+The Central limit theorem (CLT) in Theorem 2.2 is proved in the following steps. 1. Rewrite Zn in terms of Yi − µ. 2. Check that Zn in the theorem is standardized. 3. Find the MGF of Yi − µ. ∑
+4. Find the MGF of Sn = ni=1 (Yi − µ)
+5. Find the MGF of Zn from that of Sn . 6. Show the limiting MGF of Zn converges to that of the standard normal as
+n → ∞.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2.10. APPENDIX: PROOF OF THE CENTRAL LIMIT THEOREM
+
+2-33
+
+1. Rewrite Zn in terms of Yi − µ
+Write
+
+Xn − nµ
+√
+Zn =
+=
+σ n
+
+∑n
+
+i=1 Yi − nµ
+
+√
+
+σ n
+
+∑n
+=
+
+i=1 (Yi − µ)
+
+√
+σ n
+
+. (2.11)
+
+2. Check that Zn is standardized
+We then note that
+E(Yi − µ) = E(Yi ) − µ = µ − µ = 0
+and
+Var(Yi − µ) = Var(Yi ) = σ 2 ,
+based on the expectation and variance of a linear function of a random variable. It then follows that
+( n
+)
+n
+∑
+∑
+E
+(Yi − µ) =
+E(Yi − µ) = 0,
+i=1
+
+and
+Var
+
+( n
+∑
+
+i=1
+
+)
+(Yi − µ)
+
+i=1
+
+=
+
+n
+∑
+i=1
+
+Var(Yi − µ) =
+
+n
+∑
+
+Var(Yi ) = nσ 2 . i=1
+
+These expressions also use results for the expectation and variance of a sum of
+random variables. For the variance calculation only, independence of Y1 , . . . , Yn
+is also required. Hence, immediately E(Zn ) = 0, and
+( n
+)
+(
+)2
+∑
+1
+1
+√
+Var(Zn ) =
+Var
+(Yi − µ) = 2 nσ 2 = 1,
+σ n
+σ n
+i=1
+which again use results for a linear function of a random variable. Thus, Zn
+has mean 0 and variance 1 and is indeed a standardized random variable. 3. Find the MGF of Yi − µ
+In the theorem, Y1 , . . . , Yn have identical distributions, so they share a common
+MGF, MY (t). Recall that MY (t) is, by definition, E(etY ), and expanding the
+exponential function gives
+(
+)
+(tY )2 (tY )3
+tY
+MY (t) = E(e ) = E 1 + tY +
++
++ ··· . 2! 3! Similarly, Yi − µ in (2.11) has MGF
+(
+)
+(t(Y − µ))2 (t(Y − µ))3
+t(Y −µ)
+MY −µ (t) = E(e
+) = E 1 + t(Y − µ) +
++
++ ··· .2! 3! © Copyright William J. Welch 2009–2019. All rights reserved.Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+2-34
+
+CHAPTER 2. THE NORMAL DISTRIBUTION IN STATISTICS
+Treating this as the expectation of a linear combination of random variables,
+we have
+MY −µ (t) = 1 + tE(Y − µ) +
+
+t2
+t3
+E(Y − µ)2 + E(Y − µ)3 + · · · . 2! 3! The expression simplifies by noting that E(Y − µ) = 0 and E(Y − µ)2 =
+Var(Y ) = σ 2 , whereupon
+MY −µ (t) = 1 + t0 +
+
+t2 2 t3
+t2
+t3
+σ + E(Y − µ)3 + · · · = 1 + σ 2 + E(Y − µ)3 + · · · .2! 3! 2!3! ∑
+4. Find the MGF of Sn = ni=1 (Yi − µ)
+∑
+Write Sn = ni=1 (Yi − µ), which has MGF
+(
+)n
+t2 2 t3
+n
+3
+MSn (t) = (MY −µ (t)) = 1 + σ + E(Y − µ) + · · ·
+,
+2! 3! using Lemma 1.3 on the MGF of a sum of independent random variables. 5. Find the MGF of Zn from that of Sn
+Write
+
+1
+Zn = √ Sn ,
+σ n
+
+whereupon
+(
+MZn (t) = MSn
+
+)n
+) (
+(
+)2 2 (
+)3
+1
+σ
+1
+E(Y − µ)3
+1
+√ t = 1+
+√ t
+√ t
++
++ ···
+,
+2! 3! σ n
+σ n
+σ n
+
+using Lemma 1.2 on the MGF of a linear function of random random variables. This simplifies to
+(
+(
+))n
+1 t2
+1
++O
+MZn (t) = 1 +
+,
+n2
+n3/2
+( 1 )
+where O n3/2
+represents further terms that are decreasing at rate 1/n3/2 or
+faster. 6. Find the limiting MGF of Zn as n → ∞
+As n → ∞,
+
+(
+MZn (t) =
+
+1 t2
++O
+1+
+n2
+
+(
+
+1
+n3/2
+
+))n
+1 2
+
+→ e2t ,
+
+from the result that (1 + x/n)n → ex as n → ∞. This is the MGF of a N (0, 1)
+random variable, and the proof is complete.© Copyright William J. Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-1
+
+Chapter 3
+Statistical Estimation
+Statistical methods often involve estimation of unknown parameters in probability
+models, as in Example 2.3 where the parameter π of the binomial distribution was
+estimated. Furthermore, the example showed how the properties of the estimation
+method lead to a probabilistic bound on the margin of error. This chapter introduces statistical estimation more generally. It starts with some
+philosophy relating to the frequentist view: that statistical properties like bias and
+variance are defined by considering how estimates and other quantities would change
+by chance over repeated random samples from the probability model. This paves the
+way for the general method of maximum likelihood (Chapter 4) and analysis of its
+properties from this frequentist perspective. 3.1
+
+Statistical Models: The Role of Probability
+
+A probability calculation typically starts with a probability model (a distribution)
+for some random variable(s), Y , and calculates quantities like Pr(Y ≥ c) or E(Y ). These calculations say something about the values that Y generates. Mathematically,
+the manipulations involved may be lengthy and involve much special knowledge,
+especially of integration and summation, but in one sense they are easy. Given a
+well-defined probability model and a well-defined task like “find Pr(Y ≥ c)” there
+is only one answer. This is called deductive logic. It is important to note that to
+carry out such calculations numerically, the values of the model’s parameters must be
+known. Statistical inference also starts with a probability model but essentially uses it in a
+reverse process: We start with data (i.e., observed values y) from some distribution
+and then try to infer properties of the distribution. If the form of the distribution is
+“known” (e.g., the Poisson) the values of its parameter (e.g., µ) or parameters will
+usually have to be estimated from the data. In practice, one might not even know
+the form of the distribution, and the data will be used to infer or at least check the
+distribution. This inductive process is much less well defined and generates much
+© Copyright William J.Welch 2009–2019. All rights reserved. Not to be copied, used, or revised without explicit written permission from the copyright owner. 2019.8.14
+
+3-2
+
+CHAPTER 3. STATISTICAL ESTIMATION
+
+work for statisticians! Thus, common steps in statistical inference are:
+1. Choose a probability model (e.g., the binomial for discrete values or the normal
+for continuous values). Often, the context will suggest a distribution from
+first principles, but in complex problems specifying a probability distribution is
+usually difficult. 2. Estimate the parameter(s) of the distribution (e.g., π for the binomial or µ and
+σ 2 for the normal) from a sample of y values. This gives a fitted distribution,
+fitted to the data. 3. Check that the fitted distribution is in reasonable agreement with the data.
