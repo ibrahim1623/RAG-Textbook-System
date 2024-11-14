@@ -20,7 +20,7 @@ def create_embeddings():
         with open(filepath, 'r') as file:
             text = file.read()
             response = client.embeddings.create(input = [text], model = "text-embedding-3-small").data[0].embedding
-            print(len(response))
+            print(f"the length of the emnbedding created is : {len(response)}")
             embeddings.append(response)
 
     

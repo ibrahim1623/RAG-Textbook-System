@@ -9,7 +9,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.12,<3.13"
+python = "^3.12"
 textract = "^1.6.5"
 langchain-community = "^0.3.1"
 pypdf = "^5.0.1"
@@ -19,7 +19,6 @@ chardet = ">=3,<4"
 docx2txt = "~=0.8"
 extract-msg = "<=0.29.*"  # Last version with Python 2 support
 python-pptx = "~=0.6.18"
-six = "~=1.12.0"
 SpeechRecognition = "~=3.8.1"
 xlrd = "~=1.2.0"
 pdfminer-six = "20191110"
@@ -39,6 +38,11 @@ langchain-experimental = "^0.3.2"
 langchain-openai = "^0.2.3"
 sentence-transformers = "^3.2.1"
 pyyaml = "^6.0.2"
+pinecone = "^5.3.1"
+six = ">=1.12.0,<1.13.0"
+pinecone-client = "^5.0.1"
+streamlit = "^1.40.1"
+pandas = "^2.2.3"
 
 [build-system]
 requires = ["poetry-core"]
